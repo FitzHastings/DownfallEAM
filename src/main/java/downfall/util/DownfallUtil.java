@@ -26,9 +26,10 @@ import java.util.logging.Logger;
  * This class is not instatiable if you want to get its only instance use getInstance() method.
  */
 public class DownfallUtil {
-    public final static String BUILDINGS_EDITOR_FXML_PATHNAME = "fxml/BuildingsEditor.fxml";
-    public final static String MATERIALS_EDITOR_FXML_PATHNAME = "fxml/MaterialsEditor.fxml";
-    public final static String DOWNFALL_MAIN_FXML_PATHNAME = "fxml/DownfallMain.fxml";
+    public final static String BUILDINGS_EDITOR_FXML_PATHNAME = "fxml/editors/BuildingsEditor.fxml";
+    public final static String MATERIALS_EDITOR_FXML_PATHNAME = "fxml/editors/MaterialsEditor.fxml";
+    public final static String DOWNFALL_MAIN_FXML_PATHNAME = "fxml/main/DownfallMain.fxml";
+    public final static String REALM_SCREEN_FXML_PATHNAME= "fxml/main/tabs/RealmScreen.fxml";
 
     public final static String DEFAULT_MATERIAL_GFX_PATHNAME = "gfx/materials/orb.png";
     public final static String DEFAULT_BUILDING_GFX_PATHNAME = "gfx/buildings/houseSmall.png";
@@ -39,6 +40,7 @@ public class DownfallUtil {
     public final static int DEFAULT_MATERIAL_AMOUNT = 10;
     public final static String DEFAULT_LOGGER = "DownfallEAM";
 
+    private URL URLRealmScreenFXML;
     private URL URLMaterialsEditorFXML;
     private URL URLBuildingsEditorFXML;
     private URL URLDownfallMainFXML;
@@ -70,6 +72,12 @@ public class DownfallUtil {
         } catch (MalformedURLException e) {
             informOfMalformedURL("file:" + DOWNFALL_MAIN_FXML_PATHNAME);
         }
+
+        try {
+            URLRealmScreenFXML = new URL("file:" + REALM_SCREEN_FXML_PATHNAME);
+        } catch (MalformedURLException e) {
+            informOfMalformedURL("file:" + REALM_SCREEN_FXML_PATHNAME);
+        }
     }
 
     /**
@@ -89,13 +97,20 @@ public class DownfallUtil {
     }
 
     /**
-     * Lightweight Accessor method.
+     * Lightweight accessor method.
      * @return URL to an FXML file that contains Downfall Main UI.
      */
     public URL getURLDownfallMainFXML() {
         return URLDownfallMainFXML;
     }
 
+    /**
+     * Lightweight accessor method.
+     * @return URL to an FXML file that contains Realm Screen.
+     */
+    public URL getURLRealmScreenFXML() {
+        return URLRealmScreenFXML;
+    }
     /**
      *  Loads an image from a given pathname.
      *  Lightweight method. Quickly constructs a URL by adding "file:" to a given pathname and returns a new image made from that URL

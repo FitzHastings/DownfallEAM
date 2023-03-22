@@ -158,6 +158,17 @@
             <output-materials/>
             <path-to-gfx>gfx/buildings/houseSmall.png</path-to-gfx>
         </building-template>
+        <building-template>
+            <construction-materials/>
+            <def-construction-cost>30</def-construction-cost>
+            <def-construction-time>3</def-construction-time>
+            <id>8</id>
+            <input-materials/>
+            <name>New Building</name>
+            <operates-immediately>false</operates-immediately>
+            <output-materials/>
+            <path-to-gfx>gfx/buildings/houseSmall.png</path-to-gfx>
+        </building-template>
     </building-templates>
     <material-templates>
         <material-template>
@@ -165,8 +176,71 @@
             <def-import-price>8</def-import-price>
             <ephemeral>false</ephemeral>
             <exportable>true</exportable>
-            <id>1</id>
-            <name>Grain</name>
+            <id>6</id>
+            <name>Wood</name>
+            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+        </material-template>
+        <material-template>
+            <def-export-template>20</def-export-template>
+            <def-import-price>30</def-import-price>
+            <ephemeral>false</ephemeral>
+            <exportable>true</exportable>
+            <id>13</id>
+            <name>Thaumium</name>
+            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+        </material-template>
+        <material-template>
+            <def-export-template>36</def-export-template>
+            <def-import-price>50</def-import-price>
+            <ephemeral>false</ephemeral>
+            <exportable>true</exportable>
+            <id>21</id>
+            <name>Steel Weapons</name>
+            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+        </material-template>
+        <material-template>
+            <def-export-template>32</def-export-template>
+            <def-import-price>44</def-import-price>
+            <ephemeral>false</ephemeral>
+            <exportable>true</exportable>
+            <id>17</id>
+            <name>Steel Tools</name>
+            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+        </material-template>
+        <material-template>
+            <def-export-template>9</def-export-template>
+            <def-import-price>18</def-import-price>
+            <ephemeral>false</ephemeral>
+            <exportable>true</exportable>
+            <id>12</id>
+            <name>Steel</name>
+            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+        </material-template>
+        <material-template>
+            <def-export-template>50</def-export-template>
+            <def-import-price>75</def-import-price>
+            <ephemeral>false</ephemeral>
+            <exportable>true</exportable>
+            <id>23</id>
+            <name>Siege Equipment</name>
+            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+        </material-template>
+        <material-template>
+            <def-export-template>-1</def-export-template>
+            <def-import-price>10</def-import-price>
+            <ephemeral>false</ephemeral>
+            <exportable>false</exportable>
+            <id>24</id>
+            <name>Services</name>
+            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+        </material-template>
+        <material-template>
+            <def-export-template>-1</def-export-template>
+            <def-import-price>-1</def-import-price>
+            <ephemeral>false</ephemeral>
+            <exportable>false</exportable>
+            <id>25</id>
+            <name>New Template</name>
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
         <material-template>
@@ -179,39 +253,48 @@
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
         <material-template>
-            <def-export-template>12</def-export-template>
-            <def-import-price>16</def-import-price>
+            <def-export-template>48</def-export-template>
+            <def-import-price>78</def-import-price>
             <ephemeral>false</ephemeral>
             <exportable>true</exportable>
-            <id>3</id>
-            <name>Cloth</name>
+            <id>22</id>
+            <name>Magic Weapons</name>
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
         <material-template>
-            <def-export-template>4</def-export-template>
-            <def-import-price>7</def-import-price>
+            <def-export-template>44</def-export-template>
+            <def-import-price>72</def-import-price>
             <ephemeral>false</ephemeral>
             <exportable>true</exportable>
-            <id>4</id>
-            <name>Clay</name>
+            <id>18</id>
+            <name>Magic Tools</name>
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
         <material-template>
-            <def-export-template>9</def-export-template>
-            <def-import-price>14</def-import-price>
+            <def-export-template>28</def-export-template>
+            <def-import-price>36</def-import-price>
             <ephemeral>false</ephemeral>
             <exportable>true</exportable>
-            <id>5</id>
-            <name>Bricks</name>
+            <id>20</id>
+            <name>Iron Weapons</name>
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
         <material-template>
-            <def-export-template>5</def-export-template>
-            <def-import-price>8</def-import-price>
+            <def-export-template>24</def-export-template>
+            <def-import-price>30</def-import-price>
             <ephemeral>false</ephemeral>
             <exportable>true</exportable>
-            <id>6</id>
-            <name>Wood</name>
+            <id>16</id>
+            <name>Iron Tools</name>
+            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+        </material-template>
+        <material-template>
+            <def-export-template>6</def-export-template>
+            <def-import-price>12</def-import-price>
+            <ephemeral>false</ephemeral>
+            <exportable>true</exportable>
+            <id>11</id>
+            <name>Iron</name>
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
         <material-template>
@@ -221,6 +304,24 @@
             <exportable>true</exportable>
             <id>7</id>
             <name>Hardwood</name>
+            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+        </material-template>
+        <material-template>
+            <def-export-template>5</def-export-template>
+            <def-import-price>8</def-import-price>
+            <ephemeral>false</ephemeral>
+            <exportable>true</exportable>
+            <id>1</id>
+            <name>Grain</name>
+            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+        </material-template>
+        <material-template>
+            <def-export-template>50</def-export-template>
+            <def-import-price>50</def-import-price>
+            <ephemeral>false</ephemeral>
+            <exportable>true</exportable>
+            <id>14</id>
+            <name>Gold</name>
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
         <material-template>
@@ -242,84 +343,21 @@
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
         <material-template>
+            <def-export-template>12</def-export-template>
+            <def-import-price>16</def-import-price>
+            <ephemeral>false</ephemeral>
+            <exportable>true</exportable>
+            <id>3</id>
+            <name>Cloth</name>
+            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+        </material-template>
+        <material-template>
             <def-export-template>4</def-export-template>
-            <def-import-price>8</def-import-price>
+            <def-import-price>7</def-import-price>
             <ephemeral>false</ephemeral>
             <exportable>true</exportable>
-            <id>10</id>
-            <name>Bronze</name>
-            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
-        </material-template>
-        <material-template>
-            <def-export-template>6</def-export-template>
-            <def-import-price>12</def-import-price>
-            <ephemeral>false</ephemeral>
-            <exportable>true</exportable>
-            <id>11</id>
-            <name>Iron</name>
-            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
-        </material-template>
-        <material-template>
-            <def-export-template>9</def-export-template>
-            <def-import-price>18</def-import-price>
-            <ephemeral>false</ephemeral>
-            <exportable>true</exportable>
-            <id>12</id>
-            <name>Steel</name>
-            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
-        </material-template>
-        <material-template>
-            <def-export-template>20</def-export-template>
-            <def-import-price>30</def-import-price>
-            <ephemeral>false</ephemeral>
-            <exportable>true</exportable>
-            <id>13</id>
-            <name>Thaumium</name>
-            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
-        </material-template>
-        <material-template>
-            <def-export-template>50</def-export-template>
-            <def-import-price>50</def-import-price>
-            <ephemeral>false</ephemeral>
-            <exportable>true</exportable>
-            <id>14</id>
-            <name>Gold</name>
-            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
-        </material-template>
-        <material-template>
-            <def-export-template>20</def-export-template>
-            <def-import-price>24</def-import-price>
-            <ephemeral>false</ephemeral>
-            <exportable>true</exportable>
-            <id>15</id>
-            <name>Bronze Tools</name>
-            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
-        </material-template>
-        <material-template>
-            <def-export-template>24</def-export-template>
-            <def-import-price>30</def-import-price>
-            <ephemeral>false</ephemeral>
-            <exportable>true</exportable>
-            <id>16</id>
-            <name>Iron Tools</name>
-            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
-        </material-template>
-        <material-template>
-            <def-export-template>32</def-export-template>
-            <def-import-price>44</def-import-price>
-            <ephemeral>false</ephemeral>
-            <exportable>true</exportable>
-            <id>17</id>
-            <name>Steel Tools</name>
-            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
-        </material-template>
-        <material-template>
-            <def-export-template>44</def-export-template>
-            <def-import-price>72</def-import-price>
-            <ephemeral>false</ephemeral>
-            <exportable>true</exportable>
-            <id>18</id>
-            <name>Magic Tools</name>
+            <id>4</id>
+            <name>Clay</name>
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
         <material-template>
@@ -332,48 +370,30 @@
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
         <material-template>
-            <def-export-template>28</def-export-template>
-            <def-import-price>36</def-import-price>
+            <def-export-template>20</def-export-template>
+            <def-import-price>24</def-import-price>
             <ephemeral>false</ephemeral>
             <exportable>true</exportable>
-            <id>20</id>
-            <name>Iron Weapons</name>
+            <id>15</id>
+            <name>Bronze Tools</name>
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
         <material-template>
-            <def-export-template>36</def-export-template>
-            <def-import-price>50</def-import-price>
+            <def-export-template>4</def-export-template>
+            <def-import-price>8</def-import-price>
             <ephemeral>false</ephemeral>
             <exportable>true</exportable>
-            <id>21</id>
-            <name>Steel Weapons</name>
+            <id>10</id>
+            <name>Bronze</name>
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
         <material-template>
-            <def-export-template>48</def-export-template>
-            <def-import-price>78</def-import-price>
+            <def-export-template>9</def-export-template>
+            <def-import-price>14</def-import-price>
             <ephemeral>false</ephemeral>
             <exportable>true</exportable>
-            <id>22</id>
-            <name>Magic Weapons</name>
-            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
-        </material-template>
-        <material-template>
-            <def-export-template>50</def-export-template>
-            <def-import-price>75</def-import-price>
-            <ephemeral>false</ephemeral>
-            <exportable>true</exportable>
-            <id>23</id>
-            <name>Siege Equipment</name>
-            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
-        </material-template>
-        <material-template>
-            <def-export-template>-1</def-export-template>
-            <def-import-price>10</def-import-price>
-            <ephemeral>false</ephemeral>
-            <exportable>false</exportable>
-            <id>24</id>
-            <name>Services</name>
+            <id>5</id>
+            <name>Bricks</name>
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
     </material-templates>

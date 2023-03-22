@@ -14,7 +14,7 @@
 
 package downfall;
 
-import downfall.ui.DownfallMainController;
+import downfall.ui.main.DownfallMainController;
 import downfall.util.Configurator;
 import downfall.util.DownfallUtil;
 import javafx.application.Application;
@@ -41,7 +41,7 @@ public class DownfallMain extends Application {
         configurator.loadConfiguration();
         configurator.loadAndApplyRules();
 
-        stage.setTitle("Downfall v0.1");
+        stage.setTitle("Downfall v0.1.1");
 
         stage.setOnCloseRequest(e -> {
             configurator.saveRules();

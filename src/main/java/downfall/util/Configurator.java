@@ -77,7 +77,7 @@ public class Configurator {
      */
     public void loadConfiguration() {
         File config = new File(CONFIG_PATH);
-        Logger.getLogger("Downfall").log(Level.FINE, "Configuration loading initiated with path: " + CONFIG_PATH);
+        Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.FINE, "Configuration loading initiated with path: " + CONFIG_PATH);
         try {
             JAXBContext context = JAXBContext.newInstance(Configuration.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
@@ -94,7 +94,7 @@ public class Configurator {
      */
     public void saveConfiguration() {
         File config = new File(CONFIG_PATH);
-        Logger.getLogger("Downfall").log(Level.FINE, "Configuration saving initiated with path: " + CONFIG_PATH);
+        Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.FINE, "Configuration saving initiated with path: " + CONFIG_PATH);
         try {
             JAXBContext context = JAXBContext.newInstance(Configuration.class);
             Marshaller marshaller = context.createMarshaller();
@@ -195,9 +195,9 @@ public class Configurator {
             return null;
         List<VisualMaterialTemplate> list = rules.getMaterialTemplates().stream().filter(visualMaterialTemplate -> visualMaterialTemplate.getId() == material.getTemplateId()).collect(Collectors.toList());
         if(list.size() > 1) {
-            Logger.getLogger("Downfall").log(Level.WARNING, "Multiple("+list.size()+") IDs found for template with id = "+material.getTemplateId());
+            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "Multiple("+list.size()+") IDs found for template with id = "+material.getTemplateId());
         } else if(list.size() <= 0) {
-            Logger.getLogger("Downfall").log(Level.SEVERE, "No Template found for id = "+material.getTemplateId());
+            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.SEVERE, "No Template found for id = "+material.getTemplateId());
             return null;
         }
         return list.get(0);

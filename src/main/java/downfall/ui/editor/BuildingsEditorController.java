@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package downfall.ui;
+package downfall.ui.editor;
 
 import downfall.fx.ImageChooserButton;
 import downfall.fx.LogoTableColumn;
@@ -23,7 +23,9 @@ import downfall.fx.fetcher.SimpleBuildingTemplateFetcher;
 import downfall.realm.Material;
 import downfall.realm.template.VisualBuildingTemplate;
 import downfall.realm.template.VisualMaterialTemplate;
+import downfall.ui.StageController;
 import downfall.util.Configurator;
+import downfall.util.DownfallUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -144,7 +146,7 @@ public class BuildingsEditorController implements StageController {
         logoColumn.setCellValueFactory(e-> {
             VisualMaterialTemplate template = Configurator.getInstance().getTemplate(e.getValue());
             if(template == null)
-                Logger.getLogger("Downfall").log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
+                Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
             return template.pathToGFXProperty();
         });
 
@@ -152,7 +154,7 @@ public class BuildingsEditorController implements StageController {
         nameColumn.setCellValueFactory(e ->{
             VisualMaterialTemplate template = Configurator.getInstance().getTemplate(e.getValue());
             if(template == null)
-                Logger.getLogger("Downfall").log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
+                Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
             return template.nameProperty();
         });
 

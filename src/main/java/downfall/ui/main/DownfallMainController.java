@@ -12,14 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package downfall.ui;
+package downfall.ui.main;
 
+import downfall.realm.Realm;
+import downfall.ui.StageController;
+import downfall.ui.editor.BuildingsEditorController;
+import downfall.ui.editor.MaterialsEditorController;
+import downfall.ui.main.tabs.RealmScreenController;
 import downfall.util.Configurator;
 import downfall.util.DownfallUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tab;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -44,6 +52,9 @@ public class DownfallMainController implements StageController {
     @FXML
     private MenuItem exportRulesItem;
 
+    @FXML
+    private AnchorPane realmAnchorPane;
+
     private Stage stage;
 
     /**
@@ -58,6 +69,8 @@ public class DownfallMainController implements StageController {
         importRulesItem.setOnAction(e -> importRules());
 
         exportRulesItem.setOnAction(e -> exportRules());
+
+        initializeTabs();
     }
 
     /**
@@ -118,5 +131,32 @@ public class DownfallMainController implements StageController {
         File selectedFile = fileChooser.showOpenDialog(stage);
         if(selectedFile != null)
             Configurator.getInstance().loadAndApplyRules(selectedFile.getPath());
+    }
+
+    /**
+     * loads the content of RealmScreen.fxml and puts its root node into the "Realm" tab.
+     */
+    private void initializeRealmTab() {
+        try {
+            RealmScreenController controller = new RealmScreenController();
+            FXMLLoader loader = new FXMLLoader(DownfallUtil.getInstance().getURLRealmScreenFXML());
+            loader.setController(controller);
+            controller.setItem(new Realm());
+            Node screen = loader.load();
+            realmAnchorPane.getChildren().add(screen);
+            AnchorPane.setBottomAnchor(screen, 0.0);
+            AnchorPane.setLeftAnchor(screen, 0.0);
+            AnchorPane.setRightAnchor(screen, 0.0);
+            AnchorPane.setTopAnchor(screen, 0.0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Initializes all Tabs with their respective content.
+     */
+    private void initializeTabs() {
+        initializeRealmTab();
     }
 }

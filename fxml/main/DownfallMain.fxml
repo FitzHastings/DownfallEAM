@@ -31,45 +31,46 @@ limitations under the License. -->
    <top>
        <MenuBar BorderPane.alignment="CENTER">
            <Menu mnemonicParsing="false" text="Realm">
-               <MenuItem mnemonicParsing="false" text="New"/>
-               <MenuItem mnemonicParsing="false" text="Load"/>
-               <MenuItem mnemonicParsing="false" text="Save"/>
+               <MenuItem mnemonicParsing="false" text="New" />
+               <MenuItem mnemonicParsing="false" text="Load" />
+               <MenuItem mnemonicParsing="false" text="Save" />
            </Menu>
            <Menu mnemonicParsing="false" text="Rules">
-               <MenuItem fx:id="materialsEditItem" mnemonicParsing="false" text="Materials"/>
-               <MenuItem fx:id="buildingsEditItem" mnemonicParsing="false" text="Buildings"/>
+               <MenuItem fx:id="materialsEditItem" mnemonicParsing="false" text="Materials" />
+               <MenuItem fx:id="buildingsEditItem" mnemonicParsing="false" text="Buildings" />
            </Menu>
            <Menu mnemonicParsing="false" text="Settings">
-               <MenuItem fx:id="importRulesItem" mnemonicParsing="false" text="Import Rules"/>
-               <MenuItem fx:id="exportRulesItem" mnemonicParsing="false" text="Export Rules"/>
+               <MenuItem fx:id="importRulesItem" mnemonicParsing="false" text="Import Rules" />
+               <MenuItem fx:id="exportRulesItem" mnemonicParsing="false" text="Export Rules" />
            </Menu>
        </MenuBar>
    </top>
    <center>
        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-           <Tab fx:id="realmTab" text="Realm"/>
-           <Tab text="Production"/>
-           <Tab text="Construction"/>
-           <Tab text="Income/Expenses"/>
-           <Tab text="Court"/>
+           <Tab text="Realm">
+               <AnchorPane fx:id="realmAnchorPane" prefHeight="200.0" prefWidth="200.0"/>
+           </Tab>
+           <Tab text="Production" />
+           <Tab text="Construction" />
+           <Tab text="Income/Expenses" />
+           <Tab text="Court" />
        </TabPane>
    </center>
    <left>
        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-           <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                 AnchorPane.topAnchor="0.0">
+           <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <ToolBar prefHeight="40.0" prefWidth="200.0">
-                   <Label text="Treasury:"/>
-                   <Label text="£"/>
-                   <Label fx:id="treasuryLabel" text="0"/>
+                   <Label text="Treasury:" />
+                   <Label text="£" />
+                   <Label fx:id="treasuryLabel" text="0" />
                </ToolBar>
                <TableView prefHeight="375.0" prefWidth="189.0" VBox.vgrow="ALWAYS">
                    <columns>
-                       <TableColumn prefWidth="22.0"/>
-                       <TableColumn prefWidth="176.0" text="Material"/>
+                       <TableColumn prefWidth="22.0" />
+                       <TableColumn prefWidth="176.0" text="Material" />
                    </columns>
                    <columnResizePolicy>
-                       <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                       <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                    </columnResizePolicy>
                </TableView>
            </VBox>
