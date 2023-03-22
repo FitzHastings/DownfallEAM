@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+    <HBox maxHeight="50.0" prefHeight="50.0" prefWidth="200.0">
+        <GridPane fx:id="stabilityNegativeGrid" prefHeight="50.0" prefWidth="350.0" HBox.hgrow="NEVER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <HBox.margin>
+                <Insets top="25.0"/>
+            </HBox.margin>
+        </GridPane>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true"
+                       AnchorPane.bottomAnchor="-28.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0"
+                       AnchorPane.topAnchor="0.0"/>
+        </AnchorPane>
+        <GridPane fx:id="stabilityPositiveGrid" prefHeight="50.0" prefWidth="350.0" HBox.hgrow="NEVER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <HBox.margin>
+                <Insets top="25.0"/>
+            </HBox.margin>
+        </GridPane>
+    </HBox>
+    <HBox prefHeight="126.0" prefWidth="600.0" VBox.vgrow="NEVER">
+        <ImageView fx:id="realmImageView" fitHeight="175.0" fitWidth="175.0" pickOnBounds="true"
+                   preserveRatio="true" HBox.hgrow="NEVER"/>
+        <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="133.0"
+                  prefWidth="146.0" HBox.hgrow="ALWAYS">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0"
+                                   prefWidth="182.0"/>
+                <ColumnConstraints fillWidth="false" hgrow="ALWAYS" maxWidth="1.7976931348623157E308"
+                                   minWidth="10.0" prefWidth="58.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <Label text="National Unrest" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                   GridPane.valignment="CENTER"/>
+            <Label text="National Unrest (Core)" GridPane.halignment="CENTER" GridPane.rowIndex="2"
+                   GridPane.valignment="CENTER"/>
+            <Label text="Stability per Month" GridPane.halignment="CENTER" GridPane.rowIndex="3"
+                   GridPane.valignment="CENTER"/>
+            <Label fx:id="nationalUnrestLabel" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                   GridPane.rowIndex="1" GridPane.valignment="CENTER"/>
+            <Label fx:id="nuicpLabel" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                   GridPane.rowIndex="2" GridPane.valignment="CENTER"/>
+            <Label fx:id="stabilityPerMonthLabel" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                   GridPane.rowIndex="3" GridPane.valignment="CENTER"/>
+        </GridPane>
+        <ImageView fx:id="dynastyImageView" fitHeight="175.0" fitWidth="175.0" pickOnBounds="true"
+                   preserveRatio="true" HBox.hgrow="NEVER"/>
+    </HBox>
+    <GridPane prefHeight="162.0" prefWidth="600.0" VBox.vgrow="NEVER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="252.0" minWidth="10.0" prefWidth="252.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.0" minWidth="0.0" prefWidth="45.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="10.0" prefWidth="253.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="10.0" prefWidth="74.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        </rowConstraints>
+        <Label text="Diplomatic Reputation" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+        <Label text="Power Projection" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+               GridPane.valignment="CENTER"/>
+        <Label text="Legitimacy" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER"/>
+        <Label text="Gouvernment Rank" GridPane.columnIndex="2" GridPane.halignment="CENTER"
+               GridPane.valignment="CENTER"/>
+        <Label text="Prestige" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+               GridPane.valignment="CENTER"/>
+        <Label text="Infamy" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2"
+               GridPane.valignment="CENTER"/>
+        <Label fx:id="diploRepLabel" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+               GridPane.valignment="CENTER"/>
+        <Label fx:id="powerProjectionLabel" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+               GridPane.rowIndex="1" GridPane.valignment="CENTER"/>
+        <Label fx:id="legitimacyLabel" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+               GridPane.rowIndex="2" GridPane.valignment="CENTER"/>
+        <Label fx:id="govRankLabel" text="C" GridPane.columnIndex="3" GridPane.halignment="CENTER"
+               GridPane.valignment="CENTER"/>
+        <Label fx:id="prestigeLabel" text="0" GridPane.columnIndex="3" GridPane.halignment="CENTER"
+               GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <GridPane.margin>
+                <Insets/>
+            </GridPane.margin>
+        </Label>
+        <Label fx:id="infamyLabel" text="0" GridPane.columnIndex="3" GridPane.halignment="CENTER"
+               GridPane.rowIndex="2" GridPane.valignment="CENTER"/>
+    </GridPane>
+    <ToolBar prefHeight="2.0" prefWidth="600.0">
+        <Label text="Member of Factions"/>
+    </ToolBar>
+    <ListView prefHeight="121.0" prefWidth="600.0" VBox.vgrow="ALWAYS"/>
+</VBox>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import downfall.fx.SimpleTableEditor?>
+<?import downfall.fx.ImageChooserButton ?>
+
+<SplitPane dividerPositions="0.3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="250.0" minWidth="400.0"
+           prefHeight="358.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" maxHeight="Infinity"
+                fx:id="leftAnchor">
+        <SimpleTableEditor minHeight="0.0" minWidth="0.0" prefHeight="160" prefWidth="100.0" maxHeight="Infinity"
+                           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+                           AnchorPane.bottomAnchor="0.0" fx:id="materialTemplateEditor"/>
+    </AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="385.0" prefWidth="445.0"
+                SplitPane.resizableWithParent="false">
+        <GridPane prefHeight="161.0" prefWidth="417.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
+                  AnchorPane.topAnchor="10.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="100.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="70.0"
+                                   prefWidth="304.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <Label text="Name"/>
+            <Label text="Export Price" GridPane.rowIndex="3"/>
+            <Label text="Import Price" GridPane.rowIndex="4"/>
+            <CheckBox fx:id="isExportableCheckBox" mnemonicParsing="false" text="Is Exportable"
+                      GridPane.halignment="LEFT" GridPane.rowIndex="2"/>
+            <Label text="Path to GFX" GridPane.rowIndex="1"/>
+            <TextField fx:id="nameTextField" GridPane.columnIndex="1"/>
+            <HBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <TextField fx:id="pathToGFXTextField" HBox.hgrow="ALWAYS"/>
+                <ImageChooserButton fx:id="fileChooserButton" mnemonicParsing="false" text="..."
+                                    HBox.hgrow="NEVER"/>
+            </HBox>
+            <TextField fx:id="exportPriceTextField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <TextField fx:id="importPriceTextField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        </GridPane>
+        <Button fx:id="okButton" layoutX="248.0" layoutY="173.0" mnemonicParsing="false" text="Ok"
+                AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+    </AnchorPane>
+</SplitPane>
