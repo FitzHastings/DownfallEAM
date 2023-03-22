@@ -16,7 +16,16 @@ package downfall.ui;
 
 import javafx.stage.Stage;
 
-//TODO:Consider this becoming a class instead of an interface (?)
+/**
+ * Interface for every JavaFX FXML controller that controls an entire Stage.
+ * If you create a controller that controls the entire stage you should pass them the stage on which
+ * they are displayed for convenience.
+ */
 public interface StageController {
+    //TODO:Consider this becoming a class instead of an interface (?)
+    /**
+     * Should be a Lightweight mutator method. Always pass the stage before the UI content becomes visible for the user.
+     * @param stage Stage on which this controller is displayed.
+     */
     void setStage(Stage stage);
 }

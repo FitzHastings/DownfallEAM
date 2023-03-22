@@ -21,6 +21,10 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Utility Class of the application. It defines a lot of static parameters that should not change.
+ * This class is not instatiable if you want to get its only instance use getInstance() method.
+ */
 public class DownfallUtil {
     public final static String BUILDINGS_EDITOR_FXML_PATHNAME = "fxml/BuildingsEditor.fxml";
     public final static String MATERIALS_EDITOR_FXML_PATHNAME = "fxml/MaterialsEditor.fxml";
@@ -33,6 +37,7 @@ public class DownfallUtil {
     public final static String DEFAULT_RULES_PATHNAME = "rules/default.xml";
 
     public final static int DEFAULT_MATERIAL_AMOUNT = 10;
+    public final static String DEFAULT_LOGGER = "DownfallEAM";
 
     private URL URLMaterialsEditorFXML;
     private URL URLBuildingsEditorFXML;
@@ -44,6 +49,9 @@ public class DownfallUtil {
         return instance;
     }
 
+    /**
+     * Default Constructor method. Constructs all necessary URLs to all fxml files
+     */
     private DownfallUtil() {
         try {
             URLMaterialsEditorFXML = new URL("file:" + MATERIALS_EDITOR_FXML_PATHNAME);
@@ -64,23 +72,45 @@ public class DownfallUtil {
         }
     }
 
+    /**
+     * Lightweight accessor method.
+     * @return URL to an FXML file that contains Materials Editor.
+     */
     public URL getURLMaterialsEditorFXML() {
         return URLMaterialsEditorFXML;
     }
 
+    /**
+     * Lightweight accessor method.
+     * @return URL to an FXML file that contains Buildings Editor.
+     */
     public URL getURLBuildingsEditorFXML() {
         return URLBuildingsEditorFXML;
     }
 
+    /**
+     * Lightweight Accessor method.
+     * @return URL to an FXML file that contains Downfall Main UI.
+     */
     public URL getURLDownfallMainFXML() {
         return URLDownfallMainFXML;
     }
 
+    /**
+     *  Loads an image from a given pathname.
+     *  Lightweight method. Quickly constructs a URL by adding "file:" to a given pathname and returns a new image made from that URL
+     * @param pathname pathname to an image file
+     * @return Image loaded from the pathname.
+     */
     public Image loadImage(String pathname) {
        return new Image("file:" + pathname);
     }
 
+    /**
+     * Informs the logger that a given URL seems to be malformed.
+     * @param URL URL that returned a MalformedURException upon being constructed
+     */
     private void informOfMalformedURL(String URL) {
-        Logger.getLogger("Downfall").log(Level.SEVERE, "URL: "+URL+" seems to be malformed.");
+        Logger.getLogger(DEFAULT_LOGGER).log(Level.SEVERE, "URL: "+URL+" seems to be malformed.");
     }
 }

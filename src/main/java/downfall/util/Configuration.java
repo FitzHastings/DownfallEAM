@@ -19,6 +19,9 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Determines the configuration of the program, currently chosen Ruleset and default values for gfx files.
+ */
 @XmlRootElement(name = "configuration")
 public class Configuration {
     private final StringProperty lastRulesPathname = new SimpleStringProperty();
@@ -27,35 +30,62 @@ public class Configuration {
 
     private final StringProperty defBuildingGFXPathname = new SimpleStringProperty();
 
+    /**
+     * Default Constructor. Initializes lastRulesPathname, defMaterialGFXPathname and defBuildingGFXPathname to default values defined in DownfallUtil
+     */
     public Configuration() {
         lastRulesPathname.setValue(DownfallUtil.DEFAULT_RULES_PATHNAME);
         defMaterialGFXPathname.setValue(DownfallUtil.DEFAULT_MATERIAL_GFX_PATHNAME);
         defBuildingGFXPathname.setValue(DownfallUtil.DEFAULT_BUILDING_GFX_PATHNAME);
     }
 
+    /**
+     * Lightweight Accessor Method
+     * @return Pathname to the last loaded rules.
+     */
     @XmlElement(name = "rules-pathname")
     public String getLastRulesPathname() {
         return lastRulesPathname.get();
     }
 
+    /**
+     * Lightweight Accessor Method
+     * @return Pathname to the default image used for VisualMaterialTemplate
+     */
     @XmlElement(name = "def-materials-gfx-pathname")
     public String getDefMaterialGFXPathname() {
         return defMaterialGFXPathname.get();
     }
 
+    /**
+     * Lightweight Accessor Method
+     * @return Pathname to the default image used for VisualBuildingTemplate
+     */
     @XmlElement(name = "def-buildings-gfx-pathname")
     public String getDefBuildingGFXPathname() {
         return defBuildingGFXPathname.get();
     }
 
+    /**
+     * Lightweight mutator method.
+     * @param lastRulesPathname Pathname to the last loaded rules.
+     */
     public void setLastRulesPathname(String lastRulesPathname) {
         this.lastRulesPathname.set(lastRulesPathname);
     }
 
+    /**
+     * Lightweight mutator method.
+     * @param defMaterialGFXPathname Pathname to the default image used for VisualMaterialTemplate
+     */
     public void setDefMaterialGFXPathname(String defMaterialGFXPathname) {
         this.defMaterialGFXPathname.set(defMaterialGFXPathname);
     }
 
+    /**
+     * Lightweight mutator method.
+     * @param defBuildingGFXPathname Pathname to the default image used for VisualBuildingTemplate
+     */
     public void setDefBuildingGFXPathname(String defBuildingGFXPathname) {
         this.defBuildingGFXPathname.set(defBuildingGFXPathname);
     }

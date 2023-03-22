@@ -30,8 +30,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+/**
+ *  Non Instantiable configurator class that is responsible for loading, and storing the Configuration of the program.
+ */
 public class Configurator {
-    private static final String CONFIG_PATH = "conf/conf.xml";
+    private static final String CONFIG_PATH = DownfallUtil.DEFAULT_CONFIG_PATHNAME;
     private static final String DEFAULT_RULES_PATH = "rules/default.xml";
 
     private static final Configurator instance = new Configurator();
@@ -40,21 +43,38 @@ public class Configurator {
 
     private Rules rules = new Rules();
 
+    /**
+     * Private constructor to make this class non instantiable.
+     */
     private Configurator() {super();}
 
+    /**
+     * loads and applies rules stored as lastLoadedRules in the current configuration
+     */
     public void loadAndApplyRules() {
         loadAndApplyRules(configuration.getLastRulesPathname());
     }
 
+    /**
+     * loads and applies rules stored at pathname and changes the configuration to remember the new pathname as lastLoaderRules
+     * @param pathname pathname to rules to be loaded and applied
+     */
     public void loadAndApplyRules(String pathname) {
         configuration.setLastRulesPathname(pathname);
         rules = loadRules(pathname);
     }
 
+    /**
+     * Lightweight accessor method.
+     * @return Currently applied rules.
+     */
     public Rules getRules() {
         return rules;
     }
 
+    /**
+     * Loads configuration from CONFIG_PATH defined in this class.
+     */
     public void loadConfiguration() {
         File config = new File(CONFIG_PATH);
         Logger.getLogger("Downfall").log(Level.FINE, "Configuration loading initiated with path: " + CONFIG_PATH);
@@ -69,6 +89,9 @@ public class Configurator {
         }
     }
 
+    /**
+     * Saves configuration to an XML firle at CONFIG_PATH defined in this class
+     */
     public void saveConfiguration() {
         File config = new File(CONFIG_PATH);
         Logger.getLogger("Downfall").log(Level.FINE, "Configuration saving initiated with path: " + CONFIG_PATH);
@@ -83,6 +106,11 @@ public class Configurator {
         }
     }
 
+    /**
+     *
+     * @param pathname pathname to an xml file where rules to be downloaded are located.
+     * @return rules that have been loaded. If loading from pathname fails, returns defaultRules isnted.
+     */
     private Rules loadRules(String pathname) {
         File rulesFile = new File(pathname);
         Logger.getAnonymousLogger().log(Level.FINE,"Rules loading initiated with path: "+pathname);
@@ -100,15 +128,27 @@ public class Configurator {
         }
     }
 
+    /**
+     * Saves currently applied rules to an XML file at DEFAULT_RULES_PATH defined in this class
+     */
     public void saveRules() {
         saveRules(DEFAULT_RULES_PATH);
     }
 
+    /**
+     * Saves currently applied rules to an XML file at a given pathname
+     * @param pathName pathname to a file that can be written.
+     */
     public void saveRules(String pathName){
         configuration.setLastRulesPathname(pathName);
         saveRules(rules, pathName);
     }
 
+    /**
+     * Saves given rules to an XML files at a given pathname
+     * @param rules rules to be saved.
+     * @param pathName pathname to a file that can be written.
+     */
     private void saveRules(Rules rules, String pathName) {
         File file = new File(pathName);
         try {
@@ -129,14 +169,27 @@ public class Configurator {
         }
     }
 
-    public String getDefBuildingGFXPathname() {
-        return configuration.getDefBuildingGFXPathname();
-    }
-
+    /**
+     * Lightweight Accessor Method
+     * @return pathname to the default GFX of VisualMaterialTemplate in the current configuration.
+     */
     public String getDefMaterialGFXPathname() {
         return configuration.getDefMaterialGFXPathname();
     }
 
+    /**
+     * Lightweight Accessor Method
+     * @return pathname to the default GFX of VisualBuildingTemplate in the current configuration.
+     */
+    public String getDefBuildingGFXPathname() {
+        return configuration.getDefBuildingGFXPathname();
+    }
+
+    /**
+     * NOT a lightweight accessor method
+     * @param material material that has an id set to represent a specific template.
+     * @return VisualMaterialTemplate that is associated with that material. If none found returns null.
+     */
     public VisualMaterialTemplate getTemplate(Material material) {
         if(material == null)
             return null;
@@ -150,6 +203,10 @@ public class Configurator {
         return list.get(0);
     }
 
+    /**
+     * Loads predefined default rules that are hard coded.
+     * @return default rules that .
+     */
     private Rules loadDefaultRules() {
         Rules rules = new Rules();
         List<VisualMaterialTemplate> materialTemplates = new ArrayList<>();
@@ -219,6 +276,11 @@ public class Configurator {
         rules.setBuildingTemplates(buildingTemplates);
         return rules;
     }
+
+    /**
+     * Lightweight Accessor Method
+     * @return The only instance of this class.
+     */
     public static Configurator getInstance() {
         return instance;
     }

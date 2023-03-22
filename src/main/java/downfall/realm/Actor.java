@@ -27,6 +27,7 @@ import javafx.collections.ObservableList;
  * Actor is a basis common for all entities that can build or store or act on the board in any way shape or form.
  */
 public abstract class Actor {
+    protected IntegerProperty id = new SimpleIntegerProperty();
     protected StringProperty name = new SimpleStringProperty();
     protected IntegerProperty treasury = new SimpleIntegerProperty();
     protected ObservableList<Material> stockpile = FXCollections.emptyObservableList();
@@ -34,8 +35,47 @@ public abstract class Actor {
     protected ObservableList<Tag> tags = FXCollections.observableArrayList();
 
     /**
+     * Default constructor. Does not provide default values
+     */
+    public Actor() {
+        super();
+    }
+
+    /**
+     * Using this constructor stockpile, ownedBuildings, and tags remain empty lists.
+     * @param id Unique actor identifier. Should be unique for every save file
+     * @param name A human-readable name of the actor as a property.
+     * @param treasury Amount of money in the treasury as a property.
+     */
+    public Actor(Integer id, String name, Integer treasury ) {
+        super();
+        this.id.set(id);
+        this.name.set(name);
+        this.treasury.set(treasury);
+    }
+
+    /**
+     *
+     * @param id Unique actor identifier. Should be unique for every save file
+     * @param name A human-readable name of the actor as a property.
+     * @param treasury Amount of money in the treasury as a property.
+     * @param stockpile List of all materials in actor's stockpile
+     * @param ownedBuildings List of all owned buildings
+     * @param tags List of all tags applied to the actor
+     */
+    public Actor(Integer id, String name, Integer treasury, ObservableList<Material> stockpile, ObservableList<Building> ownedBuildings, ObservableList<Tag> tags) {
+        super();
+        this.id.set(id);
+        this.name.set(name);
+        this.treasury.set(treasury);
+        this.stockpile = stockpile;
+        this.ownedBuildings = ownedBuildings;
+        this.tags = tags;
+    }
+
+    /**
      * Lightweight accessor method
-     * @return Actor name as a property.
+     * @return A human-readable name of the actor as a property.
      */
     public StringProperty nameProperty() {
         return name;

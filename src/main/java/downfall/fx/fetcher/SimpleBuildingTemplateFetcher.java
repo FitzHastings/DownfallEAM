@@ -24,7 +24,7 @@ import downfall.util.Configurator;
 public class SimpleBuildingTemplateFetcher implements Fetcher<VisualBuildingTemplate> {
     /**
      * This method is used to return a new instance of VisualBuildingTemplate on request.
-     * @return a new instance of VisualBuildingTemplate with its id set to be one larger than the last VisualBuildingTemplate in the currently selected rules
+     * @return A new instance of VisualBuildingTemplate with its id set to be one larger than the last VisualBuildingTemplate in the currently selected rules
      */
     @Override
     public VisualBuildingTemplate retrieve() {

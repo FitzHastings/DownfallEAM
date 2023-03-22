@@ -22,11 +22,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Main application class of Downfall.
+ */
 public class DownfallMain extends Application {
     public static void main(String[] args) {
         launch();
     }
 
+    /**
+     * start method of the client application
+     * @param stage primary stage of the application
+     * @throws Exception any uncaught exception.
+     */
     @Override
     public void start(Stage stage) throws Exception {
         Configurator configurator = Configurator.getInstance();

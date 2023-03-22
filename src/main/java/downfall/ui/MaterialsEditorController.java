@@ -32,6 +32,10 @@ import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *  Controller class for the Materials Editor.
+ *  Controls /fxml/MaterialsEditor.fxml and is annotated with @FXML where it references that FXML file.
+ */
 public class MaterialsEditorController implements StageController {
     @FXML
     private TextField exportPriceTextField;
@@ -64,6 +68,9 @@ public class MaterialsEditorController implements StageController {
 
     Stage stage;
 
+    /**
+     * Initialize method that is called automatically after the FXML has finished loading. Initializes all UI elements before they are displayed
+     */
     @FXML
     public void initialize() {
         //retrieving the list of material templates in current rules.
@@ -109,19 +116,34 @@ public class MaterialsEditorController implements StageController {
 
     }
 
+    /**
+     * Lightweight mutator method.
+     * Always should be called before the editor is displayed to the user.
+     * @param stage Stage on which this controller is displayed.
+     */
     @Override
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
+    /**
+     * Disables the exportPriceTextField as you should not set a price for non-tradeable materials.
+     */
     private void disableTradable() {
         exportPriceTextField.setDisable(true);
     }
 
+    /**
+     * Enables the exportPriceTextField as you should be abel to set a price for tradeable materials.
+     */
     private void enableTradable() {
         exportPriceTextField.setDisable(false);
     }
 
+    /**
+     * Unbinds the properties of a given materials from all TextFields and CheckBoxes.
+     * @param template template to be unbound.
+     */
     private void unbindMaterial(VisualMaterialTemplate template) {
         nameTextField.textProperty().unbindBidirectional(template.nameProperty());
         isExportableCheckBox.selectedProperty().unbindBidirectional(template.isExportableProperty());
@@ -130,6 +152,10 @@ public class MaterialsEditorController implements StageController {
         importPriceTextField.textProperty().unbindBidirectional(template.defImportPriceProperty());
     }
 
+    /**
+     * Binds the properties of a given material to all TextFields and CheckBoxes.
+     * @param materialTemplate template to be displayed
+     */
     private void displayMaterial(VisualMaterialTemplate materialTemplate) {
         nameTextField.textProperty().bindBidirectional(materialTemplate.nameProperty());
         isExportableCheckBox.selectedProperty().bindBidirectional(materialTemplate.isExportableProperty());
@@ -138,6 +164,11 @@ public class MaterialsEditorController implements StageController {
         importPriceTextField.textProperty().bindBidirectional(materialTemplate.defImportPriceProperty(), new NumberStringConverter());
     }
 
+    /**
+     * Checks that it can read a file that is set as a pathToGFX.
+     * @param materialTemplate VisualMaterialTemplate to be validated.
+     * @return true if file can be read. False if it cannot be read.
+     */
     private boolean validateMaterial(VisualMaterialTemplate materialTemplate) {
         File checkFile = new File(pathToGFXTextField.getText());
         if(checkFile.canRead()) {
@@ -152,6 +183,10 @@ public class MaterialsEditorController implements StageController {
         }
     }
 
+    /**
+     * Removes the old Material Templates from the current Ruleset, adds all materialTemplates in materials field, and then force saves the rules at a lastLoadedRules location.
+     */
+    @Deprecated
     private void saveChanges() {
         Configurator.getInstance().getRules().getMaterialTemplates().clear();
         Configurator.getInstance().getRules().getMaterialTemplates().addAll(materials);

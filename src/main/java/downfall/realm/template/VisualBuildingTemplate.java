@@ -27,6 +27,7 @@ import java.util.List;
 
 /**
  * Template that is used when new buildings are generated. It stores a pathname that leads to its GFX and an JavaFX Image if a reference to that is required.
+ * This Class if fully annotated for use with JAXB to be exported to an XML File.
  */
 @XmlRootElement(name="visual-building-template")
 public class VisualBuildingTemplate extends BuildingTemplate{
@@ -63,18 +64,18 @@ public class VisualBuildingTemplate extends BuildingTemplate{
      * @param constructionMaterials a list of materials consumed during construction per turn of construction
      * @param defConstructionTime number of turns it takes to construct a building
      * @param operatesImmediately does the building operate immediately or do you need to finish its construction
-     * @param pathToFX String pathname to an image file that represents this material. That Image should be square, but isn't required to be square
+     * @param pathToGFX String pathname to an image file that represents this building. That Image should be square, but isn't required to be square
      */
-    public VisualBuildingTemplate(int id, String name, List<Material> inputMaterials, List<Material> outputMaterials, int defConstructionCost, List<Material> constructionMaterials, int defConstructionTime, boolean operatesImmediately, String pathToFX) {
+    public VisualBuildingTemplate(int id, String name, List<Material> inputMaterials, List<Material> outputMaterials, int defConstructionCost, List<Material> constructionMaterials, int defConstructionTime, boolean operatesImmediately, String pathToGFX) {
         super(id, name, inputMaterials, outputMaterials, defConstructionCost, constructionMaterials, defConstructionTime, operatesImmediately);
-        this.pathToGFXProperty.setValue(pathToFX);
+        this.pathToGFXProperty.setValue(pathToGFX);
         this.pathToGFXProperty.setValue(Configurator.getInstance().getDefBuildingGFXPathname());
         updateGFX();
     }
 
     /**
      * Lightweight Accessor Method
-     * @return pathname to an image file that represents this material as a property. That Image should be square, but isn't required to be square
+     * @return pathname to an image file that represents this building as a property. That Image should be square, but isn't required to be square
      */
     public StringProperty pathToGFXProperty() {
         return pathToGFXProperty;
@@ -82,7 +83,7 @@ public class VisualBuildingTemplate extends BuildingTemplate{
 
     /**
      * Lightweight Accessor Method
-     * @return String pathname to an image file that represents this material. That Image should be square, but isn't required to be square
+     * @return String pathname to an image file that represents this building.
      */
     @XmlElement(name="path-to-gfx")
     public String getPathToGFX() {
@@ -102,14 +103,14 @@ public class VisualBuildingTemplate extends BuildingTemplate{
 
     /**
      * Lightweight Mutator Method
-     * @param pathToGFX String pathname to an image file that represents this material. That Image should be square, but isn't required to be square
+     * @param pathToGFX String pathname to an image file that represents this building. That Image should be square, but isn't required to be square
      */
     public void setPathToGFX(String pathToGFX) {
         this.pathToGFXProperty.set(pathToGFX);
     }
 
     /**
-     * Updates the Image representation building to comply with the current value of pathToFXProperty
+     * Updates the Image representation building to comply with the current value of pathToGFXProperty
      * @return new Image that has been updated.
      */
     public Image updateGFX() {

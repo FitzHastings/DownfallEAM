@@ -24,8 +24,6 @@ import downfall.realm.Material;
 import downfall.realm.template.VisualBuildingTemplate;
 import downfall.realm.template.VisualMaterialTemplate;
 import downfall.util.Configurator;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -41,6 +39,10 @@ import javafx.util.converter.NumberStringConverter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Controller class for the Building Editor.
+ * Controls /fxml/BuildingsEditor.fxml and is annotated with @FXML where it references that FXML file.
+ */
 public class BuildingsEditorController implements StageController {
 
     @FXML
@@ -86,8 +88,12 @@ public class BuildingsEditorController implements StageController {
 
     Stage stage;
 
+    /**
+     * Initialize method that is called automatically after the FXML has finished loading. Initializes all UI elements before they are displayed
+     */
     @FXML
     public void initialize() {
+        //gets all available building instances from the current configuration
         buildingTemplates = FXCollections.observableList(Configurator.getInstance().getRules().getBuildingTemplates());
         pathToGFXButton.setOutput(pathToGFXTextField);
 
@@ -115,11 +121,23 @@ public class BuildingsEditorController implements StageController {
         okButton.setOnAction(e -> stage.close());
     }
 
+    /**
+     * Lightweight mutator method.
+     * Always should be called before the editor is displayed to the user.
+     * @param stage the stage that is displaying the editor.
+     */
     @Override
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
+    /**
+     * Configures a SimpleTableEditor to have two columns. a Name column that will display the name of its template and an amount column that will display its amount.
+     * It makes the amount column editable using TextFieldTableCell and sets up a ConversionFetcher that will generate a new material based on
+     * @param editor Material editor to be configured.
+     * @param nameColumnTitle title text to be used for the name column
+     * @param amountColumnTitle title text to be used for the amount column
+     */
     private void configureMaterialEditor(SimpleTableEditor<Material> editor, String nameColumnTitle, String amountColumnTitle) {
         LogoTableColumn<Material> logoColumn = new LogoTableColumn<>();
         logoColumn.setDefaultSizePolicy();
@@ -152,6 +170,10 @@ public class BuildingsEditorController implements StageController {
         editor.setFetcher(conversionFetcher);
     }
 
+    /**
+     * removes all bindings from a Building Template
+     * @param template template to be unbound from the textFields
+     */
     private void unbindBuilding(VisualBuildingTemplate template) {
         nameTextField.textProperty().unbindBidirectional(template.nameProperty());
         pathToGFXTextField.textProperty().unbindBidirectional(template.pathToGFXProperty());
@@ -160,6 +182,10 @@ public class BuildingsEditorController implements StageController {
         operatesImmediatelyCheckBox.selectedProperty().unbindBidirectional(template.operatesImmediatelyProperty());
     }
 
+    /**
+     * binds all properties of the building to GUI TextFields and sets the data of all tables to correspond with the selected template.
+     * @param template template that was selected by the user to be displayed and edited.
+     */
     private void displayBuilding(VisualBuildingTemplate template) {
         nameTextField.textProperty().bindBidirectional(template.nameProperty());
         pathToGFXTextField.textProperty().bindBidirectional(template.pathToGFXProperty());

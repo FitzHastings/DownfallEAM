@@ -21,33 +21,62 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 
+/**
+ * Building represents an actual building. Each building must refer to a valid BuildingTemplate by id.
+ * References its template by ID.
+ * This class if fully annotated for JAXB
+ */
 public class Building {
     private final IntegerProperty id = new SimpleIntegerProperty(-1);
 
     private final BooleanProperty isOperating = new SimpleBooleanProperty(false);
 
+    /**
+     * Lightweight accessor method
+     * @return id of the building template associated with this building as a property.
+     */
     public IntegerProperty idProperty() {
         return id;
     }
 
+    /**
+     * Lightweight accessor method
+     * @return flag that determines if the building is operating right now as a property.
+     */
     public BooleanProperty isOperatingProperty() {
         return isOperating;
     }
 
+    /**
+     * Lightweight accessor method
+     * @return id of the building template associated with this building.
+     */
     @XmlElement(name="id")
     public int getId() {
         return id.get();
     }
 
+    /**
+     * Lightweight accessor method
+     * @return flag that determines if the building is operating right now as a property.
+     */
     @XmlElement(name="is-operating")
     public boolean isOperating() {
         return isOperating.get();
     }
 
+    /**
+     * Lightweight mutator method
+     * @param id id of the building template associated with this building. Should be set to -1 to mark that this building is invalid.
+     */
     public void setId(int id) {
         this.id.setValue(id);
     }
 
+    /**
+     * Lightweight mutator method
+     * @param isOperating flag that determines if the building is operating right now
+     */
     public void setOperating(boolean isOperating) {
         this.isOperating.setValue(isOperating);
     }

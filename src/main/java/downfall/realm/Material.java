@@ -23,7 +23,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 /**
  * Represents a bundle of materials, like 30 Wood or 15 Stone.
- * Each Material has a template and is used to both show income and
+ * Each Material has a template and is used to both show income and amount stockpiled. It is also used to show costs of operating a building
  */
 @XmlRootElement(name="material")
 public class Material {

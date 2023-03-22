@@ -23,28 +23,48 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Contains reference to a user defined Ruleset. Ruleset determines Templates that can be used for different Materials and Buildings.
+ * This class if fully annotated and can be saved to an XML file with JAXB
+ */
 @XmlRootElement(name="rules")
 public class Rules {
     private List<VisualMaterialTemplate> materialTemplates = new ArrayList<>();
     private List<VisualBuildingTemplate> buildingTemplates = new ArrayList<>();
 
+    /**
+     * Lightweight accessor method.
+     * @return full list of all available material templates
+     */
     @XmlElementWrapper(name="material-templates")
     @XmlElement(name="material-template")
     public List<VisualMaterialTemplate> getMaterialTemplates() {
         return materialTemplates;
     }
 
+    /**
+     * Lightweight accessor method.
+     * @return full list of all available building templates
+     */
     @XmlElementWrapper(name="building-templates")
     @XmlElement(name="building-template")
     public List<VisualBuildingTemplate> getBuildingTemplates() {
         return buildingTemplates;
     }
 
-    public void setBuildingTemplates(List<VisualBuildingTemplate> buildingTemplates) {
-        this.buildingTemplates = buildingTemplates;
-    }
-
+    /**
+     * Lightweight mutator method.
+     * @param materialTemplates full list of all available material templates
+     */
     public void setMaterialTemplates(List<VisualMaterialTemplate> materialTemplates) {
         this.materialTemplates = materialTemplates;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param buildingTemplates full list of all available building templates
+     */
+    public void setBuildingTemplates(List<VisualBuildingTemplate> buildingTemplates) {
+        this.buildingTemplates = buildingTemplates;
     }
 }

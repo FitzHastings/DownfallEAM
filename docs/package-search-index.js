@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"m":"downfall","l":"downfall"},{"m":"downfall","l":"downfall.fx"},{"m":"downfall","l":"downfall.fx.fetcher"},{"m":"downfall","l":"downfall.realm"},{"m":"downfall","l":"downfall.realm.template"},{"m":"downfall","l":"downfall.ui"},{"m":"downfall","l":"downfall.util"}]
