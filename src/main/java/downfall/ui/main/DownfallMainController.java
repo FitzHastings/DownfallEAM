@@ -14,7 +14,6 @@
 
 package downfall.ui.main;
 
-import downfall.realm.Realm;
 import downfall.ui.StageController;
 import downfall.ui.editor.BuildingsEditorController;
 import downfall.ui.editor.MaterialsEditorController;
@@ -26,7 +25,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -141,7 +139,6 @@ public class DownfallMainController implements StageController {
             RealmScreenController controller = new RealmScreenController();
             FXMLLoader loader = new FXMLLoader(DownfallUtil.getInstance().getURLRealmScreenFXML());
             loader.setController(controller);
-            controller.setItem(new Realm());
             Node screen = loader.load();
             realmAnchorPane.getChildren().add(screen);
             AnchorPane.setBottomAnchor(screen, 0.0);
