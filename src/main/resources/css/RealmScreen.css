@@ -1,0 +1,26 @@
+GridPane {
+    -fx-grid-lines-visible: true;
+    -fx-border-width: 3;
+    -fx-border-color: black;
+}
+
+ImageView {
+    -fx-border-width: 3;
+    -fx-border-color: black;
+}
+
+Pane {
+    -fx-border-width: 3;
+    -fx-border-color: black;
+    -fx-border-radius: 15;
+}
+
+AnchorPane {
+    -fx-border-width: 3;
+    -fx-border-color: black;
+}
+
+.pane {
+    -fx-border-width: 3;
+    -fx-border-color: black;
+}

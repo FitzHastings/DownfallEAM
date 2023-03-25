@@ -16,8 +16,7 @@ package downfall.realm;
 
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 /**
  * A Tag is a String value that can be applied to Actors. This is used in certain scripts, events can determine access to special mechanics.
@@ -25,7 +24,18 @@ import javafx.beans.property.StringProperty;
  */
 @XmlRootElement(name = "tag")
 public class Tag {
+
+    private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty tag = new SimpleStringProperty();
+    private final BooleanProperty isFactional = new SimpleBooleanProperty();
+
+    /**
+     * Lightweight accessor method.
+     * @return unique tag identifier as a property.
+     */
+    public IntegerProperty idProperty() {
+        return id;
+    }
 
     /**
      * Lightweight accessor method
@@ -33,6 +43,23 @@ public class Tag {
      */
     public StringProperty tagProperty() {
         return tag;
+    }
+
+    /**
+     * Lightweight accessor method
+     * @return Flag that determines if this tag is used to assign faction memberships to a realm, as a property.
+     */
+    public BooleanProperty isFactionalProperty() {
+        return isFactional;
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return unique tag identifier.
+     */
+    @XmlElement(name="id")
+    public Integer getId() {
+        return id.get();
     }
 
     /**
@@ -45,10 +72,35 @@ public class Tag {
     }
 
     /**
+     * Lightweight accessor method.
+     * @return Flag that determines if this tag is used to assign faction memberships to a realm.
+     */
+    @XmlElement(name="factional")
+    public Boolean isFactional() {
+        return isFactional.get();
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param id Unique tag identifier.
+     */
+    public void setId(Integer id) {
+        this.id.set(id);
+    }
+
+    /**
      * Lightweight mutator method
      * @param tag Tag name
      */
     public void setTag(String tag) {
         this.tag.set(tag);
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param isFactional Flag that determines if this tag is used to assign faction memberships to a realm.
+     */
+    public void setIsFactional(Boolean isFactional) {
+        this.isFactional.set(isFactional);
     }
 }

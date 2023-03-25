@@ -14,6 +14,7 @@
 
 package downfall.fx;
 
+import downfall.util.DownfallUtil;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputControl;
 import javafx.stage.FileChooser;
@@ -78,7 +79,7 @@ public class ImageChooserButton extends Button {
             if(output != null)
                 output.setText(fileChosen.getPath());
             else
-                Logger.getLogger("Downfall").log(Level.SEVERE, "Attempting to set Text without setting an output first.");
+                Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.SEVERE, "Attempting to set Text without setting an output first.");
         });
     }
 }
