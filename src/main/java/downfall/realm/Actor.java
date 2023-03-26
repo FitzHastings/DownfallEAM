@@ -30,7 +30,7 @@ public abstract class Actor {
     protected IntegerProperty id = new SimpleIntegerProperty();
     protected StringProperty name = new SimpleStringProperty();
     protected IntegerProperty treasury = new SimpleIntegerProperty();
-    protected ObservableList<Material> stockpile = FXCollections.emptyObservableList();
+    protected ObservableList<Material> stockpile = FXCollections.observableArrayList();
     protected ObservableList<Building> ownedBuildings = FXCollections.observableArrayList();
     protected ObservableList<Tag> tags = FXCollections.observableArrayList();
 

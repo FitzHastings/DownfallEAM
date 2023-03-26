@@ -32,6 +32,23 @@ public class Building {
     private final BooleanProperty isOperating = new SimpleBooleanProperty(false);
 
     /**
+     * Default Constructor. Generates an invalid Building with id = -1 and isOperating set to false.
+     */
+    public Building() {
+        this.id.set(-1);
+        this.isOperating.set(false);
+    }
+
+    /**
+     *
+     * @param id id of the building template associated with this building.
+     * @param isOperating flag that determines if the building is operating right now.
+     */
+    public Building(Integer id, Boolean isOperating) {
+        this.id.set(id);
+        this.isOperating.set(isOperating);
+    }
+    /**
      * Lightweight accessor method
      * @return id of the building template associated with this building as a property.
      */

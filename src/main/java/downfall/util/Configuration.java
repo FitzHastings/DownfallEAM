@@ -16,6 +16,8 @@ package downfall.util;
 
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -24,20 +26,15 @@ import javafx.beans.property.StringProperty;
  */
 @XmlRootElement(name = "configuration")
 public class Configuration {
-    private final StringProperty lastRulesPathname = new SimpleStringProperty();
+    private final StringProperty lastRulesPathname = new SimpleStringProperty(DownfallUtil.DEFAULT_RULES_PATHNAME);
 
-    private final StringProperty defMaterialGFXPathname = new SimpleStringProperty();
+    private final StringProperty defMaterialGFXPathname = new SimpleStringProperty(DownfallUtil.DEFAULT_MATERIAL_GFX_PATHNAME);
 
-    private final StringProperty defBuildingGFXPathname = new SimpleStringProperty();
+    private final StringProperty defBuildingGFXPathname = new SimpleStringProperty(DownfallUtil.DEFAULT_BUILDING_GFX_PATHNAME);
 
-    /**
-     * Default Constructor. Initializes lastRulesPathname, defMaterialGFXPathname and defBuildingGFXPathname to default values defined in DownfallUtil
-     */
-    public Configuration() {
-        lastRulesPathname.setValue(DownfallUtil.DEFAULT_RULES_PATHNAME);
-        defMaterialGFXPathname.setValue(DownfallUtil.DEFAULT_MATERIAL_GFX_PATHNAME);
-        defBuildingGFXPathname.setValue(DownfallUtil.DEFAULT_BUILDING_GFX_PATHNAME);
-    }
+    private final BooleanProperty autoloadLastSave = new SimpleBooleanProperty(false);
+
+    private final StringProperty lastSavegamePathname = new SimpleStringProperty(DownfallUtil.DEFAULT_SAVEGAME_PATHNAME);
 
     /**
      * Lightweight Accessor Method
@@ -67,6 +64,24 @@ public class Configuration {
     }
 
     /**
+     * Lightweight accessor method
+     * @return Flag that determines if the last savegame should be loaded at startup.
+     */
+    @XmlElement(name = "autoload-last-savegame")
+    public Boolean getAutoloadLastSave() {
+        return autoloadLastSave.get();
+    }
+
+    /**
+     * Lightweight accessor method
+     * @return Pathname to last savegame that was loaded/saved.
+     */
+    @XmlElement(name = "last-savegame-pathname")
+    public String getLastSavegamePathname() {
+        return lastSavegamePathname.get();
+    }
+
+    /**
      * Lightweight mutator method.
      * @param lastRulesPathname Pathname to the last loaded rules.
      */
@@ -88,5 +103,21 @@ public class Configuration {
      */
     public void setDefBuildingGFXPathname(String defBuildingGFXPathname) {
         this.defBuildingGFXPathname.set(defBuildingGFXPathname);
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param autoloadLastSave Flag that determines if the last savegame should be loaded at startup.
+     */
+    public void setAutoloadLastSave(Boolean autoloadLastSave) {
+        this.autoloadLastSave.set(autoloadLastSave);
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param lastSavegamePathname Pathname to the last loaded rules.
+     */
+    public void setLastSavegamePathname(String lastSavegamePathname) {
+        this.lastSavegamePathname.set(lastSavegamePathname);
     }
 }

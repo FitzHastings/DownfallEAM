@@ -14,20 +14,21 @@
 
 package downfall.realm;
 
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 /**
  * a Save class that holds the information about a user's Realm and the Ruleset on which the Realm was created.
  */
 @XmlRootElement(name="downfall-save")
-public class Save {
+public class Savegame {
     protected String pathToRules = "";
     protected Realm userRealm = new Realm();
 
     /**
      * Default constructor. Default values are "" pathToRules, and an empty Realm
      */
-    Save() {
+    public Savegame() {
         super();
     }
 
@@ -36,7 +37,7 @@ public class Save {
      * @param pathToRules pathname to the rules that were used for this Save
      * @param userRealm user's realm data.
      */
-    Save(String pathToRules, Realm userRealm) {
+    public Savegame(String pathToRules, Realm userRealm) {
         this.pathToRules = pathToRules;
         this.userRealm = userRealm;
     }
@@ -45,6 +46,7 @@ public class Save {
      * Lightweight accessor method.
      * @return pathname to the rules that were used for this Realm
      */
+    @XmlElement(name = "path-to-rules")
     public String getPathToRules() {
         return pathToRules;
     }
@@ -53,6 +55,7 @@ public class Save {
      * Lightweight accessor method.
      * @return user's realm data.
      */
+    @XmlElement(name = "user-realm")
     public Realm getUserRealm() {
         return userRealm;
     }

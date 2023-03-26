@@ -29,8 +29,9 @@ public class DownfallUtil {
     public final static String BUILDINGS_EDITOR_FXML_PATHNAME = "fxml/editors/BuildingsEditor.fxml";
     public final static String MATERIALS_EDITOR_FXML_PATHNAME = "fxml/editors/MaterialsEditor.fxml";
     public final static String DOWNFALL_MAIN_FXML_PATHNAME = "fxml/main/DownfallMain.fxml";
-    public final static String REALM_SCREEN_FXML_PATHNAME= "fxml/main/tabs/RealmScreen.fxml";
+    public final static String REALM_SCREEN_FXML_PATHNAME = "fxml/main/tabs/RealmScreen.fxml";
 
+    public final static String DEFAULT_SAVEGAME_PATHNAME = "save/testsave.xml";
     public final static String DEFAULT_MATERIAL_GFX_PATHNAME = "gfx/materials/orb.png";
     public final static String DEFAULT_BUILDING_GFX_PATHNAME = "gfx/buildings/houseSmall.png";
 

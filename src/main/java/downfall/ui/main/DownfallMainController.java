@@ -14,12 +14,15 @@
 
 package downfall.ui.main;
 
+import downfall.realm.*;
 import downfall.ui.StageController;
 import downfall.ui.editor.BuildingsEditorController;
 import downfall.ui.editor.MaterialsEditorController;
 import downfall.ui.main.tabs.RealmScreenController;
 import downfall.util.Configurator;
 import downfall.util.DownfallUtil;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -48,6 +51,15 @@ public class DownfallMainController implements StageController {
     private MenuItem importRulesItem;
 
     @FXML
+    private MenuItem newRealm;
+
+    @FXML
+    private MenuItem loadRealm;
+
+    @FXML
+    private MenuItem saveRealm;
+
+    @FXML
     private MenuItem exportRulesItem;
 
     @FXML
@@ -67,6 +79,12 @@ public class DownfallMainController implements StageController {
         importRulesItem.setOnAction(e -> importRules());
 
         exportRulesItem.setOnAction(e -> exportRules());
+
+        newRealm.setOnAction(e -> newRealmAction());
+
+        loadRealm.setOnAction(e -> loadRealmAction());
+
+        saveRealm.setOnAction(e -> saveRealmAction());
 
         initializeTabs();
     }
@@ -156,4 +174,56 @@ public class DownfallMainController implements StageController {
     private void initializeTabs() {
         initializeRealmTab();
     }
-}
+
+    /**
+     * Generates new test realm, and sets it as a user's realm.
+     */
+    private void newRealmAction() {
+        User.getInstance().getUserRealm().setInfamy(10);
+        User.getInstance().getUserRealm().setLegitimacy(50);
+        User.getInstance().getUserRealm().setDiplomaticReputation(1);
+        User.getInstance().getUserRealm().setPrestige(50);
+        User.getInstance().getUserRealm().setStability(0);
+        User.getInstance().getUserRealm().setPowerProjections(0);
+        User.getInstance().getUserRealm().setTreasury(24000);
+        User.getInstance().getUserRealm().setName("Test Realm");
+
+        ObservableList<Material> materials = FXCollections.observableArrayList();
+        materials.add(new Material(1, 10));
+        materials.add(new Material(2,10));
+        materials.add(new Material(3,20));
+        materials.add(new Material(4, 20));
+        materials.add(new Material(5, 20));
+        materials.add(new Material(6, 10));
+        materials.add(new Material(7, 5));
+        materials.add(new Material(8, 5));
+        materials.add(new Material(9, 10));
+        materials.add(new Material(10, 20));
+        User.getInstance().getUserRealm().setStockpile(materials);
+
+        ObservableList<Building> buildings = FXCollections.observableArrayList();
+        buildings.add(new Building(1, true));
+        buildings.add(new Building(1, true));
+        buildings.add(new Building(2, false));
+        User.getInstance().getUserRealm().setOwnedBuildings(buildings);
+    }
+
+    /**
+     * Loads test realm
+     */
+    public void loadRealmAction() {
+        SaveManager manager = new SaveManager();
+        manager.loadLast();
+    }
+
+    /**
+     * Saves test realm
+     */
+    public void saveRealmAction() {
+        SaveManager manager = new SaveManager();
+        Savegame savegame = new Savegame();
+        savegame.setUserRealm(User.instance.getUserRealm());
+        savegame.setPathToRules(DownfallUtil.DEFAULT_RULES_PATHNAME);
+        manager.save(savegame);
+    }
+ }

@@ -31,9 +31,9 @@ limitations under the License. -->
    <top>
        <MenuBar BorderPane.alignment="CENTER">
            <Menu mnemonicParsing="false" text="Realm">
-               <MenuItem mnemonicParsing="false" text="New" />
-               <MenuItem mnemonicParsing="false" text="Load" />
-               <MenuItem mnemonicParsing="false" text="Save" />
+               <MenuItem fx:id="newRealm" mnemonicParsing="false" text="New" />
+               <MenuItem fx:id="loadRealm" mnemonicParsing="false" text="Load" />
+               <MenuItem fx:id="saveRealm" mnemonicParsing="false" text="Save" />
            </Menu>
            <Menu mnemonicParsing="false" text="Rules">
                <MenuItem fx:id="materialsEditItem" mnemonicParsing="false" text="Materials" />

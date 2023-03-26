@@ -73,6 +73,23 @@ public class Configurator {
     }
 
     /**
+     * Lightweight accessor method.
+     * @return Pathname to the last loaded rules.
+     */
+    public String getLastSavegamePathname() {
+        return configuration.getLastSavegamePathname();
+    }
+
+    /**
+     * NOT a lightweight mutator method, executes save configuration when called.
+     * @param lastSavegamePathname Pathname to the last loaded rules.
+     */
+    public void setLastSavegamePathname(String lastSavegamePathname) {
+        configuration.setLastSavegamePathname(lastSavegamePathname);
+        saveConfiguration();
+    }
+
+    /**
      * Loads configuration from CONFIG_PATH defined in this class.
      */
     public void loadConfiguration() {
@@ -107,7 +124,7 @@ public class Configurator {
     }
 
     /**
-     *
+     * Loads rules from a specific provided pathname.
      * @param pathname pathname to an xml file where rules to be downloaded are located.
      * @return rules that have been loaded. If loading from pathname fails, returns defaultRules isnted.
      */

@@ -18,7 +18,9 @@ package downfall.realm;
  * Realm that is currently loaded and is being managed by the user
  * This class is non-instantiable use getInstance to get its only instance
  */
-public class User extends Realm{
+public class User {
+    private Realm userRealm = new Realm();
+
     private User() {
         super();
     }
@@ -32,4 +34,21 @@ public class User extends Realm{
     public static User getInstance() {
         return instance;
     }
+
+    /**
+     * Lightweight accessor method.
+     * @return user's realm that is currently being used.
+     */
+    public Realm getUserRealm() {
+        return userRealm;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param userRealm user's realm that is currently being used.
+     */
+    public void setUserRealm(Realm userRealm) {
+        this.userRealm = userRealm;
+    }
+
 }

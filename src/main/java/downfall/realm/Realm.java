@@ -24,14 +24,14 @@ import javafx.collections.ObservableList;
  */
 @XmlRootElement(name = "realm")
 public class Realm extends Actor{
-    public IntegerProperty diplomaticReputation = new SimpleIntegerProperty();
-    public IntegerProperty powerProjections = new SimpleIntegerProperty();
-    public IntegerProperty legitimacy = new SimpleIntegerProperty();
-    public IntegerProperty prestige = new SimpleIntegerProperty();
-    public IntegerProperty infamy = new SimpleIntegerProperty();
-    public DoubleProperty stability = new SimpleDoubleProperty();
-    public StringProperty realmPathToGFX = new SimpleStringProperty();
-    public StringProperty rulerPathToGFX = new SimpleStringProperty();
+    protected IntegerProperty diplomaticReputation = new SimpleIntegerProperty();
+    protected IntegerProperty powerProjections = new SimpleIntegerProperty();
+    protected IntegerProperty legitimacy = new SimpleIntegerProperty();
+    protected IntegerProperty prestige = new SimpleIntegerProperty();
+    protected IntegerProperty infamy = new SimpleIntegerProperty();
+    protected DoubleProperty stability = new SimpleDoubleProperty();
+    protected StringProperty realmPathToGFX = new SimpleStringProperty();
+    protected StringProperty rulerPathToGFX = new SimpleStringProperty();
 
     /**
      * Default constructor. Does not provide any default values
@@ -43,8 +43,8 @@ public class Realm extends Actor{
     /**
      *
      * @param id Unique realm identifier. Should be unique for every save file
-     * @param name A human-readable name of the realm as a property.
-     * @param treasury Amount of money in the treasury as a property.
+     * @param name A human-readable name of the realm.
+     * @param treasury Amount of money in the treasury.
      * @param stockpile List of all materials in realm's stockpile
      * @param ownedBuildings List of all owned buildings
      * @param tags List of all tags applied to the realm
@@ -56,8 +56,8 @@ public class Realm extends Actor{
     /**
      *
      * @param id Unique realm identifier. Should be unique for every save file
-     * @param name A human-readable name of the realm as a property.
-     * @param treasury Amount of money in the treasury as a property.
+     * @param name A human-readable name of the realm.
+     * @param treasury Amount of money in the treasury.
      * @param stockpile List of all materials in realm's stockpile
      * @param ownedBuildings List of all owned buildings
      * @param tags List of all tags applied to the realm
@@ -83,7 +83,22 @@ public class Realm extends Actor{
     }
 
     /**
-     * Lightweight accessor method
+     * Lightweight Accessor Method.
+     * @return Unique realm identifier. Should be unique for every save file as a property.
+     */
+    public IntegerProperty idProperty() {
+        return id;
+    }
+
+    /**
+     * Lightweight Accessor Method.
+     * @return A human-readable name of the realm as a property.
+     */
+    public StringProperty nameProperty() {
+        return name;
+    }
+    /**
+     * Lightweight accessor method.
      * @return a measure of diplomatic reputation of the Realm. Used when taking diplomatic actions as a property.
      */
     public IntegerProperty diplomaticReputationProperty() {
@@ -91,7 +106,7 @@ public class Realm extends Actor{
     }
 
     /**
-     * Lightweight accessor method
+     * Lightweight accessor method.
      * @return a measure of perceived power of the realm as a property. Used when evaluating threats and taking DoW decisions.
      */
     public IntegerProperty powerProjectionsProperty() {
@@ -144,6 +159,24 @@ public class Realm extends Actor{
      */
     public StringProperty rulerPathToGFXProperty() {
         return rulerPathToGFX;
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return Unique realm identifier. Should be unique for every save file.
+     */
+    @XmlElement(name = "id")
+    public int getId() {
+        return id.get();
+    }
+
+    /**
+     * Lightweight accessor method
+     * @return A human-readable name of the realm.
+     */
+    @XmlElement(name = "name")
+    public String getName() {
+        return name.get();
     }
 
     /**
@@ -226,6 +259,21 @@ public class Realm extends Actor{
         this.diplomaticReputation.set(diplomaticReputation);
     }
 
+    /**
+     * Lightweight mutator method
+     * @param id Unique realm identifier. Should be unique for every save file.
+     */
+    public void setId(int id) {
+        this.id.set(id);
+    }
+
+    /**
+     * Lightweight mutator method
+     * @param name A human-readable name of the realm.
+     */
+    public void setName(String name) {
+        this.name.set(name);
+    }
     /**
      * Lightweight mutator method
      * @param powerProjections a measure of perceived power of the realm. Used when evaluating threats and taking DoW decisions
