@@ -19,16 +19,16 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import javafx.beans.property.*;
 
 /**
- * Used to generate new materials. This class is annotated for conversion into a serializable form using JAXB
+ * Used to generate new materials. This class is annotated for conversion Integero a serializable form using JAXB
  */
 @XmlRootElement(name = "material-template")
 public abstract class MaterialTemplate {
-    protected StringProperty nameProperty = new SimpleStringProperty();
-    protected IntegerProperty idProperty = new SimpleIntegerProperty(-1);
-    protected IntegerProperty defExportPriceProperty = new SimpleIntegerProperty(-1);
-    protected IntegerProperty defImportPriceProperty = new SimpleIntegerProperty(-1);
-    protected BooleanProperty isExportableProperty = new SimpleBooleanProperty(false);
-    protected BooleanProperty isEphemeralProperty = new SimpleBooleanProperty(false);
+    private final StringProperty nameProperty = new SimpleStringProperty();
+    private final IntegerProperty idProperty = new SimpleIntegerProperty(-1);
+    private final IntegerProperty defExportPriceProperty = new SimpleIntegerProperty(-1);
+    private final IntegerProperty defImportPriceProperty = new SimpleIntegerProperty(-1);
+    private final BooleanProperty isExportableProperty = new SimpleBooleanProperty(false);
+    private final BooleanProperty isEphemeralProperty = new SimpleBooleanProperty(false);
 
     /**
      * Default Constructor. Does not provide default values
@@ -46,7 +46,7 @@ public abstract class MaterialTemplate {
      * @param isExportable Value that determines if the material will be exportable from the realm
      * @param isEphemeral Value that determines if the material can be stockpiled or stored
      */
-    public MaterialTemplate(String name, int id, int defExportPrice, int defImportPrice, boolean isExportable, boolean isEphemeral) {
+    public MaterialTemplate(String name, Integer id, Integer defExportPrice, Integer defImportPrice, Boolean isExportable, Boolean isEphemeral) {
         super();
         this.nameProperty.setValue(name);
         this.idProperty.setValue(id);
@@ -118,7 +118,7 @@ public abstract class MaterialTemplate {
      * @return Unique identifier used to differentiate different material templates
      */
     @XmlElement(name = "id")
-    public int getId() {
+    public Integer getId() {
         return idProperty.get();
     }
 
@@ -127,7 +127,7 @@ public abstract class MaterialTemplate {
      * @return Default export price
      */
     @XmlElement(name = "def-export-template")
-    public int getDefExportPrice() {
+    public Integer getDefExportPrice() {
         return defExportPriceProperty.get();
     }
 
@@ -136,7 +136,7 @@ public abstract class MaterialTemplate {
      * @return Default import price
      */
     @XmlElement(name = "def-import-price")
-    public int getDefImportPrice() {
+    public Integer getDefImportPrice() {
         return defImportPriceProperty.get();
     }
 
@@ -145,7 +145,7 @@ public abstract class MaterialTemplate {
      * @return Value that determines if the material will be exportable from the realm
      */
     @XmlElement(name = "exportable")
-    public boolean isExportable() {
+    public Boolean isExportable() {
         return isExportableProperty.get();
     }
 
@@ -154,7 +154,7 @@ public abstract class MaterialTemplate {
      * @return Value that determines if the material can be stockpiled or stored
      */
     @XmlElement(name = "ephemeral")
-    public boolean isEphemeral() { return  isEphemeralProperty.get();}
+    public Boolean isEphemeral() { return  isEphemeralProperty.get();}
 
 
     /**
@@ -169,7 +169,7 @@ public abstract class MaterialTemplate {
      * Lightweight mutator method
      * @param idProperty Unique identifier used to differentiate different material templates
      */
-    public void setId(int idProperty) {
+    public void setId(Integer idProperty) {
         this.idProperty.setValue(idProperty);
     }
 
@@ -177,7 +177,7 @@ public abstract class MaterialTemplate {
      * Lightweight mutator method
      * @param defExportPriceProperty Default export price
      */
-    public void setDefExportPrice(int defExportPriceProperty) {
+    public void setDefExportPrice(Integer defExportPriceProperty) {
         this.defExportPriceProperty.setValue(defExportPriceProperty);
     }
 
@@ -185,7 +185,7 @@ public abstract class MaterialTemplate {
      * Lightweight mutator method
      * @param defImportPriceProperty Default import price
      */
-    public void setDefImportPrice(int defImportPriceProperty) {
+    public void setDefImportPrice(Integer defImportPriceProperty) {
         this.defImportPriceProperty.setValue(defImportPriceProperty);
     }
 
@@ -193,7 +193,7 @@ public abstract class MaterialTemplate {
      * Lightweight mutator method
      * @param exportable  Value that determines if the material will be exportable from the realm
      */
-    public void setExportable(boolean exportable) {
+    public void setExportable(Boolean exportable) {
         isExportableProperty.setValue(exportable);
     }
 
@@ -201,7 +201,7 @@ public abstract class MaterialTemplate {
      * Lightweight mutator method
      * @param isEphemeral Value that determines if the material can be stockpiled or stored
      */
-    public void setIsEphemeral(boolean isEphemeral) {
+    public void setIsEphemeral(Boolean isEphemeral) {
         this.isEphemeralProperty.set(isEphemeral);
     }
 }

@@ -28,7 +28,7 @@ import java.util.List;
  * This class if fully annotated and can be saved to an XML file with JAXB
  */
 @XmlRootElement(name="rules")
-public class Rules {
+public final class Rules {
     private List<VisualMaterialTemplate> materialTemplates = new ArrayList<>();
     private List<VisualBuildingTemplate> buildingTemplates = new ArrayList<>();
 

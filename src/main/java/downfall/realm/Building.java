@@ -69,7 +69,7 @@ public class Building {
      * @return id of the building template associated with this building.
      */
     @XmlElement(name="id")
-    public int getId() {
+    public Integer getId() {
         return id.get();
     }
 
@@ -78,7 +78,7 @@ public class Building {
      * @return flag that determines if the building is operating right now as a property.
      */
     @XmlElement(name="is-operating")
-    public boolean isOperating() {
+    public Boolean isOperating() {
         return isOperating.get();
     }
 
@@ -86,7 +86,7 @@ public class Building {
      * Lightweight mutator method
      * @param id id of the building template associated with this building. Should be set to -1 to mark that this building is invalid.
      */
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id.setValue(id);
     }
 
@@ -94,7 +94,7 @@ public class Building {
      * Lightweight mutator method
      * @param isOperating flag that determines if the building is operating right now
      */
-    public void setOperating(boolean isOperating) {
+    public void setOperating(Boolean isOperating) {
         this.isOperating.setValue(isOperating);
     }
 }

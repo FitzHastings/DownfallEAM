@@ -15,6 +15,7 @@
 package downfall.util;
 
 import downfall.realm.Material;
+import downfall.realm.Realm;
 import downfall.realm.template.VisualBuildingTemplate;
 import downfall.realm.template.VisualMaterialTemplate;
 import jakarta.xml.bind.JAXBContext;
@@ -33,15 +34,16 @@ import java.util.stream.Collectors;
 /**
  *  Non Instantiable configurator class that is responsible for loading, and storing the Configuration of the program.
  */
-public class Configurator {
+public final class Configurator {
     private static final String CONFIG_PATH = DownfallUtil.DEFAULT_CONFIG_PATHNAME;
     private static final String DEFAULT_RULES_PATH = "rules/default.xml";
 
     private static final Configurator instance = new Configurator();
 
     private Configuration configuration = new Configuration();
-
     private Rules rules = new Rules();
+    private final Realm userRealm = new Realm();
+    private final SaveManager saveManager = new SimpleSaveManager();
 
     /**
      * Private constructor to make this class non instantiable.
@@ -60,7 +62,6 @@ public class Configurator {
      * @param pathname pathname to rules to be loaded and applied
      */
     public void loadAndApplyRules(String pathname) {
-        configuration.setLastRulesPathname(pathname);
         rules = loadRules(pathname);
     }
 
@@ -74,10 +75,50 @@ public class Configurator {
 
     /**
      * Lightweight accessor method.
-     * @return Pathname to the last loaded rules.
+     * @return Pathname to the last loaded savegame.
      */
     public String getLastSavegamePathname() {
         return configuration.getLastSavegamePathname();
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return Pathname to the last loaded rules
+     */
+    public String getLastRulesPathname() {
+        return configuration.getLastRulesPathname();
+    }
+
+    /**
+     * Lightweight Accessor Method
+     * @return pathname to the default GFX of VisualMaterialTemplate in the current configuration.
+     */
+    public String getDefMaterialGFXPathname() {
+        return configuration.getDefMaterialGFXPathname();
+    }
+
+    /**
+     * Lightweight Accessor Method
+     * @return pathname to the default GFX of VisualBuildingTemplate in the current configuration.
+     */
+    public String getDefBuildingGFXPathname() {
+        return configuration.getDefBuildingGFXPathname();
+    }
+
+    /**
+     * Lightweight Accessor Method
+     * @return User Realm. This realm gets saved and loaded by the save manager and should be treated as the one and only realm that represents the user/
+     */
+    public Realm getUserRealm() {
+        return userRealm;
+    }
+
+    /**
+     * Lightweight accessor method
+     * @return Save Manager instance that is used to manage savegames.
+     */
+    public SaveManager getSaveManager() {
+        return saveManager;
     }
 
     /**
@@ -87,6 +128,51 @@ public class Configurator {
     public void setLastSavegamePathname(String lastSavegamePathname) {
         configuration.setLastSavegamePathname(lastSavegamePathname);
         saveConfiguration();
+    }
+
+    /**
+     * Relatively lightweight accessor method, overrides all fields of the original final reference to userRealm
+     * @param realm realm whose values are going to override the current values of userRealm
+     */
+    public void setUserRealm(Realm realm) {
+        userRealm.setId(realm.getId());
+        userRealm.setName(realm.getName());
+        userRealm.setTreasury(realm.getTreasury());
+        userRealm.setInfamy(realm.getInfamy());
+        userRealm.setLegitimacy(realm.getLegitimacy());
+        userRealm.setDiplomaticReputation(realm.getDiplomaticReputation());
+        userRealm.setPowerProjection(realm.getPowerProjection());
+        userRealm.setPrestige(realm.getPrestige());
+        userRealm.setStability(realm.getStability());
+        userRealm.setRealmPathToGFX(realm.getRealmPathToGFX());
+        userRealm.setRulerPathToGFX(realm.getRulerPathToFX());
+
+        userRealm.getStockpile().clear();
+        userRealm.getStockpile().addAll(realm.getStockpile());
+
+        userRealm.getOwnedBuildings().clear();
+        userRealm.getOwnedBuildings().addAll(realm.getOwnedBuildings());
+
+        userRealm.getTags().clear();
+        userRealm.getTags().addAll(realm.getTags());
+    }
+
+    /**
+     * Searches the list of all VisualMaterialTemplates in the currently loaded ruleset for a matching id of a given material.
+     * @param material material that has an id set to represent a specific template.
+     * @return VisualMaterialTemplate that is associated with that material. If none found returns null.
+     */
+    public VisualMaterialTemplate findMaterialTemplate(Material material) {
+        if(material == null)
+            return null;
+        List<VisualMaterialTemplate> list = rules.getMaterialTemplates().stream().filter(visualMaterialTemplate -> visualMaterialTemplate.getId().equals(material.getTemplateId())).collect(Collectors.toList());
+        if(list.size() > 1) {
+            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "Multiple("+list.size()+") IDs found for template with id = "+material.getTemplateId());
+        } else if(list.size() <= 0) {
+            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.SEVERE, "No Template found for id = "+material.getTemplateId());
+            return null;
+        }
+        return list.get(0);
     }
 
     /**
@@ -135,7 +221,10 @@ public class Configurator {
             JAXBContext context = JAXBContext.newInstance(Rules.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
             Logger.getAnonymousLogger().log(Level.FINE,"Rules config loading successfully completed.");
-            return (Rules) unmarshaller.unmarshal(rulesFile);
+            Rules rules = (Rules) unmarshaller.unmarshal(rulesFile);
+            configuration.setLastRulesPathname(pathname);
+            saveConfiguration();
+            return rules;
         } catch (JAXBException | IllegalArgumentException e) {
             e.printStackTrace();
             Logger.getAnonymousLogger().log(Level.WARNING,"Rules config loading failed, loading default ");
@@ -154,70 +243,37 @@ public class Configurator {
 
     /**
      * Saves currently applied rules to an XML file at a given pathname
-     * @param pathName pathname to a file that can be written.
+     * @param pathname pathname to a file that can be written.
      */
-    public void saveRules(String pathName){
-        configuration.setLastRulesPathname(pathName);
-        saveRules(rules, pathName);
+    public void saveRules(String pathname){
+        saveRules(rules, pathname);
     }
 
     /**
      * Saves given rules to an XML files at a given pathname
      * @param rules rules to be saved.
-     * @param pathName pathname to a file that can be written.
+     * @param pathname pathname to a file that can be written.
      */
-    private void saveRules(Rules rules, String pathName) {
-        File file = new File(pathName);
+    private void saveRules(Rules rules, String pathname) {
+        File file = new File(pathname);
         try {
             file.createNewFile();
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-        Logger.getAnonymousLogger().log(Level.FINE, "Rules saving initiated with path: "+pathName);
+        Logger.getAnonymousLogger().log(Level.FINE, "Rules saving initiated with path: "+pathname);
         try {
             JAXBContext context = JAXBContext.newInstance(Rules.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(rules, file);
+            configuration.setLastRulesPathname(pathname);
+            saveConfiguration();
             Logger.getAnonymousLogger().log(Level.FINE, "Rules saving successfully completed");
         } catch (JAXBException | IllegalArgumentException e) {
             e.printStackTrace();
-            Logger.getAnonymousLogger().log(Level.WARNING, "Couldn't save Rules to path: "+pathName);
+            Logger.getAnonymousLogger().log(Level.WARNING, "Couldn't save Rules to path: "+pathname);
         }
-    }
-
-    /**
-     * Lightweight Accessor Method
-     * @return pathname to the default GFX of VisualMaterialTemplate in the current configuration.
-     */
-    public String getDefMaterialGFXPathname() {
-        return configuration.getDefMaterialGFXPathname();
-    }
-
-    /**
-     * Lightweight Accessor Method
-     * @return pathname to the default GFX of VisualBuildingTemplate in the current configuration.
-     */
-    public String getDefBuildingGFXPathname() {
-        return configuration.getDefBuildingGFXPathname();
-    }
-
-    /**
-     * NOT a lightweight accessor method
-     * @param material material that has an id set to represent a specific template.
-     * @return VisualMaterialTemplate that is associated with that material. If none found returns null.
-     */
-    public VisualMaterialTemplate getTemplate(Material material) {
-        if(material == null)
-            return null;
-        List<VisualMaterialTemplate> list = rules.getMaterialTemplates().stream().filter(visualMaterialTemplate -> visualMaterialTemplate.getId() == material.getTemplateId()).collect(Collectors.toList());
-        if(list.size() > 1) {
-            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "Multiple("+list.size()+") IDs found for template with id = "+material.getTemplateId());
-        } else if(list.size() <= 0) {
-            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.SEVERE, "No Template found for id = "+material.getTemplateId());
-            return null;
-        }
-        return list.get(0);
     }
 
     /**

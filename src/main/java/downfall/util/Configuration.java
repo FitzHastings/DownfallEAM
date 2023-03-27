@@ -25,7 +25,7 @@ import javafx.beans.property.StringProperty;
  * Determines the configuration of the program, currently chosen Ruleset and default values for gfx files.
  */
 @XmlRootElement(name = "configuration")
-public class Configuration {
+public final class Configuration {
     private final StringProperty lastRulesPathname = new SimpleStringProperty(DownfallUtil.DEFAULT_RULES_PATHNAME);
 
     private final StringProperty defMaterialGFXPathname = new SimpleStringProperty(DownfallUtil.DEFAULT_MATERIAL_GFX_PATHNAME);

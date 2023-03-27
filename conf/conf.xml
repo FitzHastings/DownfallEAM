@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <configuration>
+    <autoload-last-savegame>false</autoload-last-savegame>
     <def-buildings-gfx-pathname>gfx/buildings/houseSmall.png</def-buildings-gfx-pathname>
     <def-materials-gfx-pathname>gfx/materials/orb.png</def-materials-gfx-pathname>
     <rules-pathname>rules/default.xml</rules-pathname>
+    <last-savegame-pathname>C:\CST3000\Project Hibernation\Downfall\save\secondsave.xml</last-savegame-pathname>
 </configuration>

@@ -27,7 +27,7 @@ import javafx.scene.image.Image;
  * This Class if fully annotated for use with JAXB to be exported to an XML File.
  */
 @XmlRootElement(name="gfx-material-template")
-public class VisualMaterialTemplate extends MaterialTemplate{
+public final class VisualMaterialTemplate extends MaterialTemplate{
     private final StringProperty pathToGFXProperty = new SimpleStringProperty();
     private Image GFX;
     private Boolean gfxInitialized = false;
@@ -48,7 +48,7 @@ public class VisualMaterialTemplate extends MaterialTemplate{
      * @param isExportable Value that determines if the material will be exportable from the realm
      * @param isEphemeral Value that determines if the material can be stockpiled or stored
      */
-    public VisualMaterialTemplate(String name, int id,int defExportPrice, int defImportPrice, boolean isExportable, boolean isEphemeral) {
+    public VisualMaterialTemplate(String name, Integer id,Integer defExportPrice, Integer defImportPrice, Boolean isExportable, Boolean isEphemeral) {
         this(name, id, defExportPrice, defImportPrice, isExportable, isEphemeral, Configurator.getInstance().getDefMaterialGFXPathname());
     }
 
@@ -62,7 +62,7 @@ public class VisualMaterialTemplate extends MaterialTemplate{
      * @param isEphemeral Value that determines if the material can be stockpiled or stored
      * @param pathToGFX String pathname to an image file that represents this material. That Image should be square, but isn't required to be square
      */
-    public VisualMaterialTemplate(String name, int id,int defExportPrice, int defImportPrice, boolean isExportable, boolean isEphemeral, String pathToGFX) {
+    public VisualMaterialTemplate(String name, Integer id,Integer defExportPrice, Integer defImportPrice, Boolean isExportable, Boolean isEphemeral, String pathToGFX) {
         super(name, id, defExportPrice, defImportPrice, isExportable, isEphemeral);
         this.pathToGFXProperty.setValue(pathToGFX);
         this.pathToGFXProperty.setValue(Configurator.getInstance().getDefMaterialGFXPathname());

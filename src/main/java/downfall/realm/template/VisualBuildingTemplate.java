@@ -30,10 +30,10 @@ import java.util.List;
  * This Class if fully annotated for use with JAXB to be exported to an XML File.
  */
 @XmlRootElement(name="visual-building-template")
-public class VisualBuildingTemplate extends BuildingTemplate{
+public final class VisualBuildingTemplate extends BuildingTemplate{
     private final StringProperty pathToGFXProperty = new SimpleStringProperty();
     private Image GFX;
-    private boolean gfxInitialized = false;
+    private Boolean gfxInitialized = false;
 
     /**
      * Default Constructor. Generates an invalid instance with id set to -1
@@ -50,7 +50,7 @@ public class VisualBuildingTemplate extends BuildingTemplate{
      * @param defConstructionTime number of turns it takes to construct a building
      * @param operatesImmediately does the building operate immediately or do you need to finish its construction
      */
-    public VisualBuildingTemplate(int id, String name, int defConstructionCost, int defConstructionTime, boolean operatesImmediately) {
+    public VisualBuildingTemplate(Integer id, String name, Integer defConstructionCost, Integer defConstructionTime, Boolean operatesImmediately) {
         this(id, name, null, null, defConstructionCost, null, defConstructionTime, operatesImmediately, Configurator.getInstance().getDefBuildingGFXPathname());
     }
 
@@ -66,7 +66,7 @@ public class VisualBuildingTemplate extends BuildingTemplate{
      * @param operatesImmediately does the building operate immediately or do you need to finish its construction
      * @param pathToGFX String pathname to an image file that represents this building. That Image should be square, but isn't required to be square
      */
-    public VisualBuildingTemplate(int id, String name, List<Material> inputMaterials, List<Material> outputMaterials, int defConstructionCost, List<Material> constructionMaterials, int defConstructionTime, boolean operatesImmediately, String pathToGFX) {
+    public VisualBuildingTemplate(Integer id, String name, List<Material> inputMaterials, List<Material> outputMaterials, Integer defConstructionCost, List<Material> constructionMaterials, Integer defConstructionTime, Boolean operatesImmediately, String pathToGFX) {
         super(id, name, inputMaterials, outputMaterials, defConstructionCost, constructionMaterials, defConstructionTime, operatesImmediately);
         this.pathToGFXProperty.setValue(pathToGFX);
         this.pathToGFXProperty.setValue(Configurator.getInstance().getDefBuildingGFXPathname());

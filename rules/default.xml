@@ -358,7 +358,7 @@
             <exportable>true</exportable>
             <id>4</id>
             <name>Clay</name>
-            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+            <path-to-gfx>gfx/materials/clay.png</path-to-gfx>
         </material-template>
         <material-template>
             <def-export-template>24</def-export-template>
@@ -394,7 +394,7 @@
             <exportable>true</exportable>
             <id>5</id>
             <name>Bricks</name>
-            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+            <path-to-gfx>gfx/materials/stone.png</path-to-gfx>
         </material-template>
     </material-templates>
 </rules>

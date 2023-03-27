@@ -60,6 +60,9 @@ public class DownfallMainController implements StageController {
     private MenuItem saveRealm;
 
     @FXML
+    private MenuItem saveRealmTo;
+
+    @FXML
     private MenuItem exportRulesItem;
 
     @FXML
@@ -85,6 +88,8 @@ public class DownfallMainController implements StageController {
         loadRealm.setOnAction(e -> loadRealmAction());
 
         saveRealm.setOnAction(e -> saveRealmAction());
+
+        saveRealmTo.setOnAction(e -> saveRealmToAction());
 
         initializeTabs();
     }
@@ -179,14 +184,14 @@ public class DownfallMainController implements StageController {
      * Generates new test realm, and sets it as a user's realm.
      */
     private void newRealmAction() {
-        User.getInstance().getUserRealm().setInfamy(10);
-        User.getInstance().getUserRealm().setLegitimacy(50);
-        User.getInstance().getUserRealm().setDiplomaticReputation(1);
-        User.getInstance().getUserRealm().setPrestige(50);
-        User.getInstance().getUserRealm().setStability(0);
-        User.getInstance().getUserRealm().setPowerProjections(0);
-        User.getInstance().getUserRealm().setTreasury(24000);
-        User.getInstance().getUserRealm().setName("Test Realm");
+        Configurator.getInstance().getUserRealm().setInfamy(10);
+        Configurator.getInstance().getUserRealm().setLegitimacy(50);
+        Configurator.getInstance().getUserRealm().setDiplomaticReputation(1);
+        Configurator.getInstance().getUserRealm().setPrestige(50);
+        Configurator.getInstance().getUserRealm().setStability(0.0);
+        Configurator.getInstance().getUserRealm().setPowerProjection(0);
+        Configurator.getInstance().getUserRealm().setTreasury(24000);
+        Configurator.getInstance().getUserRealm().setName("Test Realm");
 
         ObservableList<Material> materials = FXCollections.observableArrayList();
         materials.add(new Material(1, 10));
@@ -199,31 +204,45 @@ public class DownfallMainController implements StageController {
         materials.add(new Material(8, 5));
         materials.add(new Material(9, 10));
         materials.add(new Material(10, 20));
-        User.getInstance().getUserRealm().setStockpile(materials);
+        Configurator.getInstance().getUserRealm().setStockpile(materials);
 
         ObservableList<Building> buildings = FXCollections.observableArrayList();
         buildings.add(new Building(1, true));
         buildings.add(new Building(1, true));
         buildings.add(new Building(2, false));
-        User.getInstance().getUserRealm().setOwnedBuildings(buildings);
+        Configurator.getInstance().getUserRealm().setOwnedBuildings(buildings);
     }
 
     /**
      * Loads test realm
      */
-    public void loadRealmAction() {
-        SaveManager manager = new SaveManager();
-        manager.loadLast();
+    private void loadRealmAction() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Savegame");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml save file","*.xml"));
+        fileChooser.setInitialDirectory(new File("save"));
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        if(selectedFile != null)
+            Configurator.getInstance().getSaveManager().loadFrom(selectedFile.getPath());
     }
 
     /**
      * Saves test realm
      */
-    public void saveRealmAction() {
-        SaveManager manager = new SaveManager();
-        Savegame savegame = new Savegame();
-        savegame.setUserRealm(User.instance.getUserRealm());
-        savegame.setPathToRules(DownfallUtil.DEFAULT_RULES_PATHNAME);
-        manager.save(savegame);
+    private void saveRealmAction() {
+        Configurator.getInstance().getSaveManager().saveToLast();
+    }
+
+    /**
+     * Saves test realm to filepath
+     */
+    private void saveRealmToAction() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Savegame");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml save file","*.xml"));
+        fileChooser.setInitialDirectory(new File("save"));
+        File selectedFile = fileChooser.showSaveDialog(stage);
+        if(selectedFile != null)
+            Configurator.getInstance().getSaveManager().saveTo(selectedFile.getPath());
     }
  }

@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  * Utility Class of the application. It defines a lot of static parameters that should not change.
  * This class is not instatiable if you want to get its only instance use getInstance() method.
  */
-public class DownfallUtil {
+public final class DownfallUtil {
     public final static String BUILDINGS_EDITOR_FXML_PATHNAME = "fxml/editors/BuildingsEditor.fxml";
     public final static String MATERIALS_EDITOR_FXML_PATHNAME = "fxml/editors/MaterialsEditor.fxml";
     public final static String DOWNFALL_MAIN_FXML_PATHNAME = "fxml/main/DownfallMain.fxml";
@@ -38,7 +38,7 @@ public class DownfallUtil {
     public final static String DEFAULT_CONFIG_PATHNAME = "conf/conf.xml";
     public final static String DEFAULT_RULES_PATHNAME = "rules/default.xml";
 
-    public final static int DEFAULT_MATERIAL_AMOUNT = 10;
+    public final static Integer DEFAULT_MATERIAL_AMOUNT = 10;
     public final static String DEFAULT_LOGGER = "DownfallEAM";
 
     private URL URLRealmScreenFXML;

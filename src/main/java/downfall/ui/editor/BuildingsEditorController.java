@@ -144,7 +144,7 @@ public class BuildingsEditorController implements StageController {
         LogoTableColumn<Material> logoColumn = new LogoTableColumn<>();
         logoColumn.setDefaultSizePolicy();
         logoColumn.setCellValueFactory(e-> {
-            VisualMaterialTemplate template = Configurator.getInstance().getTemplate(e.getValue());
+            VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
             if(template == null)
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
             return template.pathToGFXProperty();
@@ -152,7 +152,7 @@ public class BuildingsEditorController implements StageController {
 
         TableColumn<Material, String> nameColumn = new TableColumn<>(nameColumnTitle);
         nameColumn.setCellValueFactory(e ->{
-            VisualMaterialTemplate template = Configurator.getInstance().getTemplate(e.getValue());
+            VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
             if(template == null)
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
             return template.nameProperty();

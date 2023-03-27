@@ -21,9 +21,9 @@ import jakarta.xml.bind.annotation.XmlRootElement;
  * a Save class that holds the information about a user's Realm and the Ruleset on which the Realm was created.
  */
 @XmlRootElement(name="downfall-save")
-public class Savegame {
-    protected String pathToRules = "";
-    protected Realm userRealm = new Realm();
+public final class Savegame {
+    private String pathToRules = "";
+    private Realm userRealm = new Realm();
 
     /**
      * Default constructor. Default values are "" pathToRules, and an empty Realm

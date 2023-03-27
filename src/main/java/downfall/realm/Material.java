@@ -28,10 +28,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 @XmlRootElement(name="material")
 public class Material {
 
-    protected IntegerProperty idProperty = new SimpleIntegerProperty(-1);
+    private final IntegerProperty idProperty = new SimpleIntegerProperty(-1);
 
     //I honestly would have overloaded +- operators for Material because you can just add/subtract their amounts if they have the same ID
-    protected IntegerProperty amountProperty = new SimpleIntegerProperty(0);
+    private final IntegerProperty amountProperty = new SimpleIntegerProperty(0);
 
     /**
      * Initializes amount to a default value of 0.
@@ -46,7 +46,7 @@ public class Material {
      * @param template Template from which this material will be generated from
      * @param amount Amount of materials in this bundle.
      */
-    public Material(MaterialTemplate template, int amount) {
+    public Material(MaterialTemplate template, Integer amount) {
         idProperty.setValue(template.getId());
         amountProperty.setValue(amount);
     }
@@ -63,7 +63,7 @@ public class Material {
      * @param id Material Template id of a template that this bundle of materials represents
      * @param amount Amount of materials in this bundle.
      */
-    public Material(int id, int amount) {
+    public Material(Integer id, Integer amount) {
         idProperty.setValue(id);
         amountProperty.setValue(amount);
     }
@@ -89,7 +89,7 @@ public class Material {
      * @return Material Template id of a template that this bundle of materials represents
      */
     @XmlElement(name = "template-id")
-    public int getTemplateId() {
+    public Integer getTemplateId() {
         return idProperty.get();
     }
 
@@ -98,7 +98,7 @@ public class Material {
      * @return Amount of materials in this bundle.
      */
     @XmlElement(name = "amount")
-    public int getAmount() {
+    public Integer getAmount() {
         return amountProperty.get();
     }
 
@@ -106,7 +106,7 @@ public class Material {
      * Lightweight Mutator Method
      * @param id Material Template id of a template that this bundle of materials represents
      */
-    public void setTemplateId(int id) {
+    public void setTemplateId(Integer id) {
         idProperty.setValue(id);
     }
 
@@ -114,7 +114,7 @@ public class Material {
      * Lightweight Mutator Method
      * @param amount Amount of materials in this bundle.
      */
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         amountProperty.setValue(amount);
     }
 }

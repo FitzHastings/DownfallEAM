@@ -24,7 +24,7 @@ import javafx.collections.ObservableList;
 import java.util.List;
 
 /**
- * Used to generate new buildings. This class is annotated for conversion into a serializable form using JAXB
+ * Used to generate new buildings. This class is annotated for conversion Integero a serializable form using JAXB
  */
 @XmlRootElement(name="building-template")
 public abstract class BuildingTemplate {
@@ -64,7 +64,7 @@ public abstract class BuildingTemplate {
      * @param defConstructionTime number of turns it takes to construct a building
      * @param operatesImmediately does the building operate immediately or do you need to finish its construction
      */
-    public BuildingTemplate(int id, String name, List<Material> inputMaterials, List<Material> outputMaterials, int defConstructionCost, List<Material> constructionMaterials, int defConstructionTime, boolean operatesImmediately) {
+    public BuildingTemplate(Integer id, String name, List<Material> inputMaterials, List<Material> outputMaterials, Integer defConstructionCost, List<Material> constructionMaterials, Integer defConstructionTime, Boolean operatesImmediately) {
         this.idProperty.setValue(id);
 
         this.inputMaterials.clear();
@@ -130,7 +130,7 @@ public abstract class BuildingTemplate {
      * @return unique identifier used to differentiate different templates
      */
     @XmlElement(name="id")
-    public int getId() {
+    public Integer getId() {
         return idProperty.get();
     }
 
@@ -168,7 +168,7 @@ public abstract class BuildingTemplate {
      * @return construction cost per turn of construction
      */
     @XmlElement(name="def-construction-cost")
-    public int getDefConstructionCost() {
+    public Integer getDefConstructionCost() {
         return defConstructionCostProperty.get();
     }
 
@@ -187,7 +187,7 @@ public abstract class BuildingTemplate {
      * @return number of turns it takes to construct a building
      */
     @XmlElement(name="def-construction-time")
-    public int getDefConstructionTime() {
+    public Integer getDefConstructionTime() {
         return defConstructionTimeProperty.get();
     }
 
@@ -196,7 +196,7 @@ public abstract class BuildingTemplate {
      * @return does the building operate immediately or do you need to finish its construction as a property
      */
     @XmlElement(name="operates-immediately")
-    public boolean getOperatesImmediately() {
+    public Boolean getOperatesImmediately() {
         return operatesImmediatelyProperty.get();
     }
 
@@ -204,7 +204,7 @@ public abstract class BuildingTemplate {
      * Lightweight Mutator Method
      * @param id unique identifier used to differentiate different templates
      */
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.idProperty.setValue(id);
     }
 
@@ -236,7 +236,7 @@ public abstract class BuildingTemplate {
      * Lightweight Mutator Method
      * @param defConstructionCost construction cost per turn of construction
      */
-    public void setDefConstructionCost(int defConstructionCost) {
+    public void setDefConstructionCost(Integer defConstructionCost) {
         this.defConstructionCostProperty.setValue(defConstructionCost);
     }
 
@@ -252,7 +252,7 @@ public abstract class BuildingTemplate {
      * Lightweight Mutator Method
      * @param defConstructionTime number of turns it takes to construct a building
      */
-    public void setDefConstructionTime(int defConstructionTime) {
+    public void setDefConstructionTime(Integer defConstructionTime) {
         this.defConstructionTimeProperty.setValue(defConstructionTime);
     }
 
@@ -260,7 +260,7 @@ public abstract class BuildingTemplate {
      * Lightweight Mutator Method
      * @param operatesImmediately does the building operate immediately or do you need to finish its construction
      */
-    public void setOperatesImmediately(boolean operatesImmediately) {
+    public void setOperatesImmediately(Boolean operatesImmediately) {
         this.operatesImmediatelyProperty.set(operatesImmediately);
     }
 }

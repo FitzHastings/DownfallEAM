@@ -2,6 +2,8 @@
 <downfall-save>
     <path-to-rules>rules/default.xml</path-to-rules>
     <user-realm>
+        <id>0</id>
+        <name>Test Realm</name>
         <owned-buildings>
             <building>
                 <id>1</id>
@@ -61,10 +63,8 @@
         <tags/>
         <treasury>24000</treasury>
         <diplomatic-reputation>1</diplomatic-reputation>
-        <id>0</id>
         <infamy>10</infamy>
         <legitimacy>50</legitimacy>
-        <name>Test Realm</name>
         <power-projection>0</power-projection>
         <prestige>50</prestige>
         <stability>0.0</stability>

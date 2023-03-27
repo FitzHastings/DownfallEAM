@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 /**
  * Main application class of Downfall.
  */
-public class DownfallMain extends Application {
+public final class DownfallMain extends Application {
     public static void main(String[] args) {
         launch();
     }

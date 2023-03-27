@@ -34,6 +34,7 @@ limitations under the License. -->
                <MenuItem fx:id="newRealm" mnemonicParsing="false" text="New" />
                <MenuItem fx:id="loadRealm" mnemonicParsing="false" text="Load" />
                <MenuItem fx:id="saveRealm" mnemonicParsing="false" text="Save" />
+               <MenuItem fx:id="saveRealmTo" mnemonicParsing="false" text="Save To" />
            </Menu>
            <Menu mnemonicParsing="false" text="Rules">
                <MenuItem fx:id="materialsEditItem" mnemonicParsing="false" text="Materials" />

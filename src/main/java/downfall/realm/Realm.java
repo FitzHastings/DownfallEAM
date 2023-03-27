@@ -24,14 +24,14 @@ import javafx.collections.ObservableList;
  */
 @XmlRootElement(name = "realm")
 public class Realm extends Actor{
-    protected IntegerProperty diplomaticReputation = new SimpleIntegerProperty();
-    protected IntegerProperty powerProjections = new SimpleIntegerProperty();
-    protected IntegerProperty legitimacy = new SimpleIntegerProperty();
-    protected IntegerProperty prestige = new SimpleIntegerProperty();
-    protected IntegerProperty infamy = new SimpleIntegerProperty();
-    protected DoubleProperty stability = new SimpleDoubleProperty();
-    protected StringProperty realmPathToGFX = new SimpleStringProperty();
-    protected StringProperty rulerPathToGFX = new SimpleStringProperty();
+    private final IntegerProperty diplomaticReputation = new SimpleIntegerProperty();
+    private final IntegerProperty powerProjection = new SimpleIntegerProperty();
+    private final IntegerProperty legitimacy = new SimpleIntegerProperty();
+    private final IntegerProperty prestige = new SimpleIntegerProperty();
+    private final IntegerProperty infamy = new SimpleIntegerProperty();
+    private final DoubleProperty stability = new SimpleDoubleProperty();
+    private final StringProperty realmPathToGFX = new SimpleStringProperty();
+    private final StringProperty rulerPathToGFX = new SimpleStringProperty();
 
     /**
      * Default constructor. Does not provide any default values
@@ -73,7 +73,7 @@ public class Realm extends Actor{
     public Realm(Integer id, String name, Integer treasury, ObservableList<Material> stockpile, ObservableList<Building> ownedBuildings, ObservableList<Tag> tags, Integer diplomaticReputation, Integer powerProjection, Integer legitimacy, Integer prestige, Integer infamy,Double stability, String realmPathToGFX, String rulerPathToGFX) {
         super(id, name, treasury, stockpile, ownedBuildings, tags);
         this.diplomaticReputation.set(diplomaticReputation);
-        this.powerProjections.set(powerProjection);
+        this.powerProjection.set(powerProjection);
         this.legitimacy.set(legitimacy);
         this.prestige.set(prestige);
         this.infamy.set(infamy);
@@ -82,21 +82,6 @@ public class Realm extends Actor{
         this.rulerPathToGFX.set(rulerPathToGFX);
     }
 
-    /**
-     * Lightweight Accessor Method.
-     * @return Unique realm identifier. Should be unique for every save file as a property.
-     */
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
-    /**
-     * Lightweight Accessor Method.
-     * @return A human-readable name of the realm as a property.
-     */
-    public StringProperty nameProperty() {
-        return name;
-    }
     /**
      * Lightweight accessor method.
      * @return a measure of diplomatic reputation of the Realm. Used when taking diplomatic actions as a property.
@@ -109,8 +94,8 @@ public class Realm extends Actor{
      * Lightweight accessor method.
      * @return a measure of perceived power of the realm as a property. Used when evaluating threats and taking DoW decisions.
      */
-    public IntegerProperty powerProjectionsProperty() {
-        return powerProjections;
+    public IntegerProperty powerProjectionProperty() {
+        return powerProjection;
     }
 
     /**
@@ -162,29 +147,11 @@ public class Realm extends Actor{
     }
 
     /**
-     * Lightweight accessor method.
-     * @return Unique realm identifier. Should be unique for every save file.
-     */
-    @XmlElement(name = "id")
-    public int getId() {
-        return id.get();
-    }
-
-    /**
-     * Lightweight accessor method
-     * @return A human-readable name of the realm.
-     */
-    @XmlElement(name = "name")
-    public String getName() {
-        return name.get();
-    }
-
-    /**
      * Lightweight accessor method
      * @return a measure of diplomatic reputation of the Realm. Used when taking diplomatic actions.
      */
     @XmlElement(name = "diplomatic-reputation")
-    public int getDiplomaticReputation() {
+    public Integer getDiplomaticReputation() {
         return diplomaticReputation.get();
     }
 
@@ -193,8 +160,8 @@ public class Realm extends Actor{
      * @return a measure of perceived power of the realm. Used when evaluating threats and taking DoW decisions.
      */
     @XmlElement(name = "power-projection")
-    public int getPowerProjections() {
-        return powerProjections.get();
+    public Integer getPowerProjection() {
+        return powerProjection.get();
     }
 
     /**
@@ -202,7 +169,7 @@ public class Realm extends Actor{
      * @return a measure of legitimacy of the ruler. Affects unrest.
      */
     @XmlElement(name = "legitimacy")
-    public int getLegitimacy() {
+    public Integer getLegitimacy() {
         return legitimacy.get();
     }
 
@@ -211,7 +178,7 @@ public class Realm extends Actor{
      * @return a measure of a ruler's prestige. Expended and gained as a diplomatic resource
      */
     @XmlElement(name = "prestige")
-    public int getPrestige() {
+    public Integer getPrestige() {
         return prestige.get();
     }
 
@@ -220,7 +187,7 @@ public class Realm extends Actor{
      * @return a measure of the ruler's infamy. Affects unrest, used when taking diplomatic actions.
      */
     @XmlElement(name = "infamy")
-    public int getInfamy() {
+    public Integer getInfamy() {
         return infamy.get();
     }
 
@@ -229,7 +196,7 @@ public class Realm extends Actor{
      * @return a measure of the realm's stability. affects unrest.
      */
     @XmlElement(name = "stability")
-    public double getStability() {
+    public Double getStability() {
         return stability.get();
     }
 
@@ -255,38 +222,23 @@ public class Realm extends Actor{
      * Lightweight mutator method
      * @param diplomaticReputation a measure of diplomatic reputation of the Realm. Used when taking diplomatic actions.
      */
-    public void setDiplomaticReputation(int diplomaticReputation) {
+    public void setDiplomaticReputation(Integer diplomaticReputation) {
         this.diplomaticReputation.set(diplomaticReputation);
     }
 
     /**
      * Lightweight mutator method
-     * @param id Unique realm identifier. Should be unique for every save file.
+     * @param powerProjection a measure of perceived power of the realm. Used when evaluating threats and taking DoW decisions
      */
-    public void setId(int id) {
-        this.id.set(id);
-    }
-
-    /**
-     * Lightweight mutator method
-     * @param name A human-readable name of the realm.
-     */
-    public void setName(String name) {
-        this.name.set(name);
-    }
-    /**
-     * Lightweight mutator method
-     * @param powerProjections a measure of perceived power of the realm. Used when evaluating threats and taking DoW decisions
-     */
-    public void setPowerProjections(int powerProjections) {
-        this.powerProjections.set(powerProjections);
+    public void setPowerProjection(Integer powerProjection) {
+        this.powerProjection.set(powerProjection);
     }
 
     /**
      * Lightweight mutator method
      * @param legitimacy a measure of legitimacy of the ruler. Affects unrest.
      */
-    public void setLegitimacy(int legitimacy) {
+    public void setLegitimacy(Integer legitimacy) {
         this.legitimacy.set(legitimacy);
     }
 
@@ -294,7 +246,7 @@ public class Realm extends Actor{
      * Lightweight mutator method
      * @param prestige a measure of a ruler's prestige. Expended and gained as a diplomatic resource
      */
-    public void setPrestige(int prestige) {
+    public void setPrestige(Integer prestige) {
         this.prestige.set(prestige);
     }
 
@@ -302,7 +254,7 @@ public class Realm extends Actor{
      * Lightweight mutator method
      * @param infamy a measure of the ruler's infamy. Affects unrest, used when taking diplomatic actions.
      */
-    public void setInfamy(int infamy) {
+    public void setInfamy(Integer infamy) {
         this.infamy.set(infamy);
     }
 
@@ -310,7 +262,7 @@ public class Realm extends Actor{
      * Lightweight mutator method
      * @param stability a measure of the realm's stability. affects unrest.
      */
-    public void setStability(double stability) {
+    public void setStability(Double stability) {
         this.stability.set(stability);
     }
 

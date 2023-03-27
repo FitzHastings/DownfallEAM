@@ -27,12 +27,12 @@ import javafx.collections.ObservableList;
  * Actor is a basis common for all entities that can build or store or act on the board in any way shape or form.
  */
 public abstract class Actor {
-    protected IntegerProperty id = new SimpleIntegerProperty();
-    protected StringProperty name = new SimpleStringProperty();
-    protected IntegerProperty treasury = new SimpleIntegerProperty();
-    protected ObservableList<Material> stockpile = FXCollections.observableArrayList();
-    protected ObservableList<Building> ownedBuildings = FXCollections.observableArrayList();
-    protected ObservableList<Tag> tags = FXCollections.observableArrayList();
+    private final IntegerProperty id = new SimpleIntegerProperty();
+    private final StringProperty name = new SimpleStringProperty();
+    private final IntegerProperty treasury = new SimpleIntegerProperty();
+    private ObservableList<Material> stockpile = FXCollections.observableArrayList();
+    private ObservableList<Building> ownedBuildings = FXCollections.observableArrayList();
+    private ObservableList<Tag> tags = FXCollections.observableArrayList();
 
     /**
      * Default constructor. Does not provide default values
@@ -73,6 +73,15 @@ public abstract class Actor {
         this.tags = tags;
     }
 
+
+    /**
+     * Lightweight Accessor Method.
+     * @return Unique realm identifier. Should be unique for every save file as a property.
+     */
+    public IntegerProperty idProperty() {
+        return id;
+    }
+
     /**
      * Lightweight accessor method
      * @return A human-readable name of the actor as a property.
@@ -91,11 +100,29 @@ public abstract class Actor {
 
 
     /**
+     * Lightweight accessor method.
+     * @return Unique actor identifier. Should be unique for every save file.
+     */
+    @XmlElement(name = "id")
+    public Integer getId() {
+        return id.get();
+    }
+
+    /**
+     * Lightweight accessor method
+     * @return A human-readable name of the realm.
+     */
+    @XmlElement(name = "name")
+    public String getName() {
+        return name.get();
+    }
+
+    /**
      * Lightweight accessor method
      * @return Amount of money in the treasury
      */
     @XmlElement(name = "treasury")
-    public int getTreasury() {
+    public Integer getTreasury() {
         return treasury.get();
     }
 
@@ -131,6 +158,14 @@ public abstract class Actor {
 
     /**
      * Lightweight mutator method
+     * @param id Unique actor identifier. Should be unique for every save file.
+     */
+    public void setId(Integer id) {
+        this.id.set(id);
+    }
+
+    /**
+     * Lightweight mutator method
      * @param name Actor name
      */
     public void setName(String name) {
@@ -141,7 +176,7 @@ public abstract class Actor {
      * Lightweight mutator method
      * @param treasury Amount of money in the treasury
      */
-    public void setTreasury(int treasury) {
+    public void setTreasury(Integer treasury) {
         this.treasury.set(treasury);
     }
 
