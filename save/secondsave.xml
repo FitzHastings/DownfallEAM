@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<downfall-save>
+    <path-to-rules>rules/default.xml</path-to-rules>
+    <user-realm>
+        <id>0</id>
+        <owned-buildings/>
+        <stockpile/>
+        <tags/>
+        <treasury>0</treasury>
+        <diplomatic-reputation>0</diplomatic-reputation>
+        <infamy>0</infamy>
+        <legitimacy>0</legitimacy>
+        <power-projection>0</power-projection>
+        <prestige>0</prestige>
+        <stability>0.0</stability>
+    </user-realm>
+</downfall-save>
