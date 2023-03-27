@@ -187,13 +187,13 @@ public final class Configurator {
             configuration = (Configuration) unmarshaller.unmarshal(config);
         } catch (JAXBException | IllegalArgumentException e) {
             e.printStackTrace();
-            Logger.getAnonymousLogger().log(Level.WARNING,"Configuration loading failed, attempting to save a default configuration");
+            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING,"Configuration loading failed, attempting to save a default configuration");
             saveConfiguration();
         }
     }
 
     /**
-     * Saves configuration to an XML firle at CONFIG_PATH defined in this class
+     * Saves configuration to an XML file at CONFIG_PATH defined in this class
      */
     public void saveConfiguration() {
         File config = new File(CONFIG_PATH);
@@ -205,7 +205,7 @@ public final class Configurator {
             marshaller.marshal(configuration, config);
         } catch (JAXBException | IllegalArgumentException e) {
             e.printStackTrace();
-            Logger.getAnonymousLogger().log(Level.WARNING,"Configuration saving failed =C");
+            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING,"Configuration saving failed =C");
         }
     }
 
@@ -216,18 +216,18 @@ public final class Configurator {
      */
     private Rules loadRules(String pathname) {
         File rulesFile = new File(pathname);
-        Logger.getAnonymousLogger().log(Level.FINE,"Rules loading initiated with path: "+pathname);
+        Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.FINE,"Rules loading initiated with path: "+pathname);
         try {
             JAXBContext context = JAXBContext.newInstance(Rules.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            Logger.getAnonymousLogger().log(Level.FINE,"Rules config loading successfully completed.");
+            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.FINE,"Rules config loading successfully completed.");
             Rules rules = (Rules) unmarshaller.unmarshal(rulesFile);
             configuration.setLastRulesPathname(pathname);
             saveConfiguration();
             return rules;
         } catch (JAXBException | IllegalArgumentException e) {
             e.printStackTrace();
-            Logger.getAnonymousLogger().log(Level.WARNING,"Rules config loading failed, loading default ");
+            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING,"Rules config loading failed, loading default ");
             Rules rules = loadDefaultRules();
             saveRules(rules, pathname);
             return rules;
@@ -261,7 +261,7 @@ public final class Configurator {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-        Logger.getAnonymousLogger().log(Level.FINE, "Rules saving initiated with path: "+pathname);
+        Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.FINE, "Rules saving initiated with path: "+pathname);
         try {
             JAXBContext context = JAXBContext.newInstance(Rules.class);
             Marshaller marshaller = context.createMarshaller();
@@ -269,10 +269,10 @@ public final class Configurator {
             marshaller.marshal(rules, file);
             configuration.setLastRulesPathname(pathname);
             saveConfiguration();
-            Logger.getAnonymousLogger().log(Level.FINE, "Rules saving successfully completed");
+            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.FINE, "Rules saving successfully completed");
         } catch (JAXBException | IllegalArgumentException e) {
             e.printStackTrace();
-            Logger.getAnonymousLogger().log(Level.WARNING, "Couldn't save Rules to path: "+pathname);
+            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "Couldn't save Rules to path: "+pathname);
         }
     }
 

@@ -48,6 +48,10 @@ public final class DownfallMain extends Application {
             configurator.saveConfiguration();
         });
 
+        stage.setWidth(1200);
+        stage.setHeight(600);
+        stage.setMinHeight(600);
+        stage.setMinWidth(1200);
         FXMLLoader loader = new FXMLLoader(DownfallUtil.getInstance().getURLDownfallMainFXML());
         loader.setController(new DownfallMainController());
         Scene scene = new Scene(loader.load());

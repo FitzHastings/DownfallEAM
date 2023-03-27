@@ -21,6 +21,7 @@ import downfall.fx.fetcher.SimpleMaterialTemplateFetcher;
 import downfall.realm.template.VisualMaterialTemplate;
 import downfall.ui.StageController;
 import downfall.util.Configurator;
+import downfall.util.DownfallUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -175,7 +176,7 @@ public class MaterialsEditorController implements StageController {
         if(checkFile.canRead()) {
             return true;
         } else {
-            Logger.getAnonymousLogger().log(Level.WARNING, "Could not Find file: "+pathToGFXTextField.getText()+" when trying to check integrity during material template save.");
+            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "Could not Find file: "+pathToGFXTextField.getText()+" when trying to check integrity during material template save.");
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Could not find file: "+pathToGFXTextField.getText());
             alert.setContentText(pathToGFXTextField.getText()+" must be a path to a valid readable file");

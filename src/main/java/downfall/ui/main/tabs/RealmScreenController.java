@@ -14,9 +14,11 @@
 
 package downfall.ui.main.tabs;
 
+import downfall.fx.css.BorderLabel;
+import downfall.fx.css.TitleLabel;
 import downfall.realm.Realm;
+import downfall.util.Configurator;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -29,31 +31,31 @@ import javafx.scene.shape.Circle;
  */
 public class RealmScreenController {
     @FXML
-    private Label diploRepLabel;
+    private BorderLabel diploRepBorderLabel;
 
     @FXML
     private ImageView dynastyImageView;
 
     @FXML
-    private Label govRankLabel;
+    private BorderLabel govRankBorderLabel;
 
     @FXML
-    private Label infamyLabel;
+    private BorderLabel infamyBorderLabel;
 
     @FXML
-    private Label legitimacyLabel;
+    private BorderLabel legitimacyBorderLabel;
 
     @FXML
-    private Label nationalUnrestLabel;
+    private BorderLabel nationalUnrestBorderLabel;
 
     @FXML
-    private Label nuicpLabel;
+    private BorderLabel nuicpBorderLabel;
 
     @FXML
-    private Label powerProjectionLabel;
+    private BorderLabel powerProjectionBorderLabel;
 
     @FXML
-    private Label prestigeLabel;
+    private BorderLabel prestigeBorderLabel;
 
     @FXML
     private ImageView realmImageView;
@@ -62,7 +64,7 @@ public class RealmScreenController {
     private GridPane stabilityNegativeGrid;
 
     @FXML
-    private Label stabilityPerMonthLabel;
+    private BorderLabel stabilityPerMonthBorderLabel;
 
     @FXML
     private GridPane stabilityPositiveGrid;
@@ -71,24 +73,31 @@ public class RealmScreenController {
     private VBox rootPane;
 
     @FXML
-    private Circle stabilityCircle;
-
-    @FXML
-    private Label stabilityLabel;
+    private TitleLabel stabilityTitleLabel;
 
     @FXML
     private Pane stabilityCirclePane;
-
-    Realm item = new Realm();
 
     /**
      * Initialize method that is called automatically after the FXML has finished loading. Initializes all UI elements before they are displayed
      */
     @FXML
     public void initialize() {
-        rootPane.getStylesheets().clear();
-        rootPane.getStylesheets().add("/css/RealmScreen.css");
 
-        //putting the circle and the label on top
+        update();
+    }
+
+    /**
+     * Updates values on all labels if there was an action or an event that could have changed them.
+     */
+    public void update() {
+        Realm userRealm = Configurator.getInstance().getUserRealm();
+        diploRepBorderLabel.setText(userRealm.getDiplomaticReputation().toString());
+        stabilityTitleLabel.setText(userRealm.getStability().toString());
+        legitimacyBorderLabel.setText(userRealm.getLegitimacy().toString());
+        infamyBorderLabel.setText(userRealm.getInfamy().toString());
+        //TODO: Add Gouvernment Rank
+        //govRankBorderLabel.setText(userRealm.getGouvernmentRank());
+        prestigeBorderLabel.setText(userRealm.getPrestige().toString());
     }
 }

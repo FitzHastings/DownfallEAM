@@ -43,7 +43,7 @@ final class SimpleSaveManager implements SaveManager{
     @Override
     public void loadFrom(String pathname) {
         File saveFile = new File(pathname);
-        Logger.getAnonymousLogger().log(Level.FINE,"Savegame loading initiated with path: "+pathname);
+        Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.FINE,"Savegame loading initiated with path: "+pathname);
         try {
             JAXBContext context = JAXBContext.newInstance(Savegame.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
@@ -53,10 +53,10 @@ final class SimpleSaveManager implements SaveManager{
             Configurator.getInstance().loadAndApplyRules(savegame.getPathToRules());
             Configurator.getInstance().setLastSavegamePathname(pathname);
 
-            Logger.getAnonymousLogger().log(Level.FINE,"Savegame config loading successfully completed.");
+            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.FINE,"Savegame config loading successfully completed.");
         } catch (JAXBException | IllegalArgumentException e) {
             e.printStackTrace();
-            Logger.getAnonymousLogger().log(Level.WARNING,"Savegame config loading failed, loading default ");
+            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING,"Savegame config loading failed, loading default ");
         }
     }
 
@@ -85,17 +85,17 @@ final class SimpleSaveManager implements SaveManager{
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-        Logger.getAnonymousLogger().log(Level.FINE, "Savegame saving initiated with path: "+pathname);
+        Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.FINE, "Savegame saving initiated with path: "+pathname);
         try {
             JAXBContext context = JAXBContext.newInstance(Savegame.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(savegame, file);
             Configurator.getInstance().setLastSavegamePathname(pathname);
-            Logger.getAnonymousLogger().log(Level.FINE, "Savegame saving successfully completed");
+            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.FINE, "Savegame saving successfully completed");
         } catch (JAXBException | IllegalArgumentException e) {
             e.printStackTrace();
-            Logger.getAnonymousLogger().log(Level.WARNING, "Couldn't save Savegame to path: "+pathname);
+            Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "Couldn't save Savegame to path: "+pathname);
         }
     }
 }

@@ -38,6 +38,8 @@ public final class DownfallUtil {
     public final static String DEFAULT_CONFIG_PATHNAME = "conf/conf.xml";
     public final static String DEFAULT_RULES_PATHNAME = "rules/default.xml";
 
+    public final static String MAIN_CSS_RESOURCE = "css/Eraconstas.css";
+
     public final static Integer DEFAULT_MATERIAL_AMOUNT = 10;
     public final static String DEFAULT_LOGGER = "DownfallEAM";
 

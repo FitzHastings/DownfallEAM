@@ -29,6 +29,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -68,7 +69,12 @@ public class DownfallMainController implements StageController {
     @FXML
     private AnchorPane realmAnchorPane;
 
+    @FXML
+    private BorderPane rootPane;
+
     private Stage stage;
+
+    RealmScreenController realmScreenController = new RealmScreenController();
 
     /**
      * Initialize method that is called automatically after the FXML has finished loading. Initializes all UI elements before they are displayed
@@ -76,20 +82,17 @@ public class DownfallMainController implements StageController {
     @FXML
     public void initialize() {
         materialsEditItem.setOnAction(e -> openEditor(DownfallUtil.getInstance().getURLMaterialsEditorFXML(), new MaterialsEditorController(), "Materials Editor"));
-
         buildingsEditItem.setOnAction(e -> openEditor(DownfallUtil.getInstance().getURLBuildingsEditorFXML(), new BuildingsEditorController(), "Buildings Editor"));
 
         importRulesItem.setOnAction(e -> importRules());
-
         exportRulesItem.setOnAction(e -> exportRules());
-
         newRealm.setOnAction(e -> newRealmAction());
-
         loadRealm.setOnAction(e -> loadRealmAction());
-
         saveRealm.setOnAction(e -> saveRealmAction());
-
         saveRealmTo.setOnAction(e -> saveRealmToAction());
+
+        rootPane.getStylesheets().clear();
+        rootPane.getStylesheets().add(DownfallUtil.MAIN_CSS_RESOURCE);
 
         initializeTabs();
     }
@@ -159,9 +162,8 @@ public class DownfallMainController implements StageController {
      */
     private void initializeRealmTab() {
         try {
-            RealmScreenController controller = new RealmScreenController();
             FXMLLoader loader = new FXMLLoader(DownfallUtil.getInstance().getURLRealmScreenFXML());
-            loader.setController(controller);
+            loader.setController(realmScreenController);
             Node screen = loader.load();
             realmAnchorPane.getChildren().add(screen);
             AnchorPane.setBottomAnchor(screen, 0.0);
@@ -178,6 +180,20 @@ public class DownfallMainController implements StageController {
      */
     private void initializeTabs() {
         initializeRealmTab();
+    }
+
+    /**
+     * Forces an update on all tabs.
+     */
+    private void updateTabs() {
+        updateRealmTab();
+    }
+
+    /**
+     * Forces an upgrade on Realm Tab
+     */
+    private void updateRealmTab() {
+        realmScreenController.update();
     }
 
     /**
@@ -222,8 +238,10 @@ public class DownfallMainController implements StageController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml save file","*.xml"));
         fileChooser.setInitialDirectory(new File("save"));
         File selectedFile = fileChooser.showOpenDialog(stage);
-        if(selectedFile != null)
+        if(selectedFile != null) {
             Configurator.getInstance().getSaveManager().loadFrom(selectedFile.getPath());
+            updateTabs();
+        }
     }
 
     /**
