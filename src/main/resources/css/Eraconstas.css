@@ -70,6 +70,16 @@ BorderLabel {
     -fx-font: 12pt "Arial";
 }
 
+TitledPane {
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 12pt "Arial";
+}
+
+TitledPane .title {
+    -fx-border-color: #7b868d;
+    -fx-background-color: #2b3439;
+}
+
 TitleLabel {
     -fx-text-fill: #fefffe;
     -fx-font: 16pt "Arial";

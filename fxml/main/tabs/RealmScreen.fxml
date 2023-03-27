@@ -18,7 +18,7 @@ limitations under the License. -->
 <?import javafx.geometry.Insets?>
 <?import downfall.fx.css.BorderLabel?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -30,6 +30,7 @@ limitations under the License. -->
 
 <?import downfall.fx.css.TitleLabel?>
 <?import downfall.fx.css.StabilityPane?>
+<?import javafx.scene.control.Accordion?>
 <VBox fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <TitleLabel prefHeight="44.0" prefWidth="223.0" text="Realm Name Here">
       <VBox.margin>
@@ -157,8 +158,13 @@ limitations under the License. -->
          <Insets bottom="20.0" left="40.0" right="40.0" top="10.0" />
       </VBox.margin>
     </GridPane>
-    <ToolBar prefHeight="2.0" prefWidth="600.0">
-        <BorderLabel text="Member of Factions" />
-    </ToolBar>
-    <ListView prefHeight="121.0" prefWidth="600.0" VBox.vgrow="ALWAYS" />
+    <Accordion>
+        <panes>
+            <TitledPane animated="false" text="untitled 1">
+                <VBox minHeight="0.0" minWidth="0.0" prefHeight="2080.0" prefWidth="200.0">
+                    <ListView prefHeight="121.0" prefWidth="600.0" VBox.vgrow="ALWAYS"/>
+                </VBox>
+            </TitledPane>
+        </panes>
+    </Accordion>
 </VBox>
