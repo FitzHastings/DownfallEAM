@@ -60,13 +60,54 @@
                 <template-id>10</template-id>
             </material>
         </stockpile>
-        <tags/>
+        <tags>
+            <tag>
+                <factional>true</factional>
+                <id>1</id>
+                <value>Reichstpakt</value>
+            </tag>
+            <tag>
+                <factional>true</factional>
+                <id>2</id>
+                <value>Test Faction</value>
+            </tag>
+            <tag>
+                <factional>true</factional>
+                <id>3</id>
+                <value>Custom Faction</value>
+            </tag>
+            <tag>
+                <factional>true</factional>
+                <id>4</id>
+                <value>Player Faction</value>
+            </tag>
+            <tag>
+                <factional>false</factional>
+                <id>5</id>
+                <value>Test Tag</value>
+            </tag>
+            <tag>
+                <factional>false</factional>
+                <id>6</id>
+                <value>Custom Tag</value>
+            </tag>
+            <tag>
+                <factional>false</factional>
+                <id>7</id>
+                <value>Player Tag</value>
+            </tag>
+            <tag>
+                <factional>false</factional>
+                <id>8</id>
+                <value>Bim Bam Bom</value>
+            </tag>
+        </tags>
         <treasury>24000</treasury>
         <diplomatic-reputation>1</diplomatic-reputation>
         <infamy>10</infamy>
         <legitimacy>50</legitimacy>
         <power-projection>0</power-projection>
         <prestige>50</prestige>
-        <stability>1.4</stability>
+        <stability>0.0</stability>
     </user-realm>
 </downfall-save>

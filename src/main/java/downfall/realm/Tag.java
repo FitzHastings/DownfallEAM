@@ -24,10 +24,32 @@ import javafx.beans.property.*;
  */
 @XmlRootElement(name = "tag")
 public class Tag {
-
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty tag = new SimpleStringProperty();
     private final BooleanProperty isFactional = new SimpleBooleanProperty();
+
+    public Tag() {
+        super();
+        id.set(-1);
+        tag.set("");
+        isFactional.set(false);
+    }
+
+    public Tag(Integer id, String tag, Boolean isFactional) {
+        super();
+        this.id.set(id);
+        this.tag.set(tag);
+        this.isFactional.set(isFactional);
+    }
+
+    /**
+     * returns the tag value of the tag so that it can be made human-readable.
+     * @return Tag name of this instance.
+     */
+    @Override
+    public String toString(){
+        return this.tag.get();
+    }
 
     /**
      * Lightweight accessor method.
@@ -100,7 +122,7 @@ public class Tag {
      * Lightweight mutator method.
      * @param isFactional Flag that determines if this tag is used to assign faction memberships to a realm.
      */
-    public void setIsFactional(Boolean isFactional) {
+    public void setFactional(Boolean isFactional) {
         this.isFactional.set(isFactional);
     }
 }

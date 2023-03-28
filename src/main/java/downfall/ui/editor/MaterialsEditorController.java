@@ -14,6 +14,7 @@
 
 package downfall.ui.editor;
 
+import downfall.fx.ImageChooserButton;
 import downfall.fx.LogoTableColumn;
 import downfall.fx.SimpleTableEditor;
 import downfall.fx.fetcher.Fetcher;
@@ -64,7 +65,10 @@ public class MaterialsEditorController implements StageController {
     private TextField pathToGFXTextField;
 
     @FXML
-    private Button fileChooserButton;
+    private ImageChooserButton fileChooserButton;
+
+    @FXML
+    private SplitPane rootPane;
 
     ObservableList<VisualMaterialTemplate> materials = FXCollections.emptyObservableList();
 
@@ -75,6 +79,9 @@ public class MaterialsEditorController implements StageController {
      */
     @FXML
     public void initialize() {
+        rootPane.getStylesheets().clear();
+        rootPane.getStylesheets().add(DownfallUtil.MAIN_CSS_RESOURCE);
+
         //retrieving the list of material templates in current rules.
         materials = FXCollections.observableList(Configurator.getInstance().getRules().getMaterialTemplates());
 
@@ -95,6 +102,7 @@ public class MaterialsEditorController implements StageController {
         materialImageColumn.setCellValueFactory(param -> param.getValue().pathToGFXProperty());
 
         materialTemplateEditor.getTableView().getColumns().addAll(materialImageColumn, materialNameColumn);
+        fileChooserButton.setOutput(pathToGFXTextField);
 
         //listening for changes in selection made by the user in materials table view to update data displayed.
         materialTemplateEditor.getTableView().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

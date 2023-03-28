@@ -29,11 +29,9 @@ import downfall.util.DownfallUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
@@ -80,6 +78,9 @@ public class BuildingsEditorController implements StageController {
     @FXML
     private CheckBox operatesImmediatelyCheckBox;
 
+    @FXML
+    private BorderPane rootPane;
+
     ObservableList<VisualBuildingTemplate> buildingTemplates = FXCollections.emptyObservableList();
 
     ObservableList<Material> inputMaterials = FXCollections.emptyObservableList();
@@ -95,6 +96,9 @@ public class BuildingsEditorController implements StageController {
      */
     @FXML
     public void initialize() {
+        rootPane.getStylesheets().clear();
+        rootPane.getStylesheets().add(DownfallUtil.MAIN_CSS_RESOURCE);
+
         //gets all available building instances from the current configuration
         buildingTemplates = FXCollections.observableList(Configurator.getInstance().getRules().getBuildingTemplates());
         pathToGFXButton.setOutput(pathToGFXTextField);

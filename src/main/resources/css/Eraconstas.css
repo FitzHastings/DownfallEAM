@@ -1,6 +1,5 @@
 * {
     -fx-focus-color: #a34097;
-
 }
 
 BorderPane {
@@ -62,6 +61,78 @@ Pane {
     -fx-background-color: #181e21;
 }
 
+.titled-pane {
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 12pt "Arial";
+}
+
+.titled-pane .content {
+    -fx-background-color: #2b3439;
+}
+
+.titled-pane .title {
+    -fx-border-color: #7b868d;
+    -fx-background-color: #2b3439;
+}
+
+.titled-pane:expanded .title .arrow {
+    -fx-background-color: #a34097;
+}
+
+.titled-pane:collapsed .title .arrow {
+    -fx-background-color: #9aa2a6;
+}
+
+.menu-bar {
+    -fx-background-color: #181e21;
+}
+
+.menu-bar .menu-button {
+}
+
+.menu-bar .menu-button .label {
+    -fx-text-fill: #71787b;
+    -fx-font: 10pt "Arial";
+}
+
+.menu-bar .menu-button:hover, .menu-bar .menu-button:focused, .menu-bar .menu-button:showing {
+    -fx-background-color: #a34097;
+}
+
+.menu-bar .menu-button:hover .label, .menu-bar .menu-button:focused .label, .menu-bar .menu-button:showing .label {
+    -fx-text-fill: #fefffe;
+    -fx-font: 10pt "Arial";
+}
+
+.tool-bar {
+    -fx-background-color: #343d44;
+}
+
+.list-view {
+    -fx-padding: 8px;
+    -fx-background-color: #2b3439;
+}
+
+.list-cell {
+    -fx-text-fill: #9aa2a6;
+    -fx-background-color: #21282c;
+    -fx-background-insets: 4;
+    -fx-border-insets: 4;
+    -fx-border-color: #7b868d;
+    -fx-border-width: 1;
+    -fx-padding: 4;
+}
+
+.list-cell:selected {
+    -fx-text-fill: #fefffe;
+    -fx-background-color: #a34097;
+    -fx-background-insets: 4;
+    -fx-border-insets: 4;
+    -fx-border-color: #fefffe;
+    -fx-border-width: 1;
+    -fx-padding: 4;
+}
+
 BorderLabel {
     -fx-background-color: #343d44;
     -fx-border-width: 1;
@@ -70,15 +141,6 @@ BorderLabel {
     -fx-font: 12pt "Arial";
 }
 
-TitledPane {
-    -fx-text-fill: #9aa2a6;
-    -fx-font: 12pt "Arial";
-}
-
-TitledPane .title {
-    -fx-border-color: #7b868d;
-    -fx-background-color: #2b3439;
-}
 
 TitleLabel {
     -fx-text-fill: #fefffe;

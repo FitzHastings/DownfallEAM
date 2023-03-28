@@ -14,7 +14,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License. -->
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -27,6 +26,7 @@ limitations under the License. -->
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import downfall.fx.css.TitleLabel?>
 <BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <top>
        <MenuBar BorderPane.alignment="CENTER">
@@ -61,9 +61,9 @@ limitations under the License. -->
        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" BorderPane.alignment="CENTER">
            <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <ToolBar prefHeight="40.0" prefWidth="200.0">
-                   <Label text="Treasury:" />
-                   <Label text="£" />
-                   <Label fx:id="treasuryLabel" text="0" />
+                   <TitleLabel text=" Treasury:" />
+                   <TitleLabel text="£" />
+                   <TitleLabel fx:id="treasuryLabel" text="0" />
                </ToolBar>
                <TableView prefHeight="375.0" prefWidth="189.0" VBox.vgrow="ALWAYS">
                    <columns>

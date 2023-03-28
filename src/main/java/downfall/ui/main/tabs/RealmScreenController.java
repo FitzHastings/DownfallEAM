@@ -17,8 +17,12 @@ package downfall.ui.main.tabs;
 import downfall.fx.css.BorderLabel;
 import downfall.fx.css.TitleLabel;
 import downfall.realm.Realm;
+import downfall.realm.Tag;
 import downfall.util.Configurator;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -78,11 +82,23 @@ public class RealmScreenController {
     @FXML
     private Pane stabilityCirclePane;
 
+    @FXML
+    private ListView<Tag> realmTagListView;
+
+    @FXML
+    private ListView<Tag> nonRealmTagListView;
+
+    ObservableList<Tag> realmTags = FXCollections.observableArrayList();
+    ObservableList<Tag> nonRealmTags = FXCollections.observableArrayList();
+
     /**
      * Initialize method that is called automatically after the FXML has finished loading. Initializes all UI elements before they are displayed
      */
     @FXML
     public void initialize() {
+        realmTagListView.setItems(realmTags);
+
+        nonRealmTagListView.setItems(nonRealmTags);
 
         update();
     }
@@ -99,5 +115,15 @@ public class RealmScreenController {
         //TODO: Add Gouvernment Rank
         //govRankBorderLabel.setText(userRealm.getGouvernmentRank());
         prestigeBorderLabel.setText(userRealm.getPrestige().toString());
+
+        realmTags.clear();
+        nonRealmTags.clear();
+        userRealm.getTags().forEach(e->{
+            if(e.isFactional())
+                realmTags.add(e);
+            else
+                nonRealmTags.add(e);
+        });
+
     }
 }

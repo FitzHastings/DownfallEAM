@@ -33,7 +33,7 @@ limitations under the License. -->
 <?import downfall.fx.SimpleTableEditor?>
 
 <?import downfall.fx.ImageChooserButton?>
-<BorderPane prefHeight="484.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="rootPane" prefHeight="484.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <center>
        <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
                 minWidth="-Infinity" prefHeight="394.0" prefWidth="312.0" tabClosingPolicy="UNAVAILABLE">

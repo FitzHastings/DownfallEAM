@@ -222,6 +222,17 @@ public class DownfallMainController implements StageController {
         materials.add(new Material(10, 20));
         Configurator.getInstance().getUserRealm().setStockpile(materials);
 
+        ObservableList<Tag> tags = FXCollections.observableArrayList();
+        tags.add(new Tag(1,"Reichstpakt", true));
+        tags.add(new Tag(2,"Test Faction", true));
+        tags.add(new Tag(3,"Custom Faction", true));
+        tags.add(new Tag(4,"Player Faction", true));
+        tags.add(new Tag(5,"Test Tag", false));
+        tags.add(new Tag(6,"Custom Tag", false));
+        tags.add(new Tag(7,"Player Tag", false));
+        tags.add(new Tag(8,"Bim Bam Bom", false));
+        Configurator.getInstance().getUserRealm().setTags(tags);
+
         ObservableList<Building> buildings = FXCollections.observableArrayList();
         buildings.add(new Building(1, true));
         buildings.add(new Building(1, true));
