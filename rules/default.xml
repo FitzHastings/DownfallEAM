@@ -244,6 +244,33 @@
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
         <material-template>
+            <def-export-template>-1</def-export-template>
+            <def-import-price>-1</def-import-price>
+            <ephemeral>false</ephemeral>
+            <exportable>false</exportable>
+            <id>6</id>
+            <name>New Template</name>
+            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+        </material-template>
+        <material-template>
+            <def-export-template>-1</def-export-template>
+            <def-import-price>-1</def-import-price>
+            <ephemeral>false</ephemeral>
+            <exportable>false</exportable>
+            <id>7</id>
+            <name>New Template</name>
+            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+        </material-template>
+        <material-template>
+            <def-export-template>-1</def-export-template>
+            <def-import-price>-1</def-import-price>
+            <ephemeral>false</ephemeral>
+            <exportable>false</exportable>
+            <id>8</id>
+            <name>New Template</name>
+            <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
+        </material-template>
+        <material-template>
             <def-export-template>8</def-export-template>
             <def-import-price>12</def-import-price>
             <ephemeral>false</ephemeral>

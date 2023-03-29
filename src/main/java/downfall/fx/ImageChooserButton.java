@@ -16,6 +16,7 @@ package downfall.fx;
 
 import downfall.util.DownfallUtil;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextInputControl;
 import javafx.stage.FileChooser;
 
@@ -77,7 +78,10 @@ public class ImageChooserButton extends Button {
             chooser.setTitle("Choose Your Image Wisely");
             File fileChosen = chooser.showOpenDialog(this.getScene().getWindow());
             if(output != null)
-                output.setText(fileChosen.getPath());
+                if(fileChosen != null)
+                    output.setText(fileChosen.getPath());
+                else
+                    Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.INFO, "ImageChooserButton: No File Chosen, content of output was not changed.");
             else
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.SEVERE, "Attempting to set Text without setting an output first.");
         });

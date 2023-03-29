@@ -12,12 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
 package downfall.fx.css;
 
-import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 /**
  * This class is designed for css styles.
  */
-public class TitleLabel extends Label {
+public class HighlightPane extends Pane {
 }

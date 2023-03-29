@@ -19,5 +19,5 @@ import javafx.scene.control.Label;
 /**
  * This class is designed for css styles.
  */
-public class TitleLabel extends Label {
+public class PromptLabel extends Label {
 }

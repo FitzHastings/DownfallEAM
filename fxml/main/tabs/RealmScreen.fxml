@@ -15,6 +15,7 @@ See the License for the specific language governing permissions and
 limitations under the License. -->
 
 <?import downfall.fx.css.StabilityPane?>
+<?import downfall.fx.css.HighlightPane?>
 <?import javafx.geometry.Insets?>
 <?import downfall.fx.css.BorderLabel?>
 <?import javafx.scene.control.ListView?>
@@ -23,7 +24,6 @@ limitations under the License. -->
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -80,14 +80,14 @@ limitations under the License. -->
       </VBox.margin>
     </HBox>
     <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="137.0" prefWidth="723.0" VBox.vgrow="NEVER">
-        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0"
+        <HighlightPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0"
               prefWidth="200.0" HBox.hgrow="NEVER">
             <HBox.margin>
                 <Insets left="40.0"/>
             </HBox.margin>
             <ImageView fx:id="realmImageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true"
                        preserveRatio="true"/>
-        </Pane>
+        </HighlightPane>
         <GridPane maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="182.0" prefWidth="342.0" HBox.hgrow="ALWAYS">
             <columnConstraints>
                 <ColumnConstraints fillWidth="false" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="225.0" prefWidth="1000.0" />
@@ -114,14 +114,14 @@ limitations under the License. -->
             <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
          </HBox.margin>
         </GridPane>
-        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0"
+        <HighlightPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0"
               prefWidth="200.0" HBox.hgrow="NEVER">
             <HBox.margin>
                 <Insets right="40.0"/>
             </HBox.margin>
             <ImageView fx:id="dynastyImageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true"
                        preserveRatio="true"/>
-        </Pane>
+        </HighlightPane>
       <VBox.margin>
          <Insets left="20.0" right="20.0" />
       </VBox.margin>

@@ -28,7 +28,7 @@ import javafx.scene.image.ImageView;
 public class LogoTableColumn<S> extends TableColumn<S, String> {
     public static final double DEFAULT_IMAGE_HEIGHT = 24;
     public static final double DEFAULT_IMAGE_WIDTH = 24;
-    public static final double DEFAULT_COLUMN_WIDTH = 32;
+    public static final double DEFAULT_COLUMN_WIDTH = 42;
 
     private final DoubleProperty imageHeightProperty = new SimpleDoubleProperty(DEFAULT_IMAGE_HEIGHT);
     private final DoubleProperty imageWidthProperty = new SimpleDoubleProperty(DEFAULT_IMAGE_WIDTH);
