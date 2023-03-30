@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Copyright 2023 Prokhor Kalinin
+     Copyright 2023 Alexander Shaybakov
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -27,25 +28,37 @@ limitations under the License. -->
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import downfall.fx.css.TitleLabel?>
+<?import downfall.fx.css.DarkerVBox?>
 
+<?import javafx.scene.layout.HBox?>
+<?import downfall.fx.ExitButton?>
+<?import downfall.fx.MinimizeButton?>
+<?import downfall.fx.css.DarkerHBox?>
+<?import downfall.fx.MaximizeButton?>
 <BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-       <MenuBar BorderPane.alignment="CENTER">
-           <Menu mnemonicParsing="false" text="Realm">
-               <MenuItem fx:id="newRealm" mnemonicParsing="false" text="New" />
-               <MenuItem fx:id="loadRealm" mnemonicParsing="false" text="Load" />
-               <MenuItem fx:id="saveRealm" mnemonicParsing="false" text="Save" />
-               <MenuItem fx:id="saveRealmTo" mnemonicParsing="false" text="Save To" />
-           </Menu>
-           <Menu mnemonicParsing="false" text="Rules">
-               <MenuItem fx:id="materialsEditItem" mnemonicParsing="false" text="Materials" />
-               <MenuItem fx:id="buildingsEditItem" mnemonicParsing="false" text="Buildings" />
-           </Menu>
-           <Menu mnemonicParsing="false" text="Settings">
-               <MenuItem fx:id="importRulesItem" mnemonicParsing="false" text="Import Rules" />
-               <MenuItem fx:id="exportRulesItem" mnemonicParsing="false" text="Export Rules" />
-           </Menu>
-       </MenuBar>
+       <DarkerHBox>
+           <MenuBar BorderPane.alignment="CENTER" HBox.hgrow="ALWAYS">
+               <Menu mnemonicParsing="false" text="Realm">
+                   <MenuItem fx:id="newRealm" mnemonicParsing="false" text="New" />
+                   <MenuItem fx:id="loadRealm" mnemonicParsing="false" text="Load" />
+                   <MenuItem fx:id="saveRealm" mnemonicParsing="false" text="Save" />
+                   <MenuItem fx:id="saveRealmTo" mnemonicParsing="false" text="Save To" />
+               </Menu>
+               <Menu mnemonicParsing="false" text="Rules">
+                   <MenuItem fx:id="materialsEditItem" mnemonicParsing="false" text="Materials" />
+                   <MenuItem fx:id="buildingsEditItem" mnemonicParsing="false" text="Buildings" />
+               </Menu>
+               <Menu mnemonicParsing="false" text="Settings">
+                   <MenuItem fx:id="importRulesItem" mnemonicParsing="false" text="Import Rules" />
+                   <MenuItem fx:id="exportRulesItem" mnemonicParsing="false" text="Export Rules" />
+               </Menu>
+           </MenuBar>
+           <MinimizeButton fx:id="minimizeButton" text="_" />
+           <MaximizeButton fx:id="maximizeButton" text="◰" />
+           <ExitButton fx:id="exitButton" text="x" />
+
+       </DarkerHBox>
    </top>
    <center>
        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
@@ -60,7 +73,7 @@ limitations under the License. -->
    </center>
    <left>
        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-           <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+           <DarkerVBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <ToolBar prefHeight="40.0" prefWidth="200.0">
                    <TitleLabel text=" Treasury:" />
                    <TitleLabel text="£" />
@@ -75,7 +88,7 @@ limitations under the License. -->
                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                    </columnResizePolicy>
                </TableView>
-           </VBox>
+           </DarkerVBox>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

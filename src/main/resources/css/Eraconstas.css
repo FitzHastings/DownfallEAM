@@ -1,3 +1,21 @@
+/*
+ Copyright 2023 Agafia Kalinina
+ Copyright 2023 Prokhor Kalinin
+ Copyright 2023 Alexander Shaybakov
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+*/
+
 * {
     -fx-focus-color: #a34097;
 }
@@ -144,10 +162,10 @@ AnchorPane {
 .table-view .column-header {
     -fx-background-color: #21282e;
     -fx-border-color: #7b868d;
-    -fx-border-width: 1;
-    -fx-background-insets: 4;
-    -fx-border-insets: 4;
-    -fx-padding:  4;
+    -fx-border-width: 0 1;
+    -fx-background-insets: 0 4;
+    -fx-border-insets: 0 4;
+    -fx-padding:  0 4;
 }
 
 .table-view .filler {
@@ -215,7 +233,7 @@ AnchorPane {
     -fx-font: 10pt "Arial";
 }
 
-.button {
+Button {
     -fx-background-color: #343d44;
     -fx-border-radius: 10;
     -fx-border-width: 1;
@@ -224,7 +242,7 @@ AnchorPane {
     -fx-font: 10pt "Arial";
 }
 
-.button: hover {
+Button: hover {
     -fx-background-color: #343d44;
     -fx-border-radius: 10;
     -fx-border-width: 1;
@@ -233,7 +251,7 @@ AnchorPane {
     -fx-font: 10pt "Arial";
 }
 
-.button: pressed {
+Button: pressed {
     -fx-background-color: #21282c;
     -fx-border-radius: 10;
     -fx-border-width: 1;
@@ -275,7 +293,24 @@ AnchorPane {
 
 .scroll-bar:vertical .thumb,
 .scroll-bar:horizontal .thumb {
-    -fx-background-color: #353c42;
+    -fx-background-color: #181e21;
+}
+
+.table-view .column-drag-header,
+.table-view .column-resize-line {
+    -fx-background-color: #a34097;
+}
+
+.menu-item {
+    -fx-background-color: #181e21;
+}
+
+.menu-item:hover {
+    -fx-background-color: #a34097;
+}
+
+.context-menu {
+    -fx-background-color: #181e21;
 }
 
 BorderLabel {
@@ -308,4 +343,33 @@ HighlightPane {
     -fx-background-color: #181e21;
     -fx-border-width: 1;
     -fx-border-color: #9aa2a6;
+}
+
+MinimizeButton,
+MaximizeButton,
+ExitButton {
+    -fx-background-color: #181e21;
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 10pt "Arial";
+    -fx-border-width: 1;
+    -fx-border-color: transparent;
+}
+
+MinimizeButton:hover,
+MaximizeButton:hover {
+    -fx-border-color: #a34097;
+}
+
+ExitButton:hover {
+-fx-border-color: #a34097;
+    -fx-background-color: #a34097;
+    -fx-text-fill: #fefffe;
+}
+
+DarkerVBox {
+    -fx-background-color: #181e21;
+}
+
+DarkerHBox {
+    -fx-background-color: #181e21;
 }

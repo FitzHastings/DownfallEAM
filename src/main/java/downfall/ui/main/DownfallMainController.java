@@ -14,6 +14,9 @@
 
 package downfall.ui.main;
 
+import downfall.fx.ExitButton;
+import downfall.fx.MaximizeButton;
+import downfall.fx.MinimizeButton;
 import downfall.realm.*;
 import downfall.ui.StageController;
 import downfall.ui.editor.BuildingsEditorController;
@@ -72,6 +75,15 @@ public class DownfallMainController implements StageController {
     @FXML
     private BorderPane rootPane;
 
+    @FXML
+    private MinimizeButton minimizeButton;
+
+    @FXML
+    private MaximizeButton maximizeButton;
+
+    @FXML
+    private ExitButton exitButton;
+
     private Stage stage;
 
     RealmScreenController realmScreenController = new RealmScreenController();
@@ -93,6 +105,10 @@ public class DownfallMainController implements StageController {
 
         rootPane.getStylesheets().clear();
         rootPane.getStylesheets().add(DownfallUtil.MAIN_CSS_RESOURCE);
+
+        minimizeButton.setStage(stage);
+        maximizeButton.setStage(stage);
+        exitButton.setStage(stage);
 
         initializeTabs();
     }

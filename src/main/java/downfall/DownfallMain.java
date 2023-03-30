@@ -21,6 +21,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * Main application class of Downfall.
@@ -42,18 +43,21 @@ public final class DownfallMain extends Application {
         configurator.loadAndApplyRules();
 
         stage.setTitle("Downfall v0.1.1");
+        stage.initStyle(StageStyle.UNDECORATED);
 
         stage.setOnCloseRequest(e -> {
             configurator.saveRules();
             configurator.saveConfiguration();
         });
 
-        stage.setWidth(1200);
-        stage.setHeight(650);
+        stage.setWidth(1260);
+        stage.setHeight(700);
         stage.setMinHeight(650);
         stage.setMinWidth(1200);
         FXMLLoader loader = new FXMLLoader(DownfallUtil.getInstance().getURLDownfallMainFXML());
-        loader.setController(new DownfallMainController());
+        DownfallMainController controller = new DownfallMainController();
+        controller.setStage(stage);
+        loader.setController(controller);
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
         stage.show();

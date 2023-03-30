@@ -19,15 +19,21 @@ import downfall.fx.css.TitleLabel;
 import downfall.realm.Realm;
 import downfall.realm.Tag;
 import downfall.util.Configurator;
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * A controller that controls the content of the Realm Tab.
@@ -88,6 +94,9 @@ public class RealmScreenController {
     @FXML
     private ListView<Tag> nonRealmTagListView;
 
+    @FXML
+    private Accordion tagsAccordion;
+
     ObservableList<Tag> realmTags = FXCollections.observableArrayList();
     ObservableList<Tag> nonRealmTags = FXCollections.observableArrayList();
 
@@ -99,6 +108,7 @@ public class RealmScreenController {
         realmTagListView.setItems(realmTags);
 
         nonRealmTagListView.setItems(nonRealmTags);
+        tagsAccordion.setExpandedPane(tagsAccordion.getPanes().get(0));
 
         update();
     }

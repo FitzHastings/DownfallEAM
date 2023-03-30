@@ -31,14 +31,15 @@ limitations under the License. -->
 <?import downfall.fx.css.TitleLabel?>
 <?import downfall.fx.css.StabilityPane?>
 <?import javafx.scene.control.Accordion?>
+<?import downfall.fx.css.CompactGridPane?>
 <VBox fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-   <TitleLabel prefHeight="44.0" prefWidth="223.0" text="Realm Name Here">
+   <TitleLabel prefHeight="44.0" prefWidth="223.0" VBox.vgrow="ALWAYS" text="Realm Name Here">
       <VBox.margin>
          <Insets left="40.0" top="15.0" />
       </VBox.margin>
    </TitleLabel>
-    <HBox maxHeight="91.0" prefHeight="91.0" prefWidth="600.0" VBox.vgrow="NEVER">
-        <GridPane fx:id="stabilityNegativeGrid" prefHeight="50.0" prefWidth="350.0" HBox.hgrow="ALWAYS">
+    <HBox maxHeight="91.0" prefHeight="91.0" prefWidth="600.0">
+        <CompactGridPane maxHeight="20" fx:id="stabilityNegativeGrid" VBox.vgrow="NEVER" HBox.hgrow="ALWAYS">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -49,10 +50,15 @@ limitations under the License. -->
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
+            <HighlightPane prefHeight="35.0" prefWidth="200.0" />
+            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="1" />
+            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="2" />
+            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="3" />
+            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="4" />
             <HBox.margin>
                 <Insets bottom="15.0" top="15.0" />
             </HBox.margin>
-        </GridPane>
+        </CompactGridPane>
         <StabilityPane fx:id="stabilityCirclePane" blendMode="SRC_ATOP" maxHeight="50.0" maxWidth="70.0" minHeight="50.0" minWidth="70.0" prefHeight="50.0" prefWidth="70.0" HBox.hgrow="NEVER">
             <TitleLabel fx:id="stabilityTitleLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="70.0" text="1.0" textAlignment="CENTER">
                 <font>
@@ -60,21 +66,26 @@ limitations under the License. -->
                 </font>
             </TitleLabel>
         </StabilityPane>
-        <GridPane fx:id="stabilityPositiveGrid" prefHeight="50.0" prefWidth="350.0" HBox.hgrow="ALWAYS">
+        <CompactGridPane maxHeight="20" fx:id="stabilityPositiveGrid" HBox.hgrow="ALWAYS">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
+            <HighlightPane prefHeight="35.0" prefWidth="200.0" />
+            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="1" />
+            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="2" />
+            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="3" />
+            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="4" />
             <HBox.margin>
                 <Insets bottom="15.0" top="15.0" />
             </HBox.margin>
-        </GridPane>
+        </CompactGridPane>
       <VBox.margin>
          <Insets left="40.0" right="40.0" />
       </VBox.margin>
@@ -130,6 +141,7 @@ limitations under the License. -->
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="252.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="50.0" prefWidth="60.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="40.0" minWidth="20.0" prefWidth="40.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="300.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="50.0" prefWidth="60.0" />
         </columnConstraints>
@@ -141,24 +153,24 @@ limitations under the License. -->
         <BorderLabel alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="1081.0" text="Diplomatic Reputation" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
         <BorderLabel alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="1096.0" text="Power Projection" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
         <BorderLabel alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="1081.0" text="Legitimacy" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-        <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="911.0" text="Gouvernment Rank" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-        <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="788.0" text="Prestige" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-        <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="698.0" text="Infamy" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+        <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="911.0" text="Gouvernment Rank" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+        <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="788.0" text="Prestige" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+        <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="698.0" text="Infamy" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
         <BorderLabel fx:id="diploRepBorderLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="177.0" prefWidth="230.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
         <BorderLabel fx:id="powerProjectionBorderLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="186.0" prefWidth="296.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
         <BorderLabel fx:id="legitimacyBorderLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="154.0" prefWidth="230.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-        <BorderLabel fx:id="govRankBorderLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="193.0" prefWidth="338.0" text="C" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-        <BorderLabel fx:id="prestigeBorderLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="186.0" prefWidth="244.0" text="0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+        <BorderLabel fx:id="govRankBorderLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="193.0" prefWidth="338.0" text="C" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+        <BorderLabel fx:id="prestigeBorderLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="186.0" prefWidth="244.0" text="0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
             <GridPane.margin>
                 <Insets />
             </GridPane.margin>
         </BorderLabel>
-        <BorderLabel fx:id="infamyBorderLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="103.0" prefWidth="107.0" text="0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+        <BorderLabel fx:id="infamyBorderLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="103.0" prefWidth="107.0" text="0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <VBox.margin>
          <Insets bottom="20.0" left="40.0" right="40.0" top="10.0" />
       </VBox.margin>
     </GridPane>
-    <Accordion>
+    <Accordion fx:id="tagsAccordion">
         <panes>
             <TitledPane animated="false" text="Member of Factions">
                 <VBox minHeight="0.0" minWidth="0.0" prefHeight="2080.0" prefWidth="200.0">
