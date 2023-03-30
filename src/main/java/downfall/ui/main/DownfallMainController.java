@@ -35,6 +35,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.io.IOException;
@@ -138,7 +139,9 @@ public class DownfallMainController implements StageController {
             controller.setStage(stage);
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
+            stage.initOwner(this.stage);
             stage.setTitle(title);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
