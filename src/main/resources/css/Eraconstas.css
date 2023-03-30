@@ -85,25 +85,26 @@ AnchorPane {
     -fx-background-color: #181e21;
 }
 
-.menu-bar .menu-button {
-}
-
 .menu-bar .menu-button .label {
     -fx-text-fill: #71787b;
     -fx-font: 10pt "Arial";
 }
 
-.menu-bar .menu-button:hover, .menu-bar .menu-button:focused, .menu-bar .menu-button:showing {
+.menu-bar .menu-button:hover,
+.menu-bar .menu-button:focused,
+.menu-bar .menu-button:showing {
     -fx-background-color: #a34097;
 }
 
-.menu-bar .menu-button:hover .label, .menu-bar .menu-button:focused .label, .menu-bar .menu-button:showing .label {
+.menu-bar .menu-button:hover .label,
+.menu-bar .menu-button:focused .label,
+.menu-bar .menu-button:showing .label {
     -fx-text-fill: #fefffe;
     -fx-font: 10pt "Arial";
 }
 
 .tool-bar {
-    -fx-background-color: #343d44;
+    -fx-background-color: #21282e;
 }
 
 .list-view {
@@ -135,26 +136,33 @@ AnchorPane {
     -fx-background-color: #181e21;
 }
 
-.table-view .column-header {
+.table-view .nested-column-header {
     -fx-background-color: #181e21;
+    -fx-padding: 4 0;
 }
 
-.table-view .column-header .label{
-    -fx-background-color: #181e21;
+.table-view .column-header {
+    -fx-background-color: #21282e;
     -fx-border-color: #7b868d;
     -fx-border-width: 1;
+    -fx-background-insets: 4;
+    -fx-border-insets: 4;
+    -fx-padding:  4;
 }
 
+.table-view .filler {
+    -fx-background-color: #181e21;
+}
 
 .table-view .label {
-    -fx-background-color: #181e21;
+    -fx-background-color: transparent;
     -fx-text-fill: #9aa2a6;
     -fx-font: 10pt "Arial";
 }
 
 .table-view .table-cell {
     -fx-text-fill: #9aa2a6;
-    -fx-background-color: #2b3439;
+    -fx-background-color: #21282e;
     -fx-background-insets: 4;
     -fx-border-insets: 4;
     -fx-border-color: #7b868d;
@@ -165,7 +173,7 @@ AnchorPane {
 
 .table-view .table-row-cell:hover .table-cell {
     -fx-text-fill: #9aa2a6;
-    -fx-background-color: #2b3439;
+    -fx-background-color: #21282e;
     -fx-background-insets: 4;
     -fx-border-insets: 4;
     -fx-border-color: #a34097;
@@ -205,6 +213,69 @@ AnchorPane {
     -fx-border-width: 1;
     -fx-border-color: #a34097;
     -fx-font: 10pt "Arial";
+}
+
+.button {
+    -fx-background-color: #343d44;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-border-color: #9aa2a6;
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 10pt "Arial";
+}
+
+.button: hover {
+    -fx-background-color: #343d44;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-border-color: #a34097;
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 10pt "Arial";
+}
+
+.button: pressed {
+    -fx-background-color: #21282c;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-border-color: #a34097;
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 10pt "Arial";
+}
+
+.check-box {
+    -fx-font: 10pt "Arial";
+    -fx-text-fill: #9aa2a6;
+}
+
+.check-box .box {
+    -fx-background-color: #343d44;
+    -fx-border-width: 1;
+    -fx-border-color: #9aa2a6;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #343d44;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #a34097;
+}
+
+.scroll-bar:vertical,
+.scroll-bar:vertical .track,
+.scroll-bar:horizontal,
+.scroll-bar:horizontal .track {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal .track-background,
+.scroll-bar:vertical .track-background {
+    -fx-background-color: #232a30;
+}
+
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #353c42;
 }
 
 BorderLabel {
