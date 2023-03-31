@@ -233,7 +233,8 @@ AnchorPane {
     -fx-font: 10pt "Arial";
 }
 
-Button {
+Button,
+ImageChooserButton {
     -fx-background-color: #343d44;
     -fx-border-radius: 10;
     -fx-border-width: 1;
@@ -242,7 +243,8 @@ Button {
     -fx-font: 10pt "Arial";
 }
 
-Button: hover {
+Button: hover,
+ImageChooserButton: hover {
     -fx-background-color: #343d44;
     -fx-border-radius: 10;
     -fx-border-width: 1;
@@ -251,7 +253,8 @@ Button: hover {
     -fx-font: 10pt "Arial";
 }
 
-Button: pressed {
+Button: pressed,
+ImageChooserButton: pressed {
     -fx-background-color: #21282c;
     -fx-border-radius: 10;
     -fx-border-width: 1;

@@ -38,7 +38,7 @@ limitations under the License. -->
 <BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <top>
        <DarkerHBox>
-           <MenuBar BorderPane.alignment="CENTER" HBox.hgrow="ALWAYS">
+           <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER" HBox.hgrow="ALWAYS">
                <Menu mnemonicParsing="false" text="Realm">
                    <MenuItem fx:id="newRealm" mnemonicParsing="false" text="New" />
                    <MenuItem fx:id="loadRealm" mnemonicParsing="false" text="Load" />
@@ -48,8 +48,10 @@ limitations under the License. -->
                <Menu mnemonicParsing="false" text="Rules">
                    <MenuItem fx:id="materialsEditItem" mnemonicParsing="false" text="Materials" />
                    <MenuItem fx:id="buildingsEditItem" mnemonicParsing="false" text="Buildings" />
+                   <MenuItem fx:id="tagsEditItem" mnemonicParsing="false" text="Tags" />
                </Menu>
                <Menu mnemonicParsing="false" text="Settings">
+                   <MenuItem fx:id="configureItem" mnemonicParsing="false" text="Configure" />
                    <MenuItem fx:id="importRulesItem" mnemonicParsing="false" text="Import Rules" />
                    <MenuItem fx:id="exportRulesItem" mnemonicParsing="false" text="Export Rules" />
                </Menu>

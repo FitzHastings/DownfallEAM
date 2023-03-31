@@ -20,7 +20,7 @@ import downfall.util.Configurator;
 /**
  * Simple implementation of Fetcher class that returns a new instance of VisualMaterialTemplate on request
  */
-public class SimpleMaterialTemplateFetcher implements Fetcher<VisualMaterialTemplate>{
+public final class SimpleMaterialTemplateFetcher implements Fetcher<VisualMaterialTemplate>{
     /**
      * This method is used to return a new instance of VisualMaterialTemplate on request.
      * @return a new instance of VisualMaterialTemplate with its id set to be one larger than the last VisualMaterialTemplate in the currently selected rules

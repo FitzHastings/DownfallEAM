@@ -15,6 +15,7 @@
 package downfall.fx.fetcher;
 
 import downfall.fx.LogoTableColumn;
+import downfall.fx.css.DarkerHBox;
 import downfall.realm.Material;
 import downfall.realm.template.VisualMaterialTemplate;
 import downfall.util.Configurator;
@@ -47,10 +48,15 @@ public class ConversionMaterialFetcher extends VBox implements ConversionFetcher
      * Constructs all the visual elements of the ConversionMaterialFetcher
      */
     public ConversionMaterialFetcher() {
+        //init css
+        this.getStylesheets().clear();
+        this.getStylesheets().add(DownfallUtil.MAIN_CSS_RESOURCE);
+
         //sets the alignment of  the buttons at the bottom of the scene
         Button okButton = new Button("Ok");
         Button cancelButton = new Button("Cancel");
-        HBox buttonHBox = new HBox(okButton, cancelButton);
+        DarkerHBox buttonHBox = new DarkerHBox();
+        buttonHBox.getChildren().addAll(okButton, cancelButton);
         buttonHBox.setPadding(new Insets(10));
         buttonHBox.setSpacing(10.0);
         buttonHBox.setAlignment(Pos.CENTER_RIGHT);

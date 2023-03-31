@@ -16,7 +16,6 @@ package downfall.fx;
 
 import downfall.util.DownfallUtil;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextInputControl;
 import javafx.stage.FileChooser;
 

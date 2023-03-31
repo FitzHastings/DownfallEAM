@@ -43,7 +43,7 @@ import java.util.logging.Logger;
  * Controller class for the Building Editor.
  * Controls /fxml/BuildingsEditor.fxml and is annotated with @FXML where it references that FXML file.
  */
-public class BuildingsEditorController implements StageController {
+public final class BuildingsEditorController implements StageController {
 
     @FXML
     private SimpleTableEditor<VisualBuildingTemplate> buildingEditor;
@@ -96,26 +96,14 @@ public class BuildingsEditorController implements StageController {
      */
     @FXML
     public void initialize() {
+        //init css
         rootPane.getStylesheets().clear();
         rootPane.getStylesheets().add(DownfallUtil.MAIN_CSS_RESOURCE);
 
         //gets all available building instances from the current configuration
         buildingTemplates = FXCollections.observableList(Configurator.getInstance().getRules().getBuildingTemplates());
-        pathToGFXButton.setOutput(pathToGFXTextField);
 
-        LogoTableColumn<VisualBuildingTemplate> buildingLogoColumn = new LogoTableColumn<>();
-        buildingLogoColumn.setDefaultSizePolicy();
-        buildingLogoColumn.setCellValueFactory(e-> e.getValue().pathToGFXProperty());
-
-        TableColumn<VisualBuildingTemplate, String> buildingNameColumn = new TableColumn<>("Building");
-        buildingNameColumn.setCellValueFactory(e -> e.getValue().nameProperty());
-
-        configureMaterialEditor(inputMaterialEditor, "Material", "Amount");
-        configureMaterialEditor(outputMaterialEditor, "Material", "Amount");
-        configureMaterialEditor(constructionMaterialEditor, "Material", "Amount");
-
-
-        buildingEditor.getTableView().getColumns().addAll(buildingLogoColumn, buildingNameColumn);
+        //Configuring editor
         buildingEditor.setItems(buildingTemplates);
         buildingEditor.setFetcher(new SimpleBuildingTemplateFetcher());
         buildingEditor.getTableView().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -124,6 +112,22 @@ public class BuildingsEditorController implements StageController {
             displayBuilding(newValue);
         });
 
+        //Configuring table columns
+        LogoTableColumn<VisualBuildingTemplate> buildingLogoColumn = new LogoTableColumn<>();
+        buildingLogoColumn.setDefaultSizePolicy();
+        buildingLogoColumn.setCellValueFactory(e-> e.getValue().pathToGFXProperty());
+
+        TableColumn<VisualBuildingTemplate, String> buildingNameColumn = new TableColumn<>("Building");
+        buildingNameColumn.setCellValueFactory(e -> e.getValue().nameProperty());
+        buildingEditor.getTableView().getColumns().addAll(buildingLogoColumn, buildingNameColumn);
+
+        //configuring material editors
+        configureMaterialEditor(inputMaterialEditor, "Material", "Amount");
+        configureMaterialEditor(outputMaterialEditor, "Material", "Amount");
+        configureMaterialEditor(constructionMaterialEditor, "Material", "Amount");
+
+        //other inits
+        pathToGFXButton.setOutput(pathToGFXTextField);
         okButton.setOnAction(e -> stage.close());
     }
 

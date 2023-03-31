@@ -14,6 +14,7 @@
 
 package downfall.util;
 
+import downfall.realm.Tag;
 import downfall.realm.template.VisualBuildingTemplate;
 import downfall.realm.template.VisualMaterialTemplate;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -31,30 +32,39 @@ import java.util.List;
 public final class Rules {
     private List<VisualMaterialTemplate> materialTemplates = new ArrayList<>();
     private List<VisualBuildingTemplate> buildingTemplates = new ArrayList<>();
+    private List<Tag> actorTags = new ArrayList<>();
 
     /**
      * Lightweight accessor method.
-     * @return full list of all available material templates
+     * @return Full list of all available material templates.
      */
-    @XmlElementWrapper(name="material-templates")
-    @XmlElement(name="material-template")
+    @XmlElementWrapper(name = "material-templates")
+    @XmlElement(name = "material-template")
     public List<VisualMaterialTemplate> getMaterialTemplates() {
         return materialTemplates;
     }
 
     /**
      * Lightweight accessor method.
-     * @return full list of all available building templates
+     * @return Full list of all available building templates.
      */
-    @XmlElementWrapper(name="building-templates")
-    @XmlElement(name="building-template")
+    @XmlElementWrapper(name = "building-templates")
+    @XmlElement(name = "building-template")
     public List<VisualBuildingTemplate> getBuildingTemplates() {
         return buildingTemplates;
     }
 
     /**
+     * Lightweight accessor method.
+     * @return Full list of possible tags that can be applied to an Actor.
+     */
+    @XmlElementWrapper(name = "tags")
+    @XmlElement(name = "tag")
+    public List<Tag> getActorTags() { return actorTags; }
+
+    /**
      * Lightweight mutator method.
-     * @param materialTemplates full list of all available material templates
+     * @param materialTemplates Full list of all available material templates.
      */
     public void setMaterialTemplates(List<VisualMaterialTemplate> materialTemplates) {
         this.materialTemplates = materialTemplates;
@@ -62,9 +72,17 @@ public final class Rules {
 
     /**
      * Lightweight mutator method.
-     * @param buildingTemplates full list of all available building templates
+     * @param buildingTemplates Full list of all available building templates.
      */
     public void setBuildingTemplates(List<VisualBuildingTemplate> buildingTemplates) {
         this.buildingTemplates = buildingTemplates;
+    }
+
+    /**
+     * Lightweight mutator method.
+     * @param actorTags Full list of possible tags that can be applied to an Actor.
+     */
+    public void setActorTags(List<Tag> actorTags) {
+        this.actorTags = actorTags;
     }
 }

@@ -21,6 +21,8 @@ import downfall.realm.*;
 import downfall.ui.StageController;
 import downfall.ui.editor.BuildingsEditorController;
 import downfall.ui.editor.MaterialsEditorController;
+import downfall.ui.editor.RealmEditorController;
+import downfall.ui.editor.TagsEditorController;
 import downfall.ui.main.tabs.RealmScreenController;
 import downfall.util.Configurator;
 import downfall.util.DownfallUtil;
@@ -30,12 +32,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.io.IOException;
@@ -53,6 +55,9 @@ public class DownfallMainController implements StageController {
     private MenuItem materialsEditItem;
 
     @FXML
+    private MenuItem tagsEditItem;
+
+    @FXML
     private MenuItem importRulesItem;
 
     @FXML
@@ -66,6 +71,9 @@ public class DownfallMainController implements StageController {
 
     @FXML
     private MenuItem saveRealmTo;
+
+    @FXML
+    private MenuItem configureItem;
 
     @FXML
     private MenuItem exportRulesItem;
@@ -85,9 +93,16 @@ public class DownfallMainController implements StageController {
     @FXML
     private ExitButton exitButton;
 
+    @FXML
+    private MenuBar menuBar;
+
     private Stage stage;
 
-    RealmScreenController realmScreenController = new RealmScreenController();
+    private Double xOffset;
+
+    private Double yOffset;
+
+    final RealmScreenController realmScreenController = new RealmScreenController();
 
     /**
      * Initialize method that is called automatically after the FXML has finished loading. Initializes all UI elements before they are displayed
@@ -96,10 +111,11 @@ public class DownfallMainController implements StageController {
     public void initialize() {
         materialsEditItem.setOnAction(e -> openEditor(DownfallUtil.getInstance().getURLMaterialsEditorFXML(), new MaterialsEditorController(), "Materials Editor"));
         buildingsEditItem.setOnAction(e -> openEditor(DownfallUtil.getInstance().getURLBuildingsEditorFXML(), new BuildingsEditorController(), "Buildings Editor"));
+        tagsEditItem     .setOnAction(e -> openEditor(DownfallUtil.getInstance().getURLTagsEditorFXML(),      new TagsEditorController(),      "Tags Editor"));
+        newRealm         .setOnAction(e -> openEditor(DownfallUtil.getInstance().getURLRealmEditorFXML(),     new RealmEditorController(),     "New Realm"));
 
         importRulesItem.setOnAction(e -> importRules());
         exportRulesItem.setOnAction(e -> exportRules());
-        newRealm.setOnAction(e -> newRealmAction());
         loadRealm.setOnAction(e -> loadRealmAction());
         saveRealm.setOnAction(e -> saveRealmAction());
         saveRealmTo.setOnAction(e -> saveRealmToAction());
@@ -110,6 +126,18 @@ public class DownfallMainController implements StageController {
         minimizeButton.setStage(stage);
         maximizeButton.setStage(stage);
         exitButton.setStage(stage);
+
+        menuBar.setOnMousePressed(e->{
+            xOffset = stage.getX() - e.getScreenX();
+            yOffset = stage.getY() - e.getScreenY();
+        });
+
+        menuBar.setOnMouseDragged(e-> {
+            if (!stage.isMaximized()) {
+                stage.setX(e.getScreenX() + xOffset);
+                stage.setY(e.getScreenY() + yOffset);
+            }
+        });
 
         initializeTabs();
     }
@@ -141,7 +169,6 @@ public class DownfallMainController implements StageController {
             stage.setScene(scene);
             stage.initOwner(this.stage);
             stage.setTitle(title);
-            stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

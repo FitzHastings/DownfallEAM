@@ -1,5 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <rules>
+    <tags>
+        <tag>
+            <factional>true</factional>
+            <id>1</id>
+            <value>Reichstpakt</value>
+        </tag>
+        <tag>
+            <factional>true</factional>
+            <id>1</id>
+            <value>Blue Rose</value>
+        </tag>
+        <tag>
+            <factional>true</factional>
+            <id>6</id>
+            <value>Red Rose</value>
+        </tag>
+        <tag>
+            <factional>true</factional>
+            <id>6</id>
+            <value>Black Rose</value>
+        </tag>
+        <tag>
+            <factional>true</factional>
+            <id>6</id>
+            <value>Southern Circle</value>
+        </tag>
+        <tag>
+            <factional>false</factional>
+            <id>6</id>
+            <value>Guild Influenced</value>
+        </tag>
+        <tag>
+            <factional>false</factional>
+            <id>6</id>
+            <value>Monarchy</value>
+        </tag>
+        <tag>
+            <factional>false</factional>
+            <id>6</id>
+            <value>Culture: Parnasian</value>
+        </tag>
+        <tag>
+            <factional>false</factional>
+            <id>6</id>
+            <value>Unrecognized</value>
+        </tag>
+    </tags>
     <building-templates>
         <building-template>
             <construction-materials>

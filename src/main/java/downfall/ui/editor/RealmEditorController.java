@@ -12,12 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-open module downfall {
-    requires javafx.controls;
-    requires javafx.fxml;
+package downfall.ui.editor;
 
-    requires com.sun.xml.bind;
+import downfall.ui.StageController;
+import downfall.util.DownfallUtil;
+import javafx.fxml.FXML;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-    exports downfall;
-    exports downfall.fx.fetcher;
+public class RealmEditorController implements StageController {
+
+    @FXML
+    VBox rootPane;
+
+    Stage stage = new Stage();
+
+    @FXML
+    public void initialize() {
+        //init css
+        rootPane.getStylesheets().clear();
+        rootPane.getStylesheets().add(DownfallUtil.MAIN_CSS_RESOURCE);
+    }
+
+    @Override
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 }

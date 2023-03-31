@@ -17,7 +17,6 @@ package downfall.ui.editor;
 import downfall.fx.ImageChooserButton;
 import downfall.fx.LogoTableColumn;
 import downfall.fx.SimpleTableEditor;
-import downfall.fx.fetcher.Fetcher;
 import downfall.fx.fetcher.SimpleMaterialTemplateFetcher;
 import downfall.realm.template.VisualMaterialTemplate;
 import downfall.ui.StageController;
@@ -39,7 +38,7 @@ import java.util.logging.Logger;
  *  Controller class for the Materials Editor.
  *  Controls /fxml/MaterialsEditor.fxml and is annotated with @FXML where it references that FXML file.
  */
-public class MaterialsEditorController implements StageController {
+public final class MaterialsEditorController implements StageController {
     @FXML
     private TextField exportPriceTextField;
 
@@ -79,40 +78,44 @@ public class MaterialsEditorController implements StageController {
      */
     @FXML
     public void initialize() {
+        //init css
         rootPane.getStylesheets().clear();
         rootPane.getStylesheets().add(DownfallUtil.MAIN_CSS_RESOURCE);
 
         //retrieving the list of material templates in current rules.
         materials = FXCollections.observableList(Configurator.getInstance().getRules().getMaterialTemplates());
 
-        Fetcher fetcher = new SimpleMaterialTemplateFetcher();
-        //fetcher.initialize(stage, materials);
-        materialTemplateEditor.setFetcher(fetcher);
+        //Configuring Template Editor
+        materialTemplateEditor.setFetcher(new SimpleMaterialTemplateFetcher());
+
+        //Configuring Table View
         materialTemplateEditor.getTableView().setItems(materials);
         materialTemplateEditor.getTableView().setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        TableColumn<VisualMaterialTemplate, String> materialNameColumn = new TableColumn<>();
 
         //Creating Table Columns for the editor to display
+        TableColumn<VisualMaterialTemplate, String> materialNameColumn = new TableColumn<>();
         materialNameColumn.setText("Material");
         materialNameColumn.setCellValueFactory(param -> param.getValue().nameProperty());
 
         LogoTableColumn<VisualMaterialTemplate> materialImageColumn = new LogoTableColumn<>();
         materialImageColumn.setDefaultSizePolicy();
-
         materialImageColumn.setCellValueFactory(param -> param.getValue().pathToGFXProperty());
 
         materialTemplateEditor.getTableView().getColumns().addAll(materialImageColumn, materialNameColumn);
-        fileChooserButton.setOutput(pathToGFXTextField);
 
         //listening for changes in selection made by the user in materials table view to update data displayed.
         materialTemplateEditor.getTableView().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if(oldValue == null || validateMaterial(oldValue)) {
-                if(oldValue != null)
+            if(oldValue != null) {
+                if (!validateMaterial(oldValue))
+                    Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "Material Editor Controller saving an invalid tag");
+                else
                     unbindMaterial(oldValue);
-                displayMaterial(newValue);
             }
+
+            displayMaterial(newValue);
         });
 
+        //other inits
         disableTradable();
 
         isExportableCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
@@ -122,8 +125,8 @@ public class MaterialsEditorController implements StageController {
                 disableTradable();
         });
 
+        fileChooserButton.setOutput(pathToGFXTextField);
         okButton.setOnAction(e-> stage.close());
-
     }
 
     /**
@@ -155,11 +158,11 @@ public class MaterialsEditorController implements StageController {
      * @param template template to be unbound.
      */
     private void unbindMaterial(VisualMaterialTemplate template) {
-        nameTextField.textProperty().unbindBidirectional(template.nameProperty());
-        isExportableCheckBox.selectedProperty().unbindBidirectional(template.isExportableProperty());
-        pathToGFXTextField.textProperty().unbindBidirectional(template.pathToGFXProperty());
-        exportPriceTextField.textProperty().unbindBidirectional(template.defExportPriceProperty());
-        importPriceTextField.textProperty().unbindBidirectional(template.defImportPriceProperty());
+        nameTextField.textProperty()            .unbindBidirectional(template.nameProperty());
+        isExportableCheckBox.selectedProperty() .unbindBidirectional(template.isExportableProperty());
+        pathToGFXTextField.textProperty()       .unbindBidirectional(template.pathToGFXProperty());
+        exportPriceTextField.textProperty()     .unbindBidirectional(template.defExportPriceProperty());
+        importPriceTextField.textProperty()     .unbindBidirectional(template.defImportPriceProperty());
     }
 
     /**
@@ -167,11 +170,11 @@ public class MaterialsEditorController implements StageController {
      * @param materialTemplate template to be displayed
      */
     private void displayMaterial(VisualMaterialTemplate materialTemplate) {
-        nameTextField.textProperty().bindBidirectional(materialTemplate.nameProperty());
-        isExportableCheckBox.selectedProperty().bindBidirectional(materialTemplate.isExportableProperty());
-        pathToGFXTextField.textProperty().bindBidirectional(materialTemplate.pathToGFXProperty());
-        exportPriceTextField.textProperty().bindBidirectional(materialTemplate.defExportPriceProperty(), new NumberStringConverter());
-        importPriceTextField.textProperty().bindBidirectional(materialTemplate.defImportPriceProperty(), new NumberStringConverter());
+        nameTextField.textProperty()            .bindBidirectional(materialTemplate.nameProperty());
+        isExportableCheckBox.selectedProperty() .bindBidirectional(materialTemplate.isExportableProperty());
+        pathToGFXTextField.textProperty()       .bindBidirectional(materialTemplate.pathToGFXProperty());
+        exportPriceTextField.textProperty()     .bindBidirectional(materialTemplate.defExportPriceProperty(), new NumberStringConverter());
+        importPriceTextField.textProperty()     .bindBidirectional(materialTemplate.defImportPriceProperty(), new NumberStringConverter());
     }
 
     /**

@@ -28,8 +28,11 @@ import java.util.logging.Logger;
 public final class DownfallUtil {
     public final static String BUILDINGS_EDITOR_FXML_PATHNAME = "fxml/editors/BuildingsEditor.fxml";
     public final static String MATERIALS_EDITOR_FXML_PATHNAME = "fxml/editors/MaterialsEditor.fxml";
+    public final static String TAGS_EDITOR_FXML_PATHNAME = "fxml/editors/TagsEditor.fxml";
+    public final static String REALM_EDITOR_FXML_PATHNAME = "fxml/editors/RealmEditor.fxml";
     public final static String DOWNFALL_MAIN_FXML_PATHNAME = "fxml/main/DownfallMain.fxml";
     public final static String REALM_SCREEN_FXML_PATHNAME = "fxml/main/tabs/RealmScreen.fxml";
+
 
     public final static String DEFAULT_SAVEGAME_PATHNAME = "save/testsave.xml";
     public final static String DEFAULT_MATERIAL_GFX_PATHNAME = "gfx/materials/orb.png";
@@ -45,8 +48,11 @@ public final class DownfallUtil {
 
     private URL URLRealmScreenFXML;
     private URL URLMaterialsEditorFXML;
+    private URL URLRealmEditorFXML;
     private URL URLBuildingsEditorFXML;
+    private URL URLTagsEditorFXML;
     private URL URLDownfallMainFXML;
+
 
     private final static DownfallUtil  instance = new DownfallUtil();
 
@@ -71,6 +77,12 @@ public final class DownfallUtil {
         }
 
         try {
+            URLTagsEditorFXML = new URL("file:" + TAGS_EDITOR_FXML_PATHNAME);
+        } catch (MalformedURLException e) {
+            informOfMalformedURL("file:" + TAGS_EDITOR_FXML_PATHNAME);
+        }
+
+        try {
             URLDownfallMainFXML = new URL("file:" + DOWNFALL_MAIN_FXML_PATHNAME);
         } catch (MalformedURLException e) {
             informOfMalformedURL("file:" + DOWNFALL_MAIN_FXML_PATHNAME);
@@ -80,6 +92,12 @@ public final class DownfallUtil {
             URLRealmScreenFXML = new URL("file:" + REALM_SCREEN_FXML_PATHNAME);
         } catch (MalformedURLException e) {
             informOfMalformedURL("file:" + REALM_SCREEN_FXML_PATHNAME);
+        }
+
+        try {
+            URLRealmEditorFXML = new URL("file:" + REALM_EDITOR_FXML_PATHNAME);
+        } catch (MalformedURLException e) {
+            informOfMalformedURL("file:" + REALM_EDITOR_FXML_PATHNAME);
         }
     }
 
@@ -98,6 +116,21 @@ public final class DownfallUtil {
     public URL getURLBuildingsEditorFXML() {
         return URLBuildingsEditorFXML;
     }
+
+    /**
+     * Lightweight accessor method.
+     * @return URL to an FXML file that contains Tags Editor.
+     */
+    public URL getURLTagsEditorFXML() {
+        return URLTagsEditorFXML;
+    }
+
+    /**
+     * Lightweight accessor method.
+     * @return  URL to an FXML file that contains the Realm Editor.
+     */
+    public URL getURLRealmEditorFXML() { return URLRealmEditorFXML; }
+
 
     /**
      * Lightweight accessor method.

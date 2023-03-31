@@ -20,8 +20,7 @@ import downfall.util.Configurator;
 /**
  * Simple implementation of Fetcher class that returns a new instance of VisualBuildingTemplate on request
  */
-@SuppressWarnings("ClassEscapesDefinedScope")
-public class SimpleBuildingTemplateFetcher implements Fetcher<VisualBuildingTemplate> {
+public final class SimpleBuildingTemplateFetcher implements Fetcher<VisualBuildingTemplate> {
     /**
      * This method is used to return a new instance of VisualBuildingTemplate on request.
      * @return A new instance of VisualBuildingTemplate with its id set to be one larger than the last VisualBuildingTemplate in the currently selected rules

@@ -28,10 +28,10 @@ import javafx.scene.layout.VBox;
  * @param <T> type of item that is edited in
  */
 public class SimpleTableEditor<T> extends VBox {
-    TableView<T> tableView = new TableView<>();
-    ToolBar toolBar = new ToolBar();
-    Button addButton = new Button("Add");
-    Button removeButton = new Button("Remove");
+    final TableView<T> tableView = new TableView<>();
+    final ToolBar toolBar = new ToolBar();
+    final Button addButton = new Button("Add");
+    final Button removeButton = new Button("Remove");
     Fetcher<T> fetcher;
 
     /**
