@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <downfall-save>
-    <path-to-rules>rules\default.xml</path-to-rules>
+    <path-to-rules>rules\secondary.xml</path-to-rules>
     <user-realm>
         <id>0</id>
         <owned-buildings/>
@@ -12,16 +12,6 @@
                 <value>Reichstpakt</value>
             </tag>
             <tag>
-                <factional>true</factional>
-                <id>28</id>
-                <value>Black Rose</value>
-            </tag>
-            <tag>
-                <factional>false</factional>
-                <id>28</id>
-                <value>Shadow Kingdom</value>
-            </tag>
-            <tag>
                 <factional>false</factional>
                 <id>28</id>
                 <value>Culture: Parnasian</value>
@@ -29,17 +19,22 @@
             <tag>
                 <factional>false</factional>
                 <id>28</id>
+                <value>Southern Circle</value>
+            </tag>
+            <tag>
+                <factional>false</factional>
+                <id>28</id>
                 <value>Unrecognized</value>
             </tag>
         </tags>
-        <treasury>12000</treasury>
-        <diplomatic-reputation>2</diplomatic-reputation>
-        <infamy>5</infamy>
+        <treasury>4500</treasury>
+        <diplomatic-reputation>5</diplomatic-reputation>
+        <infamy>0</infamy>
         <legitimacy>75</legitimacy>
         <power-projection>15</power-projection>
         <prestige>80</prestige>
-        <realm-path-to-gfx>C:\Users\LuxMundi\Downloads\Sezzare.png</realm-path-to-gfx>
-        <ruler-path-to-gfx>C:\Users\LuxMundi\Downloads\Peckin.png</ruler-path-to-gfx>
-        <stability>-5.0</stability>
+        <realm-path-to-gfx>C:\Users\LuxMundi\Downloads\northernDonk.png</realm-path-to-gfx>
+        <ruler-path-to-gfx>C:\Users\LuxMundi\Downloads\Silvester.png</ruler-path-to-gfx>
+        <stability>2.3</stability>
     </user-realm>
 </downfall-save>

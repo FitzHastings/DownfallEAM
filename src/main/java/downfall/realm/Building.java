@@ -20,7 +20,6 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
-
 /**
  * Building represents an actual building. Each building must refer to a valid BuildingTemplate by id.
  * References its template by ID.

@@ -1,5 +1,72 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <rules>
+    <tags>
+        <tag>
+            <factional>true</factional>
+            <id>1</id>
+            <value>Reichstpakt</value>
+        </tag>
+        <tag>
+            <factional>true</factional>
+            <id>1</id>
+            <value>Blue Rose</value>
+        </tag>
+        <tag>
+            <factional>true</factional>
+            <id>28</id>
+            <value>Red Rose</value>
+        </tag>
+        <tag>
+            <factional>true</factional>
+            <id>28</id>
+            <value>Black Rose</value>
+        </tag>
+        <tag>
+            <factional>false</factional>
+            <id>28</id>
+            <value>Culture: Parnasian</value>
+        </tag>
+        <tag>
+            <factional>false</factional>
+            <id>28</id>
+            <value>Unrecognized</value>
+        </tag>
+        <tag>
+            <factional>false</factional>
+            <id>28</id>
+            <value>Southern Circle</value>
+        </tag>
+        <tag>
+            <factional>false</factional>
+            <id>28</id>
+            <value>Nothern Circle</value>
+        </tag>
+        <tag>
+            <factional>false</factional>
+            <id>28</id>
+            <value>Western Circle</value>
+        </tag>
+        <tag>
+            <factional>false</factional>
+            <id>28</id>
+            <value>Eastern Circle</value>
+        </tag>
+        <tag>
+            <factional>false</factional>
+            <id>28</id>
+            <value>Central Circle</value>
+        </tag>
+        <tag>
+            <factional>false</factional>
+            <id>28</id>
+            <value>Lowlands</value>
+        </tag>
+        <tag>
+            <factional>false</factional>
+            <id>28</id>
+            <value>Shadow Kingdom</value>
+        </tag>
+    </tags>
     <building-templates>
         <building-template>
             <construction-materials>
@@ -163,6 +230,7 @@
         <material-template>
             <def-export-template>5</def-export-template>
             <def-import-price>8</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>1</id>
             <name>Grain</name>
@@ -171,6 +239,7 @@
         <material-template>
             <def-export-template>8</def-export-template>
             <def-import-price>12</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>2</id>
             <name>Meat</name>
@@ -179,6 +248,7 @@
         <material-template>
             <def-export-template>12</def-export-template>
             <def-import-price>16</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>3</id>
             <name>Cloth</name>
@@ -187,6 +257,7 @@
         <material-template>
             <def-export-template>4</def-export-template>
             <def-import-price>7</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>4</id>
             <name>Clay</name>
@@ -195,6 +266,7 @@
         <material-template>
             <def-export-template>9</def-export-template>
             <def-import-price>14</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>5</id>
             <name>Bricks</name>
@@ -203,6 +275,7 @@
         <material-template>
             <def-export-template>5</def-export-template>
             <def-import-price>8</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>6</id>
             <name>Wood</name>
@@ -211,6 +284,7 @@
         <material-template>
             <def-export-template>6</def-export-template>
             <def-import-price>12</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>7</id>
             <name>Hardwood</name>
@@ -219,6 +293,7 @@
         <material-template>
             <def-export-template>16</def-export-template>
             <def-import-price>22</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>8</id>
             <name>Furniture</name>
@@ -227,6 +302,7 @@
         <material-template>
             <def-export-template>3</def-export-template>
             <def-import-price>6</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>9</id>
             <name>Copper</name>
@@ -235,6 +311,7 @@
         <material-template>
             <def-export-template>4</def-export-template>
             <def-import-price>8</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>10</id>
             <name>Bronze</name>
@@ -243,6 +320,7 @@
         <material-template>
             <def-export-template>6</def-export-template>
             <def-import-price>12</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>11</id>
             <name>Iron</name>
@@ -251,6 +329,7 @@
         <material-template>
             <def-export-template>9</def-export-template>
             <def-import-price>18</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>12</id>
             <name>Steel</name>
@@ -259,6 +338,7 @@
         <material-template>
             <def-export-template>20</def-export-template>
             <def-import-price>30</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>13</id>
             <name>Thaumium</name>
@@ -267,6 +347,7 @@
         <material-template>
             <def-export-template>50</def-export-template>
             <def-import-price>50</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>14</id>
             <name>Gold</name>
@@ -275,6 +356,7 @@
         <material-template>
             <def-export-template>20</def-export-template>
             <def-import-price>24</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>15</id>
             <name>Bronze Tools</name>
@@ -283,6 +365,7 @@
         <material-template>
             <def-export-template>24</def-export-template>
             <def-import-price>30</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>16</id>
             <name>Iron Tools</name>
@@ -291,6 +374,7 @@
         <material-template>
             <def-export-template>32</def-export-template>
             <def-import-price>44</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>17</id>
             <name>Steel Tools</name>
@@ -299,6 +383,7 @@
         <material-template>
             <def-export-template>44</def-export-template>
             <def-import-price>72</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>18</id>
             <name>Magic Tools</name>
@@ -307,6 +392,7 @@
         <material-template>
             <def-export-template>24</def-export-template>
             <def-import-price>30</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>19</id>
             <name>Bronze Weapons</name>
@@ -315,6 +401,7 @@
         <material-template>
             <def-export-template>28</def-export-template>
             <def-import-price>36</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>20</id>
             <name>Iron Weapons</name>
@@ -323,6 +410,7 @@
         <material-template>
             <def-export-template>36</def-export-template>
             <def-import-price>50</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>21</id>
             <name>Steel Weapons</name>
@@ -331,6 +419,7 @@
         <material-template>
             <def-export-template>48</def-export-template>
             <def-import-price>78</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>22</id>
             <name>Magic Weapons</name>
@@ -339,6 +428,7 @@
         <material-template>
             <def-export-template>50</def-export-template>
             <def-import-price>75</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>true</exportable>
             <id>23</id>
             <name>Siege Equipment</name>
@@ -347,6 +437,7 @@
         <material-template>
             <def-export-template>-1</def-export-template>
             <def-import-price>10</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>false</exportable>
             <id>24</id>
             <name>Services</name>
@@ -355,25 +446,28 @@
         <material-template>
             <def-export-template>-1</def-export-template>
             <def-import-price>-1</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>false</exportable>
             <id>25</id>
-            <name>New Template</name>
+            <name>dfgdfgdfgdfg</name>
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
         <material-template>
             <def-export-template>-1</def-export-template>
             <def-import-price>-1</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>false</exportable>
             <id>26</id>
-            <name>New Template</name>
+            <name>cvdfdfg</name>
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
         <material-template>
             <def-export-template>-1</def-export-template>
             <def-import-price>-1</def-import-price>
+            <ephemeral>false</ephemeral>
             <exportable>false</exportable>
             <id>27</id>
-            <name>New Template</name>
+            <name>New dfgdfgdg</name>
             <path-to-gfx>gfx/materials/orb.png</path-to-gfx>
         </material-template>
     </material-templates>

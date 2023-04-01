@@ -32,8 +32,9 @@ limitations under the License. -->
 <?import downfall.fx.css.StabilityPane?>
 <?import javafx.scene.control.Accordion?>
 <?import downfall.fx.css.CompactGridPane?>
+
 <VBox fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-   <TitleLabel prefHeight="44.0" prefWidth="223.0" VBox.vgrow="ALWAYS" text="Realm Name Here">
+   <TitleLabel fx:id="realmNameLabel" prefHeight="44.0" prefWidth="223.0" VBox.vgrow="ALWAYS" text="Realm Name Here">
       <VBox.margin>
          <Insets left="40.0" top="15.0" />
       </VBox.margin>
@@ -50,17 +51,17 @@ limitations under the License. -->
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
-            <HighlightPane prefHeight="35.0" prefWidth="200.0" />
-            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="1" />
-            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="2" />
-            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="3" />
-            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="4" />
+            <HighlightPane fx:id="negStabilityPane5" prefHeight="35.0" prefWidth="200.0" />
+            <HighlightPane fx:id="negStabilityPane4" prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="1" />
+            <HighlightPane fx:id="negStabilityPane3" prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="2" />
+            <HighlightPane fx:id="negStabilityPane2" prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="3" />
+            <HighlightPane fx:id="negStabilityPane1" prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="4" />
             <HBox.margin>
                 <Insets bottom="15.0" top="15.0" />
             </HBox.margin>
         </CompactGridPane>
         <StabilityPane fx:id="stabilityCirclePane" blendMode="SRC_ATOP" maxHeight="50.0" maxWidth="70.0" minHeight="50.0" minWidth="70.0" prefHeight="50.0" prefWidth="70.0" HBox.hgrow="NEVER">
-            <TitleLabel fx:id="stabilityTitleLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="70.0" text="1.0" textAlignment="CENTER">
+            <TitleLabel fx:id="stabilityLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="70.0" text="1.0" textAlignment="CENTER">
                 <font>
                     <Font size="46.0" />
                 </font>
@@ -77,11 +78,11 @@ limitations under the License. -->
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
-            <HighlightPane prefHeight="35.0" prefWidth="200.0" />
-            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="1" />
-            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="2" />
-            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="3" />
-            <HighlightPane prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="4" />
+            <HighlightPane fx:id="posStabilityPane1" prefHeight="35.0" prefWidth="200.0" />
+            <HighlightPane fx:id="posStabilityPane2" prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="1" />
+            <HighlightPane fx:id="posStabilityPane3" prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="2" />
+            <HighlightPane fx:id="posStabilityPane4" prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="3" />
+            <HighlightPane fx:id="posStabilityPane5" prefHeight="35.0" prefWidth="200.0" GridPane.columnIndex="4" />
             <HBox.margin>
                 <Insets bottom="15.0" top="15.0" />
             </HBox.margin>
@@ -91,12 +92,12 @@ limitations under the License. -->
       </VBox.margin>
     </HBox>
     <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="137.0" prefWidth="723.0" VBox.vgrow="NEVER">
-        <HighlightPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0"
+        <HighlightPane fx:id="realmPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0"
               prefWidth="200.0" HBox.hgrow="NEVER">
             <HBox.margin>
                 <Insets left="40.0"/>
             </HBox.margin>
-            <ImageView fx:id="realmImageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true"
+            <ImageView fx:id="realmImageView" fitHeight="180.0" pickOnBounds="true"
                        preserveRatio="true"/>
         </HighlightPane>
         <GridPane maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="182.0" prefWidth="342.0" HBox.hgrow="ALWAYS">
@@ -114,9 +115,9 @@ limitations under the License. -->
             <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="1150.0" text="National Unrest" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" />
             <BorderLabel alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="37.0" prefWidth="1068.0" text="National Unrest (Core)" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="1055.0" text="Stability per Month" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <BorderLabel fx:id="nationalUnrestBorderLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="37.0" prefWidth="1165.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" />
-            <BorderLabel fx:id="nuicpBorderLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="37.0" prefWidth="923.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <BorderLabel fx:id="stabilityPerMonthBorderLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="904.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <BorderLabel fx:id="nationalUnrestLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="37.0" prefWidth="1165.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" />
+            <BorderLabel fx:id="nuicpLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="37.0" prefWidth="923.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <BorderLabel fx:id="stabilityPerMonthLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="904.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
          <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="1116.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
          <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="879.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
          <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="1149.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
@@ -125,12 +126,12 @@ limitations under the License. -->
             <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
          </HBox.margin>
         </GridPane>
-        <HighlightPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0"
+        <HighlightPane fx:id="dynastyPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0"
               prefWidth="200.0" HBox.hgrow="NEVER">
             <HBox.margin>
                 <Insets right="40.0"/>
             </HBox.margin>
-            <ImageView fx:id="dynastyImageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true"
+            <ImageView fx:id="dynastyImageView" fitHeight="180.0" pickOnBounds="true"
                        preserveRatio="true"/>
         </HighlightPane>
       <VBox.margin>
@@ -156,16 +157,16 @@ limitations under the License. -->
         <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="911.0" text="Gouvernment Rank" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
         <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="788.0" text="Prestige" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
         <BorderLabel alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="698.0" text="Infamy" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-        <BorderLabel fx:id="diploRepBorderLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="177.0" prefWidth="230.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-        <BorderLabel fx:id="powerProjectionBorderLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="186.0" prefWidth="296.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-        <BorderLabel fx:id="legitimacyBorderLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="154.0" prefWidth="230.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-        <BorderLabel fx:id="govRankBorderLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="193.0" prefWidth="338.0" text="C" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-        <BorderLabel fx:id="prestigeBorderLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="186.0" prefWidth="244.0" text="0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+        <BorderLabel fx:id="diploRepLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="177.0" prefWidth="230.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+        <BorderLabel fx:id="powerProjectionLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="186.0" prefWidth="296.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+        <BorderLabel fx:id="legitimacyLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="154.0" prefWidth="230.0" text="0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+        <BorderLabel fx:id="govRankLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="193.0" prefWidth="338.0" text="C" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+        <BorderLabel fx:id="prestigeLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="186.0" prefWidth="244.0" text="0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
             <GridPane.margin>
                 <Insets />
             </GridPane.margin>
         </BorderLabel>
-        <BorderLabel fx:id="infamyBorderLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="103.0" prefWidth="107.0" text="0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+        <BorderLabel fx:id="infamyLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="103.0" prefWidth="107.0" text="0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <VBox.margin>
          <Insets bottom="20.0" left="40.0" right="40.0" top="10.0" />
       </VBox.margin>

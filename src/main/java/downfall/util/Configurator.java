@@ -126,7 +126,7 @@ public final class Configurator {
      * @param lastSavegamePathname Pathname to the last loaded rules.
      */
     public void setLastSavegamePathname(String lastSavegamePathname) {
-        configuration.setLastSavegamePathname(lastSavegamePathname);
+        configuration.setLastSavegamePathname(new PathRelativisor(lastSavegamePathname).relativize());
         saveConfiguration();
     }
 
@@ -145,7 +145,7 @@ public final class Configurator {
         userRealm.setPrestige(realm.getPrestige());
         userRealm.setStability(realm.getStability());
         userRealm.setRealmPathToGFX(realm.getRealmPathToGFX());
-        userRealm.setRulerPathToGFX(realm.getRulerPathToFX());
+        userRealm.setRulerPathToGFX(realm.getRulerPathToGFX());
 
         userRealm.getStockpile().clear();
         userRealm.getStockpile().addAll(realm.getStockpile());
@@ -222,7 +222,7 @@ public final class Configurator {
             Unmarshaller unmarshaller = context.createUnmarshaller();
             Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.FINE,"Rules config loading successfully completed.");
             Rules rules = (Rules) unmarshaller.unmarshal(rulesFile);
-            configuration.setLastRulesPathname(pathname);
+            configuration.setLastRulesPathname(new PathRelativisor(pathname).relativize());
             saveConfiguration();
             return rules;
         } catch (JAXBException | IllegalArgumentException e) {
@@ -267,7 +267,7 @@ public final class Configurator {
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(rules, file);
-            configuration.setLastRulesPathname(pathname);
+            configuration.setLastRulesPathname(new PathRelativisor(pathname).relativize());
             saveConfiguration();
             Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.FINE, "Rules saving successfully completed");
         } catch (JAXBException | IllegalArgumentException e) {

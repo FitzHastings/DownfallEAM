@@ -98,7 +98,6 @@ public abstract class Actor {
         return treasury;
     }
 
-
     /**
      * Lightweight accessor method.
      * @return Unique actor identifier. Should be unique for every save file.

@@ -236,6 +236,7 @@ AnchorPane {
 Button,
 ImageChooserButton {
     -fx-background-color: #343d44;
+    -fx-background-radius: 10;
     -fx-border-radius: 10;
     -fx-border-width: 1;
     -fx-border-color: #9aa2a6;
@@ -246,6 +247,7 @@ ImageChooserButton {
 Button: hover,
 ImageChooserButton: hover {
     -fx-background-color: #343d44;
+    -fx-background-radius: 10;
     -fx-border-radius: 10;
     -fx-border-width: 1;
     -fx-border-color: #a34097;
@@ -256,6 +258,7 @@ ImageChooserButton: hover {
 Button: pressed,
 ImageChooserButton: pressed {
     -fx-background-color: #21282c;
+    -fx-background-radius: 10;
     -fx-border-radius: 10;
     -fx-border-width: 1;
     -fx-border-color: #a34097;
@@ -272,6 +275,10 @@ ImageChooserButton: pressed {
     -fx-background-color: #343d44;
     -fx-border-width: 1;
     -fx-border-color: #9aa2a6;
+}
+
+.check-box:hover .box {
+    -fx-border-color: #a34097;
 }
 
 .check-box:selected .box {

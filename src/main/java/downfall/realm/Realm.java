@@ -214,7 +214,7 @@ public class Realm extends Actor{
      * @return path to the image of a flag/coat of arms that represents the ruling body.
      */
     @XmlElement(name = "ruler-path-to-gfx")
-    public String getRulerPathToFX() {
+    public String getRulerPathToGFX() {
         return rulerPathToGFX.get();
     }
 

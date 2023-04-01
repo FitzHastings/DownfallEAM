@@ -25,7 +25,7 @@ import javafx.scene.layout.VBox;
 
 /**
  *  JavaFX GUI element that contains a table, content of which can be edited with add and remove actions.
- * @param <T> type of item that is edited in
+ * @param <T> Type of item that is edited in the SimpleTableEditor.
  */
 public class SimpleTableEditor<T> extends VBox {
     final TableView<T> tableView = new TableView<>();
@@ -35,7 +35,7 @@ public class SimpleTableEditor<T> extends VBox {
     Fetcher<T> fetcher;
 
     /**
-     * Default constructor sets items and fetcher and columns to null
+     * Default constructor sets items and fetcher and columns to null.
      */
     public SimpleTableEditor() {
         this(null, null);
@@ -43,8 +43,8 @@ public class SimpleTableEditor<T> extends VBox {
 
     /**
      * Constructor that sets columns to null
-     * @param items items to be displayed by the TableView
-     * @param fetcher a fetcher class that will be used when adding new items to the list
+     * @param items Items to be displayed by the TableView.
+     * @param fetcher A fetcher that will be used when adding new items to the list. This fetcher should be initialized before providing it to the SimpleTableEditor.
      */
     SimpleTableEditor(ObservableList<T> items, Fetcher<T> fetcher) {
         this(items, fetcher, null);
@@ -53,7 +53,7 @@ public class SimpleTableEditor<T> extends VBox {
     /**
      *
      * @param items items to be displayed by the TableView
-     * @param fetcher a fetcher class that will be used when adding new items to the list
+     * @param fetcher A fetcher that will be used when adding new items to the list. This fetcher should be initialized before providing it to the SimpleTableEditor.
      * @param columns columns that will be added to the TableView
      */
     SimpleTableEditor(ObservableList<T> items, Fetcher<T> fetcher, TableColumn<T, ?>... columns) {
@@ -81,8 +81,16 @@ public class SimpleTableEditor<T> extends VBox {
     }
 
     /**
+     * Lightweight accessor.
+     * @return tableView that is used inside
+     */
+    public TableView<T> getTableView() {
+        return tableView;
+    }
+
+    /**
      * Lightweight mutator. Sets items directly into the TableView
-     * @param items items to be set
+     * @param items items to be set to the TableView.
      */
     public void setItems(ObservableList<T> items) {
         tableView.setItems(items);
@@ -94,13 +102,5 @@ public class SimpleTableEditor<T> extends VBox {
      */
     public void setFetcher(Fetcher<T> fetcher) {
         this.fetcher = fetcher;
-    }
-
-    /**
-     * lightweight accessor
-     * @return tableView that is used inside
-     */
-    public TableView<T> getTableView() {
-        return tableView;
     }
 }

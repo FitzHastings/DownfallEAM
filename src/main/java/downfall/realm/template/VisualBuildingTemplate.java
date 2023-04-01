@@ -70,7 +70,6 @@ public final class VisualBuildingTemplate extends BuildingTemplate{
         super(id, name, inputMaterials, outputMaterials, defConstructionCost, constructionMaterials, defConstructionTime, operatesImmediately);
         this.pathToGFXProperty.setValue(pathToGFX);
         this.pathToGFXProperty.setValue(Configurator.getInstance().getDefBuildingGFXPathname());
-        updateGFX();
     }
 
     /**

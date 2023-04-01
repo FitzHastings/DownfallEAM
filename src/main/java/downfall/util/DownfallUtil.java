@@ -15,6 +15,7 @@
 package downfall.util;
 
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -46,6 +47,11 @@ public final class DownfallUtil {
     public final static Integer DEFAULT_MATERIAL_AMOUNT = 10;
     public final static String DEFAULT_LOGGER = "DownfallEAM";
 
+    public final static Color BACKGROUND_COLOR = Color.web("#181e21");
+    public final static Color HIGHLIGHT_COLOR = Color.web("#a34097");
+    public final static Color CONFIRM_COLOR = Color.web("#40A34C");
+
+
     private URL URLRealmScreenFXML;
     private URL URLMaterialsEditorFXML;
     private URL URLRealmEditorFXML;
@@ -53,8 +59,7 @@ public final class DownfallUtil {
     private URL URLTagsEditorFXML;
     private URL URLDownfallMainFXML;
 
-
-    private final static DownfallUtil  instance = new DownfallUtil();
+    private final static DownfallUtil instance = new DownfallUtil();
 
     public static DownfallUtil getInstance() {
         return instance;
@@ -131,7 +136,6 @@ public final class DownfallUtil {
      */
     public URL getURLRealmEditorFXML() { return URLRealmEditorFXML; }
 
-
     /**
      * Lightweight accessor method.
      * @return URL to an FXML file that contains Downfall Main UI.
@@ -147,6 +151,7 @@ public final class DownfallUtil {
     public URL getURLRealmScreenFXML() {
         return URLRealmScreenFXML;
     }
+
     /**
      *  Loads an image from a given pathname.
      *  Lightweight method. Quickly constructs a URL by adding "file:" to a given pathname and returns a new image made from that URL

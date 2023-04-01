@@ -16,5 +16,8 @@ package downfall.fx.css;
 
 import javafx.scene.layout.HBox;
 
+/**
+ * This class exists exclusively to be styled in css.
+ */
 public class DarkerHBox extends HBox {
 }

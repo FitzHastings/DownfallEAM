@@ -66,7 +66,6 @@ public final class VisualMaterialTemplate extends MaterialTemplate{
         super(name, id, defExportPrice, defImportPrice, isExportable, isEphemeral);
         this.pathToGFXProperty.setValue(pathToGFX);
         this.pathToGFXProperty.setValue(Configurator.getInstance().getDefMaterialGFXPathname());
-        updateGFX();
     }
 
     /**

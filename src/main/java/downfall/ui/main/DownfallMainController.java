@@ -15,9 +15,11 @@
 package downfall.ui.main;
 
 import downfall.fx.ExitButton;
+import downfall.fx.LogoTableColumn;
 import downfall.fx.MaximizeButton;
 import downfall.fx.MinimizeButton;
 import downfall.realm.*;
+import downfall.realm.template.VisualMaterialTemplate;
 import downfall.ui.StageController;
 import downfall.ui.editor.BuildingsEditorController;
 import downfall.ui.editor.MaterialsEditorController;
@@ -26,22 +28,24 @@ import downfall.ui.editor.TagsEditorController;
 import downfall.ui.main.tabs.RealmScreenController;
 import downfall.util.Configurator;
 import downfall.util.DownfallUtil;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
+import javafx.util.converter.NumberStringConverter;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Controller for the main GUI of Downfall EAM.
@@ -96,6 +100,12 @@ public class DownfallMainController implements StageController {
     @FXML
     private MenuBar menuBar;
 
+    @FXML
+    private Label treasuryLabel;
+
+    @FXML
+    private TableView<Material> stockpileTableView;
+
     private Stage stage;
 
     private Double xOffset;
@@ -103,6 +113,10 @@ public class DownfallMainController implements StageController {
     private Double yOffset;
 
     final RealmScreenController realmScreenController = new RealmScreenController();
+
+    private static final String STOCKPILE_NAME_COLUMN_NAME = "Stockpile";
+    private static final String STOCKPILE_AMOUNT_COLUMN_NAME = "#";
+    private static final Integer STOCKPILE_AMOUNT_COLUMN_WIDTH = 50;
 
     /**
      * Initialize method that is called automatically after the FXML has finished loading. Initializes all UI elements before they are displayed
@@ -112,7 +126,11 @@ public class DownfallMainController implements StageController {
         materialsEditItem.setOnAction(e -> openEditor(DownfallUtil.getInstance().getURLMaterialsEditorFXML(), new MaterialsEditorController(), "Materials Editor"));
         buildingsEditItem.setOnAction(e -> openEditor(DownfallUtil.getInstance().getURLBuildingsEditorFXML(), new BuildingsEditorController(), "Buildings Editor"));
         tagsEditItem     .setOnAction(e -> openEditor(DownfallUtil.getInstance().getURLTagsEditorFXML(),      new TagsEditorController(),      "Tags Editor"));
-        newRealm         .setOnAction(e -> openEditor(DownfallUtil.getInstance().getURLRealmEditorFXML(),     new RealmEditorController(),     "New Realm"));
+
+        newRealm.setOnAction(e -> {
+            openEditor(DownfallUtil.getInstance().getURLRealmEditorFXML(), new RealmEditorController(), "New Realm");
+            update();
+        });
 
         importRulesItem.setOnAction(e -> importRules());
         exportRulesItem.setOnAction(e -> exportRules());
@@ -139,7 +157,38 @@ public class DownfallMainController implements StageController {
             }
         });
 
+        //intialize Stockpile TableView
+        LogoTableColumn<Material> stockpileLogoColumn = new LogoTableColumn<>();
+        stockpileLogoColumn.setDefaultSizePolicy();
+        stockpileLogoColumn.setCellValueFactory(e-> {
+            VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
+            if(template == null)
+                Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
+            return template.pathToGFXProperty();
+        });
+
+        TableColumn<Material, String> stockpileNameColumn = new TableColumn<>(STOCKPILE_NAME_COLUMN_NAME);
+        stockpileNameColumn.setCellValueFactory(e ->{
+            VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
+            if(template == null)
+                Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
+            return template.nameProperty();
+        });
+
+        TableColumn<Material, Integer> stockpileAmountColumn = new TableColumn<>(STOCKPILE_AMOUNT_COLUMN_NAME);
+        stockpileAmountColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        stockpileAmountColumn.setCellValueFactory(e -> e.getValue().amountProperty().asObject());
+        stockpileAmountColumn.setEditable(true);
+        stockpileAmountColumn.setPrefWidth(STOCKPILE_AMOUNT_COLUMN_WIDTH);
+        stockpileAmountColumn.setMinWidth(STOCKPILE_AMOUNT_COLUMN_WIDTH*1.5);
+        stockpileAmountColumn.setMaxWidth(STOCKPILE_AMOUNT_COLUMN_WIDTH*2);
+
+        stockpileTableView.getColumns().addAll(stockpileLogoColumn, stockpileNameColumn, stockpileAmountColumn);
+        stockpileTableView.setItems(Configurator.getInstance().getUserRealm().getStockpile());
+
         initializeTabs();
+
+        update();
     }
 
     /**
@@ -169,7 +218,7 @@ public class DownfallMainController implements StageController {
             stage.setScene(scene);
             stage.initOwner(this.stage);
             stage.setTitle(title);
-            stage.show();
+            stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -229,6 +278,15 @@ public class DownfallMainController implements StageController {
     }
 
     /**
+     * Executes general update sequence for all scene elements.
+     */
+    private void update() {
+        treasuryLabel.textProperty().bindBidirectional(Configurator.getInstance().getUserRealm().treasuryProperty(), new NumberStringConverter());
+
+        updateTabs();
+    }
+
+    /**
      * Forces an update on all tabs.
      */
     private void updateTabs() {
@@ -240,50 +298,6 @@ public class DownfallMainController implements StageController {
      */
     private void updateRealmTab() {
         realmScreenController.update();
-    }
-
-    /**
-     * Generates new test realm, and sets it as a user's realm.
-     */
-    private void newRealmAction() {
-        Configurator.getInstance().getUserRealm().setInfamy(10);
-        Configurator.getInstance().getUserRealm().setLegitimacy(50);
-        Configurator.getInstance().getUserRealm().setDiplomaticReputation(1);
-        Configurator.getInstance().getUserRealm().setPrestige(50);
-        Configurator.getInstance().getUserRealm().setStability(0.0);
-        Configurator.getInstance().getUserRealm().setPowerProjection(0);
-        Configurator.getInstance().getUserRealm().setTreasury(24000);
-        Configurator.getInstance().getUserRealm().setName("Test Realm");
-
-        ObservableList<Material> materials = FXCollections.observableArrayList();
-        materials.add(new Material(1, 10));
-        materials.add(new Material(2,10));
-        materials.add(new Material(3,20));
-        materials.add(new Material(4, 20));
-        materials.add(new Material(5, 20));
-        materials.add(new Material(6, 10));
-        materials.add(new Material(7, 5));
-        materials.add(new Material(8, 5));
-        materials.add(new Material(9, 10));
-        materials.add(new Material(10, 20));
-        Configurator.getInstance().getUserRealm().setStockpile(materials);
-
-        ObservableList<Tag> tags = FXCollections.observableArrayList();
-        tags.add(new Tag(1,"Reichstpakt", true));
-        tags.add(new Tag(2,"Test Faction", true));
-        tags.add(new Tag(3,"Custom Faction", true));
-        tags.add(new Tag(4,"Player Faction", true));
-        tags.add(new Tag(5,"Test Tag", false));
-        tags.add(new Tag(6,"Custom Tag", false));
-        tags.add(new Tag(7,"Player Tag", false));
-        tags.add(new Tag(8,"Bim Bam Bom", false));
-        Configurator.getInstance().getUserRealm().setTags(tags);
-
-        ObservableList<Building> buildings = FXCollections.observableArrayList();
-        buildings.add(new Building(1, true));
-        buildings.add(new Building(1, true));
-        buildings.add(new Building(2, false));
-        Configurator.getInstance().getUserRealm().setOwnedBuildings(buildings);
     }
 
     /**

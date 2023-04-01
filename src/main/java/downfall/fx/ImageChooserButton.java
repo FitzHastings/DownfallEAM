@@ -15,6 +15,7 @@
 package downfall.fx;
 
 import downfall.util.DownfallUtil;
+import downfall.util.PathRelativisor;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputControl;
 import javafx.stage.FileChooser;
@@ -77,8 +78,10 @@ public class ImageChooserButton extends Button {
             chooser.setTitle("Choose Your Image Wisely");
             File fileChosen = chooser.showOpenDialog(this.getScene().getWindow());
             if(output != null)
-                if(fileChosen != null)
-                    output.setText(fileChosen.getPath());
+                if(fileChosen != null) {
+                    PathRelativisor relativisor = new PathRelativisor(fileChosen);
+                    output.setText(relativisor.relativize());
+                }
                 else
                     Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.INFO, "ImageChooserButton: No File Chosen, content of output was not changed.");
             else
