@@ -47,7 +47,7 @@ public class SimpleTableEditor<T> extends VBox {
      * @param fetcher A fetcher that will be used when adding new items to the list. This fetcher should be initialized before providing it to the SimpleTableEditor.
      */
     SimpleTableEditor(ObservableList<T> items, Fetcher<T> fetcher) {
-        this(items, fetcher, (TableColumn<T, ?>) null);
+        this(items, fetcher, null);
     }
 
     /**
@@ -76,7 +76,7 @@ public class SimpleTableEditor<T> extends VBox {
                 tableView.getItems().removeAll(tableView.getSelectionModel().getSelectedItems());
         });
 
-        if(columns != null)
+        if(columns != null && columns.length != 0)
             tableView.getColumns().addAll(columns);
     }
 
