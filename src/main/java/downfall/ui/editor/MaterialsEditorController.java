@@ -35,8 +35,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *  Controller class for the Materials Editor.
- *  Controls /fxml/MaterialsEditor.fxml and is annotated with @FXML where it references that FXML file.
+ *  Controller class for the Materials Editor. It is responsible for the creation and editing of VisualMaterialTemplates in the current ruleset.
+ *  Controls /fxml/editors/MaterialsEditor.fxml and is annotated with @FXML where it references that FXML file.
  */
 public final class MaterialsEditorController implements StageController {
     @FXML

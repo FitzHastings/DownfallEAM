@@ -13,10 +13,10 @@
 // limitations under the License.
 
 open module downfall {
-    requires javafx.controls;
     requires javafx.fxml;
-
-    requires com.sun.xml.bind;
+    requires jakarta.xml.bind;
+    requires java.logging;
+    requires javafx.controls;
 
     exports downfall;
     exports downfall.fx.fetcher;

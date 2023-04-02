@@ -20,9 +20,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Button that minimizes the stage that is provided to it on action.
+ * Button that iconifies (minimizes) the stage that is provided to it on action.
  */
 public class MinimizeButton extends StageControlButton{
+
+    /**
+     * Initializes the behaviour of the button.
+     * onAction if the stage provided to it is not null it will iconify (minimize) the stage.
+     */
     @Override
     protected void initBehaviour() {
         this.setOnAction(e -> {

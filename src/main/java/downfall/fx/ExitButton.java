@@ -23,6 +23,11 @@ import java.util.logging.Logger;
  * Button that closes the stage that is provided to it, on action.
  */
 public class ExitButton extends StageControlButton {
+
+    /**
+     * Initializes the behaviour of the button.
+     * onAction if the stage provided to it is not null it will close that stage.
+     */
     @Override
     protected void initBehaviour() {
         this.setOnAction(e-> {

@@ -17,7 +17,7 @@ package downfall.fx.css;
 import javafx.scene.layout.Pane;
 
 /**
- * This class is designed for css styles.
+ * This class exists exclusively to be styled in css.
  */
 public class HighlightPane extends Pane {
 }

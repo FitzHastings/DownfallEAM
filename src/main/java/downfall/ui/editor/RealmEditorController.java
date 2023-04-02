@@ -36,9 +36,14 @@ import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Controller class for the Realm Editor. It is responsible for the creation of new Realms.
+ * Controls /fxml/editors/RealmEditor.fxml and is annotated with @FXML where it references that FXML file.
+ */
 public class RealmEditorController implements StageController {
     @FXML
     private Button cancelButton;
@@ -109,6 +114,7 @@ public class RealmEditorController implements StageController {
         Realm realm = new Realm();
 
         //bind textFields
+        realmNameTextField.textProperty()       .bindBidirectional(realm.nameProperty());
         treasuryTextField.textProperty()        .bindBidirectional(realm.treasuryProperty(),                new NumberStringConverter());
         diploRepTextField.textProperty()        .bindBidirectional(realm.diplomaticReputationProperty(),    new NumberStringConverter());
         powerProjectionTextField.textProperty() .bindBidirectional(realm.powerProjectionProperty(),         new NumberStringConverter());
@@ -147,7 +153,7 @@ public class RealmEditorController implements StageController {
             VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
             if(template == null)
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
-            return template.pathToGFXProperty();
+            return Objects.requireNonNull(template).pathToGFXProperty();
         });
 
         TableColumn<Material, String> stockpileNameColumn = new TableColumn<>(STOCKPILE_NAME_COLUMN_NAME);
@@ -155,7 +161,7 @@ public class RealmEditorController implements StageController {
             VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
             if(template == null)
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
-            return template.nameProperty();
+            return Objects.requireNonNull(template).nameProperty();
         });
 
         TableColumn<Material, Integer> stockpileAmountColumn = new TableColumn<>(STOCKPILE_AMOUNT_COLUMN_NAME);

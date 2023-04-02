@@ -36,12 +36,13 @@ import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Controller class for the Building Editor.
- * Controls /fxml/BuildingsEditor.fxml and is annotated with @FXML where it references that FXML file.
+ * Controller class for the Buildings Editor. It is responsible for the creation and editing of VisualBuildingTemplates in the current ruleset.
+ * Controls /fxml/editors/BuildingsEditor.fxml and is annotated with @FXML where it references that FXML file.
  */
 public final class BuildingsEditorController implements StageController {
 
@@ -155,7 +156,7 @@ public final class BuildingsEditorController implements StageController {
             VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
             if(template == null)
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
-            return template.pathToGFXProperty();
+            return Objects.requireNonNull(template).pathToGFXProperty();
         });
 
         TableColumn<Material, String> nameColumn = new TableColumn<>(nameColumnTitle);
@@ -163,7 +164,7 @@ public final class BuildingsEditorController implements StageController {
             VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
             if(template == null)
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
-            return template.nameProperty();
+            return Objects.requireNonNull(template).nameProperty();
         });
 
 

@@ -17,7 +17,7 @@ package downfall.fx.css;
 import javafx.scene.control.Label;
 
 /**
- * This class is designed for css styles.
+ * This class exists exclusively to be styled in css.
  */
 public class BorderLabel extends Label {
 }

@@ -14,6 +14,10 @@
 
 package downfall.util;
 
+/**
+ * Interface for any class responsible for loading, saving and keeping track
+ * of the last location to which the last load or to which last save was done.
+ */
 public interface SaveManager {
     /**
      * Loads and applies the savegame from last pathname used and attempts to find,

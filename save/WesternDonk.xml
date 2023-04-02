@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<downfall-save>
+    <path-to-rules>rules\secondary.xml</path-to-rules>
+    <user-realm>
+        <id>0</id>
+        <name>Western Donk</name>
+        <owned-buildings/>
+        <stockpile>
+            <material>
+                <amount>50</amount>
+                <template-id>2</template-id>
+            </material>
+            <material>
+                <amount>100</amount>
+                <template-id>3</template-id>
+            </material>
+            <material>
+                <amount>1000</amount>
+                <template-id>5</template-id>
+            </material>
+            <material>
+                <amount>10000</amount>
+                <template-id>6</template-id>
+            </material>
+            <material>
+                <amount>100000</amount>
+                <template-id>7</template-id>
+            </material>
+        </stockpile>
+        <tags>
+            <tag>
+                <factional>true</factional>
+                <id>1</id>
+                <value>Reichstpakt</value>
+            </tag>
+            <tag>
+                <factional>false</factional>
+                <id>28</id>
+                <value>Culture: Parnasian</value>
+            </tag>
+            <tag>
+                <factional>false</factional>
+                <id>28</id>
+                <value>Lowlands</value>
+            </tag>
+            <tag>
+                <factional>false</factional>
+                <id>28</id>
+                <value>Shadow Kingdom</value>
+            </tag>
+        </tags>
+        <treasury>2300</treasury>
+        <diplomatic-reputation>5</diplomatic-reputation>
+        <infamy>2</infamy>
+        <legitimacy>50</legitimacy>
+        <power-projection>4</power-projection>
+        <prestige>10</prestige>
+        <realm-path-to-gfx>C:\Users\LuxMundi\Downloads\Smeinokradz.png</realm-path-to-gfx>
+        <ruler-path-to-gfx>C:\Users\LuxMundi\Downloads\Croix.png</ruler-path-to-gfx>
+        <stability>4.9</stability>
+    </user-realm>
+</downfall-save>

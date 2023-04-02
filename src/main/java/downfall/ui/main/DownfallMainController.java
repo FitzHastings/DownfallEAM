@@ -44,12 +44,13 @@ import javafx.util.converter.NumberStringConverter;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * Controller for the main GUI of Downfall EAM.
- * Controls /fxml/DownfallMain.fxml and is annotated with @FXML where it references that FXML file.
+ * Controls /fxml/main/DownfallMain.fxml and is annotated with @FXML where it references that FXML file.
  */
 public class DownfallMainController implements StageController {
     @FXML
@@ -164,7 +165,7 @@ public class DownfallMainController implements StageController {
             VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
             if(template == null)
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
-            return template.pathToGFXProperty();
+            return Objects.requireNonNull(template).pathToGFXProperty();
         });
 
         TableColumn<Material, String> stockpileNameColumn = new TableColumn<>(STOCKPILE_NAME_COLUMN_NAME);
@@ -172,7 +173,7 @@ public class DownfallMainController implements StageController {
             VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
             if(template == null)
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
-            return template.nameProperty();
+            return Objects.requireNonNull(template).nameProperty();
         });
 
         TableColumn<Material, Integer> stockpileAmountColumn = new TableColumn<>(STOCKPILE_AMOUNT_COLUMN_NAME);

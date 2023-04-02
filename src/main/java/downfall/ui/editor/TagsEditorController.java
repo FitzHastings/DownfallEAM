@@ -26,6 +26,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+/**
+ *  Controller class for the Materials Editor. It is responsible for the creation and editing of VisualMaterialTemplates in the current ruleset.
+ *  Controls /fxml/editors/MaterialsEditor.fxml and is annotated with @FXML where it references that FXML file.
+ */
 public final class TagsEditorController implements StageController {
     @FXML
     CheckBox isFactionalCheckBox;

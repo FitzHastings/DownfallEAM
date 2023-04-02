@@ -24,6 +24,12 @@ import java.util.logging.Logger;
  * If the stage provided is already maximized it unmaximizes it.
  */
 public class MaximizeButton extends StageControlButton{
+
+    /**
+     * Initializes the behaviour of the button.
+     * onAction if the stage provided to it is not null it will maximize that stage if it isn't maximized.
+     * If the stage provided to it is already maximized it will unmaximize it.
+     */
     @Override
     protected void initBehaviour() {
         this.setOnAction(e-> {

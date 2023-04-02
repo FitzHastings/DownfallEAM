@@ -7,7 +7,13 @@
     <groupId>org.example</groupId>
     <artifactId>Downfall</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Internal repo</name>
+            <url>file:C:\CST3000\DownfallEAM</url>
+        </repository>
+    </distributionManagement>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>

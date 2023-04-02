@@ -27,6 +27,10 @@ import javafx.stage.StageStyle;
  * Main application class of Downfall.
  */
 public final class DownfallMain extends Application {
+    /**
+     * Launches the JavaFX application.
+     * @param args Program arguments. Ignored.
+     */
     public static void main(String[] args) {
         launch();
     }

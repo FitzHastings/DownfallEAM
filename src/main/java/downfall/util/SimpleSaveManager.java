@@ -25,6 +25,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Simple implementation of save manager that uses the Configurator class to store the LastSavegamePathname.
+ * If a savegame is loaded it also tries to find, load and apply the rules that were used when last saving this savegame.
+ */
 final class SimpleSaveManager implements SaveManager{
     /**
      * Loads and applies the savegame from last pathname used and attempts to find,

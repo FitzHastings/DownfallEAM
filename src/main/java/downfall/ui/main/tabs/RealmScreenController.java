@@ -32,6 +32,7 @@ import javafx.scene.layout.*;
 /**
  * A controller that controls the content of the Realm Tab.
  * It displays user's realm Data allowing the user to see a quick overview of the state of their realm.
+ * Controls /fxml/main/tabs/RealmScreenController.fxml and is annotated with @FXML where it references that FXML file.
  */
 public class RealmScreenController {
     @FXML
@@ -247,13 +248,13 @@ public class RealmScreenController {
     }
 
     /**
-     *  Binds the background property to a new Background that is created with one of the two fills depending on wether the Stability of the realm "exceeds" the threshold given.
-     *  "exceeds" for the purposes of this method means <= to threshold if lessThanThreshold is true and >= if it is false.
-     * @param stabilityPane Pane to whose background needs to be updated.
+     *  Binds the background property to a new Background that is created with one of the two fills depending on whether the Stability of the realm "exceeds" the threshold given.
+     *  "exceeds" for the purposes of this method means less than or equal to threshold if lessThanThreshold is true and greater or equal to the threshold if it is false.
+     * @param stabilityPane Pane whose background needs to be updated.
      * @param neutralFill BackgroundFill to be used if the userRealm's stability does not "exceed" the threshold.
      * @param activeFill BackgroundFill to be used if the userRealm's stability "exceeds" the threshold.
      * @param threshold Value of the threshold that needs to be "exceeded" in order for the active fill to be used instead of neutralFill.
-     * @param lessThanThreshold Controls if the threshold is "exceeded" when the UserRealm's stability is <= or >= than the threshold provided.
+     * @param lessThanThreshold Controls if the threshold is "exceeded" when the UserRealm's stability is less than or equal to, or greater than or equal to the threshold provided.
      */
     private void updateStabilityPane( Pane stabilityPane, BackgroundFill neutralFill, BackgroundFill activeFill, Double threshold,Boolean lessThanThreshold) {
         //TODO:Find a more refined way of doing this.

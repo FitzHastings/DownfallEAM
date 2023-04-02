@@ -39,7 +39,7 @@ public final class DownfallUtil {
     public final static String DEFAULT_MATERIAL_GFX_PATHNAME = "gfx/materials/orb.png";
     public final static String DEFAULT_BUILDING_GFX_PATHNAME = "gfx/buildings/houseSmall.png";
 
-    public final static String DEFAULT_CONFIG_PATHNAME = "conf/conf.xml";
+    public final static String DEFAULT_CONFIG_PATHNAME = "conf.xml";
     public final static String DEFAULT_RULES_PATHNAME = "rules/default.xml";
 
     public final static String MAIN_CSS_RESOURCE = "css/Eraconstas.css";
