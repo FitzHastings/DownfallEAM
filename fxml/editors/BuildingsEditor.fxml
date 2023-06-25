@@ -30,9 +30,9 @@ limitations under the License. -->
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import downfall.fx.SimpleTableEditor?>
+<?import net.dragondelve.mabel.button.SimpleTableEditor?>
 
-<?import downfall.fx.ImageChooserButton?>
+<?import net.dragondelve.mabel.button.ImageChooserButton?>
 <?import downfall.fx.css.PromptLabel?>
 <BorderPane fx:id="rootPane" prefHeight="484.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <center>

@@ -12,12 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-open module downfall {
+open module net.dragondelve.downfall {
     requires javafx.fxml;
     requires jakarta.xml.bind;
-    requires java.logging;
     requires javafx.controls;
 
-    exports downfall;
-    exports downfall.fx.fetcher;
+    exports net.dragondelve.mabel.fetcher;
+    exports net.dragondelve.downfall;
 }

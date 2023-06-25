@@ -117,7 +117,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <main role="main">
 <div class="header">
 <div class="subTitle"><span class="moduleLabelInType">Module</span>&nbsp;<a href="../../../module-summary.html">downfall</a></div>
-<div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">downfall.fx.fetcher</a></div>
+<div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">net.dragondelve.mabel.fetcher</a></div>
 <h2 title="Class ConversionMaterialFetcher" class="title">Class ConversionMaterialFetcher</h2>
 </div>
 <div class="contentContainer">
@@ -140,10 +140,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li>javafx.scene.layout.VBox</li>
 <li>
 <ul class="inheritance">
-<li><a href="TableFetcherBase.html" title="class in downfall.fx.fetcher">downfall.fx.fetcher.TableFetcherBase</a>&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&gt;</li>
+<li><a href="TableFetcherBase.html" title="class in net.dragondelve.mabel.fetcher">net.dragondelve.mabel.fetcher.TableFetcherBase</a>&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&gt;</li>
 <li>
 <ul class="inheritance">
-<li>downfall.fx.fetcher.ConversionMaterialFetcher</li>
+<li>net.dragondelve.mabel.fetcher.ConversionMaterialFetcher</li>
 </ul>
 </li>
 </ul>
@@ -164,12 +164,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="ConversionFetcher.html" title="interface in downfall.fx.fetcher">ConversionFetcher</a>&lt;<a href="../../realm/Material.html" title="class in downfall.realm">Material</a>,&#8203;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&gt;</code>, <code><a href="Fetcher.html" title="interface in downfall.fx.fetcher">Fetcher</a>&lt;<a href="../../realm/Material.html" title="class in downfall.realm">Material</a>&gt;</code>, <code>javafx.css.Styleable</code>, <code>javafx.event.EventTarget</code></dd>
+<dd><code><a href="ConversionFetcher.html" title="interface in net.dragondelve.mabel.fetcher">ConversionFetcher</a>&lt;<a href="../../realm/Material.html" title="class in net.dragondelve.realm">Material</a>,&#8203;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&gt;</code>, <code><a href="Fetcher.html" title="interface in net.dragondelve.mabel.fetcher">Fetcher</a>&lt;<a href="../../realm/Material.html" title="class in net.dragondelve.realm">Material</a>&gt;</code>, <code>javafx.css.Styleable</code>, <code>javafx.event.EventTarget</code></dd>
 </dl>
 <hr>
 <pre>public class <span class="typeNameLabel">ConversionMaterialFetcher</span>
-extends <a href="TableFetcherBase.html" title="class in downfall.fx.fetcher">TableFetcherBase</a>&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&gt;
-implements <a href="ConversionFetcher.html" title="interface in downfall.fx.fetcher">ConversionFetcher</a>&lt;<a href="../../realm/Material.html" title="class in downfall.realm">Material</a>,&#8203;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&gt;</pre>
+extends <a href="TableFetcherBase.html" title="class in net.dragondelve.mabel.fetcher">TableFetcherBase</a>&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&gt;
+implements <a href="ConversionFetcher.html" title="interface in net.dragondelve.mabel.fetcher">ConversionFetcher</a>&lt;<a href="../../realm/Material.html" title="class in net.dragondelve.realm">Material</a>,&#8203;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&gt;</pre>
 <div class="block">Implementation of a ConversionFetcher that generates a new instance Material based on a user selected VisualMaterialTemplate
  it uses TableView to display items provided to it in its initialize method. It does not support multiple selections being made</div>
 </li>
@@ -189,7 +189,7 @@ implements <a href="ConversionFetcher.html" title="interface in downfall.fx.fetc
 <li class="blockList"><a id="fields.inherited.from.class.downfall.fx.fetcher.TableFetcherBase">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;downfall.fx.fetcher.<a href="TableFetcherBase.html" title="class in downfall.fx.fetcher">TableFetcherBase</a></h3>
+<h3>Fields inherited from class&nbsp;net.dragondelve.mabel.fetcher.<a href="TableFetcherBase.html" title="class in net.dragondelve.mabel.fetcher">TableFetcherBase</a></h3>
 <code><a href="TableFetcherBase.html#selectionIsMade">selectionIsMade</a>, <a href="TableFetcherBase.html#stage">stage</a>, <a href="TableFetcherBase.html#tableView">tableView</a></code></li>
 </ul>
 <ul class="blockList">
@@ -249,13 +249,13 @@ implements <a href="ConversionFetcher.html" title="interface in downfall.fx.fetc
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initialize(javafx.stage.Stage,javafx.collections.ObservableList)">initialize</a></span>&#8203;(javafx.stage.Stage&nbsp;parent,
-          javafx.collections.ObservableList&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&gt;&nbsp;items)</code></th>
+          javafx.collections.ObservableList&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&gt;&nbsp;items)</code></th>
 <td class="colLast">
 <div class="block">Creates a new stage that will be owned by the parent Stage.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../../realm/Material.html" title="class in downfall.realm">Material</a></code></td>
+<td class="colFirst"><code><a href="../../realm/Material.html" title="class in net.dragondelve.realm">Material</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#retrieve()">retrieve</a></span>()</code></th>
 <td class="colLast">
 <div class="block">This method will show a new stage with showAndWait().</div>
@@ -354,11 +354,11 @@ implements <a href="ConversionFetcher.html" title="interface in downfall.fx.fetc
 <li class="blockList">
 <h4>initialize</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;initialize&#8203;(javafx.stage.Stage&nbsp;parent,
-                       javafx.collections.ObservableList&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&gt;&nbsp;items)</pre>
+                       javafx.collections.ObservableList&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&gt;&nbsp;items)</pre>
 <div class="block">Creates a new stage that will be owned by the parent Stage. sets the provided list of items to the Table View.  It should always be run before its retrieve method.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="ConversionFetcher.html#initialize(javafx.stage.Stage,javafx.collections.ObservableList)">initialize</a></code>&nbsp;in interface&nbsp;<code><a href="ConversionFetcher.html" title="interface in downfall.fx.fetcher">ConversionFetcher</a>&lt;<a href="../../realm/Material.html" title="class in downfall.realm">Material</a>,&#8203;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&gt;</code></dd>
+<dd><code><a href="ConversionFetcher.html#initialize(javafx.stage.Stage,javafx.collections.ObservableList)">initialize</a></code>&nbsp;in interface&nbsp;<code><a href="ConversionFetcher.html" title="interface in net.dragondelve.mabel.fetcher">ConversionFetcher</a>&lt;<a href="../../realm/Material.html" title="class in net.dragondelve.realm">Material</a>,&#8203;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>parent</code> - a parent stage that will be set as an owner of the stage displayed by the ConversionMaterialFetcher if a null is provided it will not set any owners for the stage.</dd>
 <dd><code>items</code> - a list of items to be displayed in the TableView if a null is provided it will load a list in the current ruleset</dd>
@@ -371,11 +371,11 @@ implements <a href="ConversionFetcher.html" title="interface in downfall.fx.fetc
 <ul class="blockListLast">
 <li class="blockList">
 <h4>retrieve</h4>
-<pre class="methodSignature">public&nbsp;<a href="../../realm/Material.html" title="class in downfall.realm">Material</a>&nbsp;retrieve()</pre>
+<pre class="methodSignature">public&nbsp;<a href="../../realm/Material.html" title="class in net.dragondelve.realm">Material</a>&nbsp;retrieve()</pre>
 <div class="block">This method will show a new stage with showAndWait(). after a selection is made by the user this function will return a new Material</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="Fetcher.html#retrieve()">retrieve</a></code>&nbsp;in interface&nbsp;<code><a href="Fetcher.html" title="interface in downfall.fx.fetcher">Fetcher</a>&lt;<a href="../../realm/Material.html" title="class in downfall.realm">Material</a>&gt;</code></dd>
+<dd><code><a href="Fetcher.html#retrieve()">retrieve</a></code>&nbsp;in interface&nbsp;<code><a href="Fetcher.html" title="interface in net.dragondelve.mabel.fetcher">Fetcher</a>&lt;<a href="../../realm/Material.html" title="class in net.dragondelve.realm">Material</a>&gt;</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a new instance of Material created from a VisualMaterialTemplate if a selection is made in the table, if it wasn't made returns null instead.</dd>
 </dl>

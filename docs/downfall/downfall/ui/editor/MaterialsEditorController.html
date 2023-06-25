@@ -117,7 +117,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <main role="main">
 <div class="header">
 <div class="subTitle"><span class="moduleLabelInType">Module</span>&nbsp;<a href="../../../module-summary.html">downfall</a></div>
-<div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">downfall.ui.editor</a></div>
+<div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">net.dragondelve.ui.editor</a></div>
 <h2 title="Class MaterialsEditorController" class="title">Class MaterialsEditorController</h2>
 </div>
 <div class="contentContainer">
@@ -125,7 +125,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>downfall.ui.editor.MaterialsEditorController</li>
+<li>net.dragondelve.downfall.ui.editor.MaterialsEditorController</li>
 </ul>
 </li>
 </ul>
@@ -134,12 +134,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="../StageController.html" title="interface in downfall.ui">StageController</a></code></dd>
+<dd><code><a href="../StageController.html" title="interface in net.dragondelve.ui">StageController</a></code></dd>
 </dl>
 <hr>
 <pre>public final class <span class="typeNameLabel">MaterialsEditorController</span>
 extends java.lang.Object
-implements <a href="../StageController.html" title="interface in downfall.ui">StageController</a></pre>
+implements <a href="../StageController.html" title="interface in net.dragondelve.ui">StageController</a></pre>
 <div class="block">Controller class for the Materials Editor. It is responsible for the creation and editing of VisualMaterialTemplates in the current ruleset.
   Controls /fxml/editors/MaterialsEditor.fxml and is annotated with @FXML where it references that FXML file.</div>
 </li>
@@ -188,12 +188,12 @@ implements <a href="../StageController.html" title="interface in downfall.ui">St
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>(package private) javafx.collections.ObservableList&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&gt;</code></td>
+<td class="colFirst"><code>(package private) javafx.collections.ObservableList&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#materials">materials</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>private <a href="../../fx/SimpleTableEditor.html" title="class in downfall.fx">SimpleTableEditor</a>&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&gt;</code></td>
+<td class="colFirst"><code>private <a href="../../fx/SimpleTableEditor.html" title="class in downfall.fx">SimpleTableEditor</a>&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#materialTemplateEditor">materialTemplateEditor</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -270,7 +270,7 @@ implements <a href="../StageController.html" title="interface in downfall.ui">St
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>private void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#displayMaterial(downfall.realm.template.VisualMaterialTemplate)">displayMaterial</a></span>&#8203;(<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&nbsp;materialTemplate)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#displayMaterial(downfall.realm.template.VisualMaterialTemplate)">displayMaterial</a></span>&#8203;(<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&nbsp;materialTemplate)</code></th>
 <td class="colLast">
 <div class="block">Binds the properties of a given material to all TextFields and CheckBoxes.</div>
 </td>
@@ -305,14 +305,14 @@ implements <a href="../StageController.html" title="interface in downfall.ui">St
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>private void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#unbindMaterial(downfall.realm.template.VisualMaterialTemplate)">unbindMaterial</a></span>&#8203;(<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&nbsp;template)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#unbindMaterial(downfall.realm.template.VisualMaterialTemplate)">unbindMaterial</a></span>&#8203;(<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&nbsp;template)</code></th>
 <td class="colLast">
 <div class="block">Unbinds the properties of a given materials from all TextFields and CheckBoxes.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>private boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#validateMaterial(downfall.realm.template.VisualMaterialTemplate)">validateMaterial</a></span>&#8203;(<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&nbsp;materialTemplate)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#validateMaterial(downfall.realm.template.VisualMaterialTemplate)">validateMaterial</a></span>&#8203;(<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&nbsp;materialTemplate)</code></th>
 <td class="colLast">
 <div class="block">Checks that it can read a file that is set as a pathToGFX.</div>
 </td>
@@ -365,7 +365,7 @@ implements <a href="../StageController.html" title="interface in downfall.ui">St
 <ul class="blockList">
 <li class="blockList">
 <h4>materialTemplateEditor</h4>
-<pre>private&nbsp;<a href="../../fx/SimpleTableEditor.html" title="class in downfall.fx">SimpleTableEditor</a>&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&gt; materialTemplateEditor</pre>
+<pre>private&nbsp;<a href="../../fx/SimpleTableEditor.html" title="class in downfall.fx">SimpleTableEditor</a>&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&gt; materialTemplateEditor</pre>
 </li>
 </ul>
 <a id="isExportableCheckBox">
@@ -437,7 +437,7 @@ implements <a href="../StageController.html" title="interface in downfall.ui">St
 <ul class="blockList">
 <li class="blockList">
 <h4>materials</h4>
-<pre>javafx.collections.ObservableList&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&gt; materials</pre>
+<pre>javafx.collections.ObservableList&lt;<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&gt; materials</pre>
 </li>
 </ul>
 <a id="stage">
@@ -499,7 +499,7 @@ implements <a href="../StageController.html" title="interface in downfall.ui">St
  Always should be called before the editor is displayed to the user.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../StageController.html#setStage(javafx.stage.Stage)">setStage</a></code>&nbsp;in interface&nbsp;<code><a href="../StageController.html" title="interface in downfall.ui">StageController</a></code></dd>
+<dd><code><a href="../StageController.html#setStage(javafx.stage.Stage)">setStage</a></code>&nbsp;in interface&nbsp;<code><a href="../StageController.html" title="interface in net.dragondelve.ui">StageController</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>stage</code> - Stage on which this controller is displayed.</dd>
 </dl>
@@ -531,7 +531,7 @@ implements <a href="../StageController.html" title="interface in downfall.ui">St
 <ul class="blockList">
 <li class="blockList">
 <h4>unbindMaterial</h4>
-<pre class="methodSignature">private&nbsp;void&nbsp;unbindMaterial&#8203;(<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&nbsp;template)</pre>
+<pre class="methodSignature">private&nbsp;void&nbsp;unbindMaterial&#8203;(<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&nbsp;template)</pre>
 <div class="block">Unbinds the properties of a given materials from all TextFields and CheckBoxes.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -545,7 +545,7 @@ implements <a href="../StageController.html" title="interface in downfall.ui">St
 <ul class="blockList">
 <li class="blockList">
 <h4>displayMaterial</h4>
-<pre class="methodSignature">private&nbsp;void&nbsp;displayMaterial&#8203;(<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&nbsp;materialTemplate)</pre>
+<pre class="methodSignature">private&nbsp;void&nbsp;displayMaterial&#8203;(<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&nbsp;materialTemplate)</pre>
 <div class="block">Binds the properties of a given material to all TextFields and CheckBoxes.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -559,7 +559,7 @@ implements <a href="../StageController.html" title="interface in downfall.ui">St
 <ul class="blockList">
 <li class="blockList">
 <h4>validateMaterial</h4>
-<pre class="methodSignature">private&nbsp;boolean&nbsp;validateMaterial&#8203;(<a href="../../realm/template/VisualMaterialTemplate.html" title="class in downfall.realm.template">VisualMaterialTemplate</a>&nbsp;materialTemplate)</pre>
+<pre class="methodSignature">private&nbsp;boolean&nbsp;validateMaterial&#8203;(<a href="../../realm/template/VisualMaterialTemplate.html" title="class in net.dragondelve.realm.template">VisualMaterialTemplate</a>&nbsp;materialTemplate)</pre>
 <div class="block">Checks that it can read a file that is set as a pathToGFX.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>

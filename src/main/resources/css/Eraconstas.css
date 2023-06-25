@@ -125,6 +125,10 @@ AnchorPane {
     -fx-background-color: #21282e;
 }
 
+.light-tool-bar {
+    -fx-background-color: #2b3439;
+}
+
 .list-view {
     -fx-padding: 8px;
     -fx-background-color: #2b3439;
@@ -331,6 +335,10 @@ ImageChooserButton: pressed {
     -fx-background-color: #181e21;
 }
 
+.slider .axis {
+    -fx-tick-label-fill: #9aa2a6;;
+}
+
 .slider .track {
     -fx-background-color: #7b868d;
 }
@@ -340,11 +348,84 @@ ImageChooserButton: pressed {
 }
 
 .slider .axis .axis-tick-mark, .slider .axis .axis-minor-tick-mark {
-    -fx-fill: null;
     -fx-stroke: #7b868d;
 }
 
-BorderLabel {
+.radio-button {
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 10pt "Arial";
+}
+
+.radio-button .radio {
+    -fx-background-color: #343d44;
+    -fx-border-width: 1;
+    -fx-border-radius: 120px;
+    -fx-border-color: #9aa2a6;
+}
+
+.radio-button:hover .radio {
+    -fx-border-radius: 120px;
+    -fx-border-width: 1;
+    -fx-border-color: #a34097;
+}
+
+.radio-button:selected .radio .dot {
+    -fx-background-color: #a34097;
+}
+
+.separator .line {
+    -fx-background-color: #9aa2a6;
+     -fx-border-color: transparent;
+}
+
+.choice-box {
+    -fx-background-color: #343d44;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-border-color: #9aa2a6;
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 10pt "Arial";
+}
+
+.choice-box {
+    -fx-background-color: #343d44;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-border-color: #9aa2a6;
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 10pt "Arial";
+}
+
+.choice-box .arrow {
+    -fx-background-color: #a34097;
+}
+
+.choice-box:hover {
+    -fx-background-color: #343d44;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-border-color: #a34097;
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 10pt "Arial";
+}
+
+.choice-box .label {
+    -fx-text-fill: #9aa2a6;
+    -fx-font: 10pt "Arial";
+}
+
+.choice-box :hover .label {
+    -fx-text-fill: #fefffe;
+}
+
+VBox {
+    -fx-background-color: #21282c;
+}
+
+.border-label {
     -fx-background-color: #343d44;
     -fx-border-width: 1;
     -fx-border-color: #7b868d;
@@ -352,17 +433,22 @@ BorderLabel {
     -fx-font: 12pt "Arial";
 }
 
-TitleLabel {
+.title-label {
     -fx-text-fill: #fefffe;
     -fx-font: 16pt "Arial";
 }
 
-PromptLabel {
+.prompt-label {
     -fx-text-fill: #9aa2a6;
     -fx-font: 10pt "Arial";
 }
 
-StabilityPane {
+.info-label {
+    -fx-text-fill: #7b868d;
+    -fx-font: 10pt "Arial";
+}
+
+.stability-pane {
     -fx-background-color: #181e21;
     -fx-background-radius: 15;
     -fx-border-radius: 15;
@@ -370,15 +456,15 @@ StabilityPane {
     -fx-border-color: #9aa2a6;
 }
 
-HighlightPane {
+.highlight-pane {
     -fx-background-color: #181e21;
     -fx-border-width: 1;
     -fx-border-color: #9aa2a6;
 }
 
-MinimizeButton,
-MaximizeButton,
-ExitButton {
+.minimize-button,
+.maximize-button,
+.exit-button {
     -fx-background-color: #181e21;
     -fx-text-fill: #9aa2a6;
     -fx-font: 10pt "Arial";
@@ -386,21 +472,21 @@ ExitButton {
     -fx-border-color: transparent;
 }
 
-MinimizeButton:hover,
-MaximizeButton:hover {
+.minimize-button,
+.maximize-button {
     -fx-border-color: #a34097;
 }
 
-ExitButton:hover {
--fx-border-color: #a34097;
+.exit-button:hover {
+    -fx-border-color: #a34097;
     -fx-background-color: #a34097;
     -fx-text-fill: #fefffe;
 }
 
-DarkerVBox {
+.darker-vbox {
     -fx-background-color: #181e21;
 }
 
-DarkerHBox {
+.darker-hbox {
     -fx-background-color: #181e21;
 }

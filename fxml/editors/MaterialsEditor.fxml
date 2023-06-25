@@ -23,8 +23,8 @@ limitations under the License. -->
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import downfall.fx.SimpleTableEditor?>
-<?import downfall.fx.ImageChooserButton ?>
+<?import net.dragondelve.mabel.button.SimpleTableEditor?>
+<?import net.dragondelve.mabel.button.ImageChooserButton ?>
 <?import downfall.fx.css.PromptLabel?>
 
 <SplitPane fx:id="rootPane" dividerPositions="0.3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="250.0" minWidth="400.0"

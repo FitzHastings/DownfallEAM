@@ -28,8 +28,8 @@ limitations under the License. -->
 <?import javafx.scene.layout.VBox?>
 
 <?import downfall.fx.css.PromptLabel?>
-<?import downfall.fx.SimpleTableEditor?>
-<?import downfall.fx.ImageChooserButton?>
+<?import net.dragondelve.mabel.button.SimpleTableEditor?>
+<?import net.dragondelve.mabel.button.ImageChooserButton?>
 
 <BorderPane fx:id="rootPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" minHeight="580">
    <center>
