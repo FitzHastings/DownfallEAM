@@ -14,20 +14,20 @@
 
 package net.dragondelve.downfall.realm.template;
 
-import net.dragondelve.downfall.util.Configurator;
-import net.dragondelve.downfall.util.DownfallUtil;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
+import net.dragondelve.downfall.util.Configurator;
+import net.dragondelve.downfall.util.DownfallUtil;
 
 /**
  * Template that is used when new materials are generated. It stores a pathname that leads to its GFX and an JavaFX Image if a reference to that is required.
  * This Class if fully annotated for use with JAXB to be exported to an XML File.
  */
-@XmlRootElement(name="gfx-material-template")
-public final class VisualMaterialTemplate extends MaterialTemplate{
+@XmlRootElement(name = "gfx-material-template")
+public final class VisualMaterialTemplate extends MaterialTemplate {
     private final StringProperty pathToGFXProperty = new SimpleStringProperty();
     private Image GFX;
     private Boolean gfxInitialized = false;
@@ -36,33 +36,33 @@ public final class VisualMaterialTemplate extends MaterialTemplate{
      * Default Constructor. it generates an invalid VisualMaterialTemplate with an id of -1
      */
     public VisualMaterialTemplate() {
-        this("",-1,-1,-1,false, false);
+        this("", -1, -1, -1, false, false);
     }
 
     /**
      * Initializes pathToGFX to the default MaterialGFXPathname defined in the current configuration.
-     * @param name Human-readable name of the materials to be generated with this template
-     * @param id Unique identifier used to differentiate different material templates
+     *
+     * @param name           Human-readable name of the materials to be generated with this template
+     * @param id             Unique identifier used to differentiate different material templates
      * @param defExportPrice Default export price
      * @param defImportPrice Default import price
-     * @param isExportable Value that determines if the material will be exportable from the realm
-     * @param isEphemeral Value that determines if the material can be stockpiled or stored
+     * @param isExportable   Value that determines if the material will be exportable from the realm
+     * @param isEphemeral    Value that determines if the material can be stockpiled or stored
      */
-    public VisualMaterialTemplate(String name, Integer id,Integer defExportPrice, Integer defImportPrice, Boolean isExportable, Boolean isEphemeral) {
+    public VisualMaterialTemplate(String name, Integer id, Integer defExportPrice, Integer defImportPrice, Boolean isExportable, Boolean isEphemeral) {
         this(name, id, defExportPrice, defImportPrice, isExportable, isEphemeral, Configurator.getInstance().getDefMaterialGFXPathname());
     }
 
     /**
-     *
-     * @param name Human-readable name of the materials to be generated with this template
-     * @param id Unique identifier used to differentiate different material templates
+     * @param name           Human-readable name of the materials to be generated with this template
+     * @param id             Unique identifier used to differentiate different material templates
      * @param defExportPrice Default export price
      * @param defImportPrice Default import price
-     * @param isExportable Value that determines if the material will be exportable from the realm
-     * @param isEphemeral Value that determines if the material can be stockpiled or stored
-     * @param pathToGFX String pathname to an image file that represents this material. That Image should be square, but isn't required to be square
+     * @param isExportable   Value that determines if the material will be exportable from the realm
+     * @param isEphemeral    Value that determines if the material can be stockpiled or stored
+     * @param pathToGFX      String pathname to an image file that represents this material. That Image should be square, but isn't required to be square
      */
-    public VisualMaterialTemplate(String name, Integer id,Integer defExportPrice, Integer defImportPrice, Boolean isExportable, Boolean isEphemeral, String pathToGFX) {
+    public VisualMaterialTemplate(String name, Integer id, Integer defExportPrice, Integer defImportPrice, Boolean isExportable, Boolean isEphemeral, String pathToGFX) {
         super(name, id, defExportPrice, defImportPrice, isExportable, isEphemeral);
         this.pathToGFXProperty.setValue(pathToGFX);
         this.pathToGFXProperty.setValue(Configurator.getInstance().getDefMaterialGFXPathname());
@@ -70,6 +70,7 @@ public final class VisualMaterialTemplate extends MaterialTemplate{
 
     /**
      * Lightweight accessor method.
+     *
      * @return pathname to an image file that represents this material as a property.
      */
     public StringProperty pathToGFXProperty() {
@@ -78,6 +79,7 @@ public final class VisualMaterialTemplate extends MaterialTemplate{
 
     /**
      * Updates the Image representation material to comply with the current value of pathToGFXProperty
+     *
      * @return new Image that has been updated.
      */
     public Image updateGFX() {
@@ -90,10 +92,11 @@ public final class VisualMaterialTemplate extends MaterialTemplate{
 
     /**
      * Lightweight accessor method that initiates graphics if they haven't been initialized
+     *
      * @return Image that represents this material.
      */
     public Image getGFX() {
-        if(!gfxInitialized)
+        if (!gfxInitialized)
             return updateGFX();
         else
             return GFX;
@@ -101,15 +104,17 @@ public final class VisualMaterialTemplate extends MaterialTemplate{
 
     /**
      * Lightweight accessor method.
+     *
      * @return String pathname to an image file that represents this material.
      */
-    @XmlElement(name="path-to-gfx")
+    @XmlElement(name = "path-to-gfx")
     public String getPathToGFX() {
         return pathToGFXProperty.get();
     }
 
     /**
      * Lightweight Mutator Method
+     *
      * @param pathToGFX String pathname to an image file that represents this material. That Image should be square, but isn't required to be square
      */
     public void setPathToGFX(String pathToGFX) {

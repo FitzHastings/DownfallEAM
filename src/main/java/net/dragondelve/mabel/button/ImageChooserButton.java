@@ -14,11 +14,11 @@
 
 package net.dragondelve.mabel.button;
 
-import net.dragondelve.downfall.util.DownfallUtil;
-import net.dragondelve.downfall.util.PathRelativisor;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputControl;
 import javafx.stage.FileChooser;
+import net.dragondelve.downfall.util.DownfallUtil;
+import net.dragondelve.downfall.util.PathRelativisor;
 
 import java.io.File;
 import java.util.logging.Level;
@@ -31,7 +31,7 @@ public class ImageChooserButton extends Button {
     TextInputControl output;
 
     /**
-     *  Default constructor. If you use the default constructor you must set output before the button can be triggered by the user.
+     * Default constructor. If you use the default constructor you must set output before the button can be triggered by the user.
      */
     public ImageChooserButton() {
         this(null);
@@ -39,6 +39,7 @@ public class ImageChooserButton extends Button {
 
     /**
      * If you use this constructor the text title of the button will be set the default value of to "..."
+     *
      * @param output a TextInputControl into which pathname to the chosen image will be written
      */
     public ImageChooserButton(TextInputControl output) {
@@ -49,11 +50,10 @@ public class ImageChooserButton extends Button {
     }
 
     /**
-     *
      * @param output a TextInputControl into which pathname to the chosen image will be written
-     * @param title text that is going to be displayed on the button.
+     * @param title  text that is going to be displayed on the button.
      */
-    public ImageChooserButton(TextInputControl output,String title) {
+    public ImageChooserButton(TextInputControl output, String title) {
         super(title);
         this.output = output;
         initBehaviour();
@@ -61,6 +61,7 @@ public class ImageChooserButton extends Button {
 
     /**
      * Lightweight mutator method
+     *
      * @param output a TextInputControl into which pathname to the chosen image will be written
      */
     public void setOutput(TextInputControl output) {
@@ -71,18 +72,17 @@ public class ImageChooserButton extends Button {
      * Initializes the default behaviour of the button.
      */
     private void initBehaviour() {
-        setOnAction(e->{
+        setOnAction(e -> {
             FileChooser chooser = new FileChooser();
-            chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("image","*.png"));
+            chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("image", "*.png"));
             chooser.setInitialDirectory(new File("gfx"));
             chooser.setTitle("Choose Your Image Wisely");
             File fileChosen = chooser.showOpenDialog(this.getScene().getWindow());
-            if(output != null)
-                if(fileChosen != null) {
+            if (output != null)
+                if (fileChosen != null) {
                     PathRelativisor relativisor = new PathRelativisor(fileChosen);
                     output.setText(relativisor.relativize());
-                }
-                else
+                } else
                     Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.INFO, "ImageChooserButton: No File Chosen, content of output was not changed.");
             else
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.SEVERE, "Attempting to set Text without setting an output first.");

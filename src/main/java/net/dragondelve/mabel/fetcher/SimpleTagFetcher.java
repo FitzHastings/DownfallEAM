@@ -24,6 +24,7 @@ public final class SimpleTagFetcher implements Fetcher<Tag> {
 
     /**
      * This method is used to return a new instance of Tag on request.
+     *
      * @return a new instance of Tag with its id set to be one larger than the last Tag in the currently selected rules
      */
     @Override
@@ -31,9 +32,9 @@ public final class SimpleTagFetcher implements Fetcher<Tag> {
         Tag tag = new Tag();
         //TODO:Replace this mess with a proper solution distributing IDs.
         //if there are any Tags in the current rules
-        if(Configurator.getInstance().getRules().getActorTags().size() > 1)
+        if (Configurator.getInstance().getRules().getActorTags().size() > 1)
             //set the new instance's id to be equal of the last item in that list incremented by one
-            tag.setId(Configurator.getInstance().getRules().getMaterialTemplates().get(Configurator.getInstance().getRules().getMaterialTemplates().size()-1).getId()+1);
+            tag.setId(Configurator.getInstance().getRules().getMaterialTemplates().get(Configurator.getInstance().getRules().getMaterialTemplates().size() - 1).getId() + 1);
         else
             tag.setId(1);
         tag.setTag("New Tag");

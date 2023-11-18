@@ -39,16 +39,17 @@ public class Building {
     }
 
     /**
-     *
-     * @param id id of the building template associated with this building.
+     * @param id          id of the building template associated with this building.
      * @param isOperating flag that determines if the building is operating right now.
      */
     public Building(Integer id, Boolean isOperating) {
         this.id.set(id);
         this.isOperating.set(isOperating);
     }
+
     /**
      * Lightweight accessor method
+     *
      * @return id of the building template associated with this building as a property.
      */
     public IntegerProperty idProperty() {
@@ -57,6 +58,7 @@ public class Building {
 
     /**
      * Lightweight accessor method
+     *
      * @return flag that determines if the building is operating right now as a property.
      */
     public BooleanProperty isOperatingProperty() {
@@ -65,24 +67,17 @@ public class Building {
 
     /**
      * Lightweight accessor method
+     *
      * @return id of the building template associated with this building.
      */
-    @XmlElement(name="id")
+    @XmlElement(name = "id")
     public Integer getId() {
         return id.get();
     }
 
     /**
-     * Lightweight accessor method
-     * @return flag that determines if the building is operating right now as a property.
-     */
-    @XmlElement(name="is-operating")
-    public Boolean isOperating() {
-        return isOperating.get();
-    }
-
-    /**
      * Lightweight mutator method
+     *
      * @param id id of the building template associated with this building. Should be set to -1 to mark that this building is invalid.
      */
     public void setId(Integer id) {
@@ -90,7 +85,18 @@ public class Building {
     }
 
     /**
+     * Lightweight accessor method
+     *
+     * @return flag that determines if the building is operating right now as a property.
+     */
+    @XmlElement(name = "is-operating")
+    public Boolean isOperating() {
+        return isOperating.get();
+    }
+
+    /**
      * Lightweight mutator method
+     *
      * @param isOperating flag that determines if the building is operating right now
      */
     public void setOperating(Boolean isOperating) {

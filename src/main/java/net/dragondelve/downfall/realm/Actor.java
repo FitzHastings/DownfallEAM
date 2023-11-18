@@ -43,11 +43,12 @@ public abstract class Actor {
 
     /**
      * Using this constructor stockpile, ownedBuildings, and tags remain empty lists.
-     * @param id Unique actor identifier. Should be unique for every save file
-     * @param name A human-readable name of the actor as a property.
+     *
+     * @param id       Unique actor identifier. Should be unique for every save file
+     * @param name     A human-readable name of the actor as a property.
      * @param treasury Amount of money in the treasury as a property.
      */
-    public Actor(Integer id, String name, Integer treasury ) {
+    public Actor(Integer id, String name, Integer treasury) {
         super();
         this.id.set(id);
         this.name.set(name);
@@ -55,13 +56,12 @@ public abstract class Actor {
     }
 
     /**
-     *
-     * @param id Unique actor identifier. Should be unique for every save file
-     * @param name A human-readable name of the actor as a property.
-     * @param treasury Amount of money in the treasury as a property.
-     * @param stockpile List of all materials in actor's stockpile
+     * @param id             Unique actor identifier. Should be unique for every save file
+     * @param name           A human-readable name of the actor as a property.
+     * @param treasury       Amount of money in the treasury as a property.
+     * @param stockpile      List of all materials in actor's stockpile
      * @param ownedBuildings List of all owned buildings
-     * @param tags List of all tags applied to the actor
+     * @param tags           List of all tags applied to the actor
      */
     public Actor(Integer id, String name, Integer treasury, ObservableList<Material> stockpile, ObservableList<Building> ownedBuildings, ObservableList<Tag> tags) {
         super();
@@ -76,6 +76,7 @@ public abstract class Actor {
 
     /**
      * Lightweight Accessor Method.
+     *
      * @return Unique realm identifier. Should be unique for every save file as a property.
      */
     public IntegerProperty idProperty() {
@@ -84,6 +85,7 @@ public abstract class Actor {
 
     /**
      * Lightweight accessor method
+     *
      * @return A human-readable name of the actor as a property.
      */
     public StringProperty nameProperty() {
@@ -92,6 +94,7 @@ public abstract class Actor {
 
     /**
      * Lightweight accessor method
+     *
      * @return amount of money in the treasury as a property
      */
     public IntegerProperty treasuryProperty() {
@@ -100,6 +103,7 @@ public abstract class Actor {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Unique actor identifier. Should be unique for every save file.
      */
     @XmlElement(name = "id")
@@ -108,7 +112,17 @@ public abstract class Actor {
     }
 
     /**
+     * Lightweight mutator method
+     *
+     * @param id Unique actor identifier. Should be unique for every save file.
+     */
+    public void setId(Integer id) {
+        this.id.set(id);
+    }
+
+    /**
      * Lightweight accessor method
+     *
      * @return A human-readable name of the realm.
      */
     @XmlElement(name = "name")
@@ -117,7 +131,17 @@ public abstract class Actor {
     }
 
     /**
+     * Lightweight mutator method
+     *
+     * @param name Actor name
+     */
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
+    /**
      * Lightweight accessor method
+     *
      * @return Amount of money in the treasury
      */
     @XmlElement(name = "treasury")
@@ -126,7 +150,17 @@ public abstract class Actor {
     }
 
     /**
+     * Lightweight mutator method
+     *
+     * @param treasury Amount of money in the treasury
+     */
+    public void setTreasury(Integer treasury) {
+        this.treasury.set(treasury);
+    }
+
+    /**
      * Lightweight accessor method
+     *
      * @return list of all materials in actor's stockpile
      */
     @XmlElementWrapper(name = "stockpile")
@@ -136,7 +170,17 @@ public abstract class Actor {
     }
 
     /**
+     * Lightweight mutator method
+     *
+     * @param stockpile list of all materials in actor's stockpile
+     */
+    public void setStockpile(ObservableList<Material> stockpile) {
+        this.stockpile = stockpile;
+    }
+
+    /**
      * Lightweight accessor method
+     *
      * @return List of all owned buildings
      */
     @XmlElementWrapper(name = "owned-buildings")
@@ -146,7 +190,17 @@ public abstract class Actor {
     }
 
     /**
+     * Lightweight mutator method
+     *
+     * @param ownedBuildings List of all owned buildings
+     */
+    public void setOwnedBuildings(ObservableList<Building> ownedBuildings) {
+        this.ownedBuildings = ownedBuildings;
+    }
+
+    /**
      * Lightweight accessor method
+     *
      * @return List of all tags applied to the actor
      */
     @XmlElementWrapper(name = "tags")
@@ -157,46 +211,7 @@ public abstract class Actor {
 
     /**
      * Lightweight mutator method
-     * @param id Unique actor identifier. Should be unique for every save file.
-     */
-    public void setId(Integer id) {
-        this.id.set(id);
-    }
-
-    /**
-     * Lightweight mutator method
-     * @param name Actor name
-     */
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-    /**
-     * Lightweight mutator method
-     * @param treasury Amount of money in the treasury
-     */
-    public void setTreasury(Integer treasury) {
-        this.treasury.set(treasury);
-    }
-
-    /**
-     * Lightweight mutator method
-     * @param stockpile list of all materials in actor's stockpile
-     */
-    public void setStockpile(ObservableList<Material> stockpile) {
-        this.stockpile = stockpile;
-    }
-
-    /**
-     * Lightweight mutator method
-     * @param ownedBuildings List of all owned buildings
-     */
-    public void setOwnedBuildings(ObservableList<Building> ownedBuildings) {
-        this.ownedBuildings = ownedBuildings;
-    }
-
-    /**
-     * Lightweight mutator method
+     *
      * @param tags List of all tags applied to the actor
      */
     public void setTags(ObservableList<Tag> tags) {

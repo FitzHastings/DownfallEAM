@@ -14,10 +14,6 @@
 
 package net.dragondelve.downfall.ui.main.tabs;
 
-import net.dragondelve.downfall.realm.Realm;
-import net.dragondelve.downfall.realm.Tag;
-import net.dragondelve.downfall.util.Configurator;
-import net.dragondelve.downfall.util.DownfallUtil;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +24,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import net.dragondelve.downfall.realm.Realm;
+import net.dragondelve.downfall.realm.Tag;
+import net.dragondelve.downfall.util.Configurator;
+import net.dragondelve.downfall.util.DownfallUtil;
 
 /**
  * A controller that controls the content of the Realm Tab.
@@ -35,107 +35,74 @@ import javafx.scene.layout.*;
  * Controls /fxml/main/tabs/RealmScreenController.fxml and is annotated with @FXML where it references that FXML file.
  */
 public class RealmScreenController {
-    @FXML
-    private Label diploRepLabel;
-
-    @FXML
-    private ImageView dynastyImageView;
-
-    @FXML
-    private Label govRankLabel;
-
-    @FXML
-    private Label infamyLabel;
-
-    @FXML
-    private Label legitimacyLabel;
-
-    @FXML
-    private Label nationalUnrestLabel;
-
-    @FXML
-    private Label nuicpLabel;
-
-    @FXML
-    private Label powerProjectionLabel;
-
-    @FXML
-    private Label prestigeLabel;
-
-    @FXML
-    private ImageView realmImageView;
-
-    @FXML
-    private GridPane stabilityNegativeGrid;
-
-    @FXML
-    private Label stabilityPerMonthLabel;
-
-    @FXML
-    private GridPane stabilityPositiveGrid;
-
-    @FXML
-    private VBox rootPane;
-
-    @FXML
-    private Label stabilityLabel;
-
-    @FXML
-    private Label realmNameLabel;
-
-    @FXML
-    private Pane stabilityCirclePane;
-
-    @FXML
-    private ListView<Tag> realmTagListView;
-
-    @FXML
-    private ListView<Tag> nonRealmTagListView;
-
-    @FXML
-    private Accordion tagsAccordion;
-
-    @FXML
-    private Pane realmPane;
-
-    @FXML
-    private Pane dynastyPane;
-
-    @FXML
-    private Pane negStabilityPane1;
-
-    @FXML
-    private Pane negStabilityPane2;
-
-    @FXML
-    private Pane negStabilityPane3;
-
-    @FXML
-    private Pane negStabilityPane4;
-
-    @FXML
-    private Pane negStabilityPane5;
-    
-    @FXML
-    private Pane posStabilityPane1;
-
-    @FXML
-    private Pane posStabilityPane2;
-
-    @FXML
-    private Pane posStabilityPane3;
-
-    @FXML
-    private Pane posStabilityPane4;
-
-    @FXML
-    private Pane posStabilityPane5;
-
     private final static Double IMAGE_PANE_GAP = 10.0;
     private final static Double IMAGE_PANE_HEIGHT = 200.0;
-
     private final ObservableList<Tag> realmTags = FXCollections.observableArrayList();
     private final ObservableList<Tag> nonRealmTags = FXCollections.observableArrayList();
+    @FXML
+    private Label diploRepLabel;
+    @FXML
+    private ImageView dynastyImageView;
+    @FXML
+    private Label govRankLabel;
+    @FXML
+    private Label infamyLabel;
+    @FXML
+    private Label legitimacyLabel;
+    @FXML
+    private Label nationalUnrestLabel;
+    @FXML
+    private Label nuicpLabel;
+    @FXML
+    private Label powerProjectionLabel;
+    @FXML
+    private Label prestigeLabel;
+    @FXML
+    private ImageView realmImageView;
+    @FXML
+    private GridPane stabilityNegativeGrid;
+    @FXML
+    private Label stabilityPerMonthLabel;
+    @FXML
+    private GridPane stabilityPositiveGrid;
+    @FXML
+    private VBox rootPane;
+    @FXML
+    private Label stabilityLabel;
+    @FXML
+    private Label realmNameLabel;
+    @FXML
+    private Pane stabilityCirclePane;
+    @FXML
+    private ListView<Tag> realmTagListView;
+    @FXML
+    private ListView<Tag> nonRealmTagListView;
+    @FXML
+    private Accordion tagsAccordion;
+    @FXML
+    private Pane realmPane;
+    @FXML
+    private Pane dynastyPane;
+    @FXML
+    private Pane negStabilityPane1;
+    @FXML
+    private Pane negStabilityPane2;
+    @FXML
+    private Pane negStabilityPane3;
+    @FXML
+    private Pane negStabilityPane4;
+    @FXML
+    private Pane negStabilityPane5;
+    @FXML
+    private Pane posStabilityPane1;
+    @FXML
+    private Pane posStabilityPane2;
+    @FXML
+    private Pane posStabilityPane3;
+    @FXML
+    private Pane posStabilityPane4;
+    @FXML
+    private Pane posStabilityPane5;
 
     /**
      * Initialize method that is called automatically after the FXML has finished loading. Initializes all UI elements before they are displayed
@@ -164,19 +131,19 @@ public class RealmScreenController {
         Realm userRealm = Configurator.getInstance().getUserRealm();
 
         //update Labels
-        realmNameLabel          .setText(userRealm.getName());
-        diploRepLabel           .setText(userRealm.getDiplomaticReputation().toString());
-        stabilityLabel          .setText(userRealm.getStability().toString());
-        legitimacyLabel         .setText(userRealm.getLegitimacy().toString());
-        powerProjectionLabel    .setText(userRealm.getPowerProjection().toString());
-        infamyLabel             .setText(userRealm.getInfamy().toString());
-        prestigeLabel           .setText(userRealm.getPrestige().toString());
+        realmNameLabel.setText(userRealm.getName());
+        diploRepLabel.setText(userRealm.getDiplomaticReputation().toString());
+        stabilityLabel.setText(userRealm.getStability().toString());
+        legitimacyLabel.setText(userRealm.getLegitimacy().toString());
+        powerProjectionLabel.setText(userRealm.getPowerProjection().toString());
+        infamyLabel.setText(userRealm.getInfamy().toString());
+        prestigeLabel.setText(userRealm.getPrestige().toString());
         //TODO: Add Gouvernment Rank
         //govRankLabel.setText(userRealm.getGouvernmentRank());
 
         //update Image views
-        updateImageView(realmPane, new Image("file:"+userRealm.getRealmPathToGFX()), realmImageView);
-        updateImageView(dynastyPane, new Image("file:"+userRealm.getRulerPathToGFX()), dynastyImageView);
+        updateImageView(realmPane, new Image("file:" + userRealm.getRealmPathToGFX()), realmImageView);
+        updateImageView(dynastyPane, new Image("file:" + userRealm.getRulerPathToGFX()), dynastyImageView);
 
         //update Stability Bar
         updateStabilityBar();
@@ -184,8 +151,8 @@ public class RealmScreenController {
         //update realm tags
         realmTags.clear();
         nonRealmTags.clear();
-        userRealm.getTags().forEach(e->{
-            if(e.isFactional())
+        userRealm.getTags().forEach(e -> {
+            if (e.isFactional())
                 realmTags.add(e);
             else
                 nonRealmTags.add(e);
@@ -196,14 +163,15 @@ public class RealmScreenController {
      * Updates the given ImageView to contain the given Image, if image provided is not null, forces the width of the container to conform to the ImageView's Image width
      * modified so that the image keeps its aspect ratio, plus some gaps that are defined in IMAGE_PANE_GAP. If the image equals to null it forces the ImageView
      * to conform to IMAGE_PANE_HEIGHT in both Width and Height.
+     *
      * @param container Container Pane that contains the ImageView. It will be resized to have a height of IMAGE_PANE_HEIGHT. It's width will depend on the aspect ratio of the Image provided.
-     * @param image Image to be set into the ImageView. It's aspect ratio is used to define container's width.
+     * @param image     Image to be set into the ImageView. It's aspect ratio is used to define container's width.
      * @param imageView Image view to be set with a given image. It's best if ImageView's parent is the container argument, but it's not required.
      */
     private void updateImageView(Pane container, Image image, ImageView imageView) {
         imageView.setImage(image);
-        if(image != null && !image.isError()) {
-            double ratio = imageView.getFitHeight()/image.getHeight();
+        if (image != null && !image.isError()) {
+            double ratio = imageView.getFitHeight() / image.getHeight();
             forceDimensions(container, IMAGE_PANE_HEIGHT, realmImageView.getImage().getWidth() * ratio + IMAGE_PANE_GAP * 2);
         } else
             forceDimensions(container, IMAGE_PANE_HEIGHT, IMAGE_PANE_HEIGHT);
@@ -211,9 +179,10 @@ public class RealmScreenController {
 
     /**
      * Forces the dimension of the pane to conform to the parameters specified.
-     * @param pane Pane whose width and height you want to fix to particular values.
+     *
+     * @param pane   Pane whose width and height you want to fix to particular values.
      * @param height Height to which you want to set the pane's height.
-     * @param width Width to which you want to set the pane's width.
+     * @param width  Width to which you want to set the pane's width.
      */
     private void forceDimensions(Pane pane, Double height, Double width) {
         pane.setMinWidth(width);
@@ -248,15 +217,16 @@ public class RealmScreenController {
     }
 
     /**
-     *  Binds the background property to a new Background that is created with one of the two fills depending on whether the Stability of the realm "exceeds" the threshold given.
-     *  "exceeds" for the purposes of this method means less than or equal to threshold if lessThanThreshold is true and greater or equal to the threshold if it is false.
-     * @param stabilityPane Pane whose background needs to be updated.
-     * @param neutralFill BackgroundFill to be used if the userRealm's stability does not "exceed" the threshold.
-     * @param activeFill BackgroundFill to be used if the userRealm's stability "exceeds" the threshold.
-     * @param threshold Value of the threshold that needs to be "exceeded" in order for the active fill to be used instead of neutralFill.
+     * Binds the background property to a new Background that is created with one of the two fills depending on whether the Stability of the realm "exceeds" the threshold given.
+     * "exceeds" for the purposes of this method means less than or equal to threshold if lessThanThreshold is true and greater or equal to the threshold if it is false.
+     *
+     * @param stabilityPane     Pane whose background needs to be updated.
+     * @param neutralFill       BackgroundFill to be used if the userRealm's stability does not "exceed" the threshold.
+     * @param activeFill        BackgroundFill to be used if the userRealm's stability "exceeds" the threshold.
+     * @param threshold         Value of the threshold that needs to be "exceeded" in order for the active fill to be used instead of neutralFill.
      * @param lessThanThreshold Controls if the threshold is "exceeded" when the UserRealm's stability is less than or equal to, or greater than or equal to the threshold provided.
      */
-    private void updateStabilityPane( Pane stabilityPane, BackgroundFill neutralFill, BackgroundFill activeFill, Double threshold,Boolean lessThanThreshold) {
+    private void updateStabilityPane(Pane stabilityPane, BackgroundFill neutralFill, BackgroundFill activeFill, Double threshold, Boolean lessThanThreshold) {
         //TODO:Find a more refined way of doing this.
         if (lessThanThreshold) {
             if (Configurator.getInstance().getUserRealm().getStability() <= threshold)

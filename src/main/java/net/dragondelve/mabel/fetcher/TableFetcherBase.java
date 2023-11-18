@@ -15,7 +15,6 @@
 package net.dragondelve.mabel.fetcher;
 
 import downfall.fx.css.DarkerHBox;
-import net.dragondelve.downfall.util.DownfallUtil;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -24,9 +23,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import net.dragondelve.downfall.util.DownfallUtil;
 
 /**
  * Base for all Fetchers that feature some kind of a table from which a selection is made.
+ *
  * @param <T> Type that is going to be used as items for the fetcher.
  */
 abstract class TableFetcherBase<T> extends VBox {
@@ -58,7 +59,7 @@ abstract class TableFetcherBase<T> extends VBox {
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         okButton.setOnAction(e -> {
-            if(tableView.getSelectionModel().getSelectedItem() != null)
+            if (tableView.getSelectionModel().getSelectedItem() != null)
                 selectionIsMade = true;
             stage.close();
         });

@@ -50,20 +50,13 @@ public final class DownfallUtil {
     public final static Color BACKGROUND_COLOR = Color.web("#181e21");
     public final static Color HIGHLIGHT_COLOR = Color.web("#a34097");
     public final static Color CONFIRM_COLOR = Color.web("#40A34C");
-
-
+    private final static DownfallUtil instance = new DownfallUtil();
     private URL URLRealmScreenFXML;
     private URL URLMaterialsEditorFXML;
     private URL URLRealmEditorFXML;
     private URL URLBuildingsEditorFXML;
     private URL URLTagsEditorFXML;
     private URL URLDownfallMainFXML;
-
-    private final static DownfallUtil instance = new DownfallUtil();
-
-    public static DownfallUtil getInstance() {
-        return instance;
-    }
 
     /**
      * Default Constructor method. Constructs all necessary URLs to all fxml files
@@ -106,8 +99,13 @@ public final class DownfallUtil {
         }
     }
 
+    public static DownfallUtil getInstance() {
+        return instance;
+    }
+
     /**
      * Lightweight accessor method.
+     *
      * @return URL to an FXML file that contains Materials Editor.
      */
     public URL getURLMaterialsEditorFXML() {
@@ -116,6 +114,7 @@ public final class DownfallUtil {
 
     /**
      * Lightweight accessor method.
+     *
      * @return URL to an FXML file that contains Buildings Editor.
      */
     public URL getURLBuildingsEditorFXML() {
@@ -124,6 +123,7 @@ public final class DownfallUtil {
 
     /**
      * Lightweight accessor method.
+     *
      * @return URL to an FXML file that contains Tags Editor.
      */
     public URL getURLTagsEditorFXML() {
@@ -132,12 +132,16 @@ public final class DownfallUtil {
 
     /**
      * Lightweight accessor method.
-     * @return  URL to an FXML file that contains the Realm Editor.
+     *
+     * @return URL to an FXML file that contains the Realm Editor.
      */
-    public URL getURLRealmEditorFXML() { return URLRealmEditorFXML; }
+    public URL getURLRealmEditorFXML() {
+        return URLRealmEditorFXML;
+    }
 
     /**
      * Lightweight accessor method.
+     *
      * @return URL to an FXML file that contains Downfall Main UI.
      */
     public URL getURLDownfallMainFXML() {
@@ -146,6 +150,7 @@ public final class DownfallUtil {
 
     /**
      * Lightweight accessor method.
+     *
      * @return URL to an FXML file that contains Realm Screen.
      */
     public URL getURLRealmScreenFXML() {
@@ -153,20 +158,22 @@ public final class DownfallUtil {
     }
 
     /**
-     *  Loads an image from a given pathname.
-     *  Lightweight method. Quickly constructs a URL by adding "file:" to a given pathname and returns a new image made from that URL
+     * Loads an image from a given pathname.
+     * Lightweight method. Quickly constructs a URL by adding "file:" to a given pathname and returns a new image made from that URL
+     *
      * @param pathname pathname to an image file
      * @return Image loaded from the pathname.
      */
     public Image loadImage(String pathname) {
-       return new Image("file:" + pathname);
+        return new Image("file:" + pathname);
     }
 
     /**
      * Informs the logger that a given URL seems to be malformed.
+     *
      * @param URL URL that returned a MalformedURException upon being constructed
      */
     private void informOfMalformedURL(String URL) {
-        Logger.getLogger(DEFAULT_LOGGER).log(Level.SEVERE, "URL: "+URL+" seems to be malformed.");
+        Logger.getLogger(DEFAULT_LOGGER).log(Level.SEVERE, "URL: " + URL + " seems to be malformed.");
     }
 }

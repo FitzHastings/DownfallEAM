@@ -38,6 +38,7 @@ public final class Configuration {
 
     /**
      * Lightweight Accessor Method
+     *
      * @return Pathname to the last loaded rules.
      */
     @XmlElement(name = "rules-pathname")
@@ -46,7 +47,17 @@ public final class Configuration {
     }
 
     /**
+     * Lightweight mutator method.
+     *
+     * @param lastRulesPathname Pathname to the last loaded rules.
+     */
+    public void setLastRulesPathname(String lastRulesPathname) {
+        this.lastRulesPathname.set(lastRulesPathname);
+    }
+
+    /**
      * Lightweight Accessor Method
+     *
      * @return Pathname to the default image used for VisualMaterialTemplate
      */
     @XmlElement(name = "def-materials-gfx-pathname")
@@ -55,7 +66,17 @@ public final class Configuration {
     }
 
     /**
+     * Lightweight mutator method.
+     *
+     * @param defMaterialGFXPathname Pathname to the default image used for VisualMaterialTemplate
+     */
+    public void setDefMaterialGFXPathname(String defMaterialGFXPathname) {
+        this.defMaterialGFXPathname.set(defMaterialGFXPathname);
+    }
+
+    /**
      * Lightweight Accessor Method
+     *
      * @return Pathname to the default image used for VisualBuildingTemplate
      */
     @XmlElement(name = "def-buildings-gfx-pathname")
@@ -64,7 +85,17 @@ public final class Configuration {
     }
 
     /**
+     * Lightweight mutator method.
+     *
+     * @param defBuildingGFXPathname Pathname to the default image used for VisualBuildingTemplate
+     */
+    public void setDefBuildingGFXPathname(String defBuildingGFXPathname) {
+        this.defBuildingGFXPathname.set(defBuildingGFXPathname);
+    }
+
+    /**
      * Lightweight accessor method
+     *
      * @return Flag that determines if the last savegame should be loaded at startup.
      */
     @XmlElement(name = "autoload-last-savegame")
@@ -73,7 +104,17 @@ public final class Configuration {
     }
 
     /**
+     * Lightweight mutator method.
+     *
+     * @param autoloadLastSave Flag that determines if the last savegame should be loaded at startup.
+     */
+    public void setAutoloadLastSave(Boolean autoloadLastSave) {
+        this.autoloadLastSave.set(autoloadLastSave);
+    }
+
+    /**
      * Lightweight accessor method
+     *
      * @return Pathname to last savegame that was loaded/saved.
      */
     @XmlElement(name = "last-savegame-pathname")
@@ -83,38 +124,7 @@ public final class Configuration {
 
     /**
      * Lightweight mutator method.
-     * @param lastRulesPathname Pathname to the last loaded rules.
-     */
-    public void setLastRulesPathname(String lastRulesPathname) {
-        this.lastRulesPathname.set(lastRulesPathname);
-    }
-
-    /**
-     * Lightweight mutator method.
-     * @param defMaterialGFXPathname Pathname to the default image used for VisualMaterialTemplate
-     */
-    public void setDefMaterialGFXPathname(String defMaterialGFXPathname) {
-        this.defMaterialGFXPathname.set(defMaterialGFXPathname);
-    }
-
-    /**
-     * Lightweight mutator method.
-     * @param defBuildingGFXPathname Pathname to the default image used for VisualBuildingTemplate
-     */
-    public void setDefBuildingGFXPathname(String defBuildingGFXPathname) {
-        this.defBuildingGFXPathname.set(defBuildingGFXPathname);
-    }
-
-    /**
-     * Lightweight mutator method.
-     * @param autoloadLastSave Flag that determines if the last savegame should be loaded at startup.
-     */
-    public void setAutoloadLastSave(Boolean autoloadLastSave) {
-        this.autoloadLastSave.set(autoloadLastSave);
-    }
-
-    /**
-     * Lightweight mutator method.
+     *
      * @param lastSavegamePathname Pathname to the last loaded rules.
      */
     public void setLastSavegamePathname(String lastSavegamePathname) {

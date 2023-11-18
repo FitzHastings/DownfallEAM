@@ -14,14 +14,14 @@
 
 package net.dragondelve.downfall;
 
-import net.dragondelve.downfall.ui.main.DownfallMainController;
-import net.dragondelve.downfall.util.Configurator;
-import net.dragondelve.downfall.util.DownfallUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import net.dragondelve.downfall.ui.main.DownfallMainController;
+import net.dragondelve.downfall.util.Configurator;
+import net.dragondelve.downfall.util.DownfallUtil;
 
 /**
  * Main application class of Downfall.
@@ -29,6 +29,7 @@ import javafx.stage.StageStyle;
 public final class DownfallMain extends Application {
     /**
      * Launches the JavaFX application.
+     *
      * @param args Program arguments. Ignored.
      */
     public static void main(String[] args) {
@@ -37,6 +38,7 @@ public final class DownfallMain extends Application {
 
     /**
      * start method of the client application
+     *
      * @param stage primary stage of the application
      * @throws Exception any uncaught exception.
      */

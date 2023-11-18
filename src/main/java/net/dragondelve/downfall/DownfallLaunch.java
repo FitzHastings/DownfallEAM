@@ -21,6 +21,7 @@ package net.dragondelve.downfall;
 public class DownfallLaunch {
     /**
      * Calls the main method of
+     *
      * @param args program arguments that will be passed to DownfallMain where they will be ignored.
      */
     public static void main(String[] args) {

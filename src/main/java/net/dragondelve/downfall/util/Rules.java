@@ -14,12 +14,12 @@
 
 package net.dragondelve.downfall.util;
 
-import net.dragondelve.downfall.realm.Tag;
-import net.dragondelve.downfall.realm.template.VisualBuildingTemplate;
-import net.dragondelve.downfall.realm.template.VisualMaterialTemplate;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementWrapper;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import net.dragondelve.downfall.realm.Tag;
+import net.dragondelve.downfall.realm.template.VisualBuildingTemplate;
+import net.dragondelve.downfall.realm.template.VisualMaterialTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ import java.util.List;
  * Contains reference to a user defined Ruleset. Ruleset determines Templates that can be used for different Materials and Buildings.
  * This class if fully annotated and can be saved to an XML file with JAXB
  */
-@XmlRootElement(name="rules")
+@XmlRootElement(name = "rules")
 public final class Rules {
     private List<VisualMaterialTemplate> materialTemplates = new ArrayList<>();
     private List<VisualBuildingTemplate> buildingTemplates = new ArrayList<>();
@@ -36,6 +36,7 @@ public final class Rules {
 
     /**
      * Lightweight accessor method.
+     *
      * @return Full list of all available material templates.
      */
     @XmlElementWrapper(name = "material-templates")
@@ -45,7 +46,17 @@ public final class Rules {
     }
 
     /**
+     * Lightweight mutator method.
+     *
+     * @param materialTemplates Full list of all available material templates.
+     */
+    public void setMaterialTemplates(List<VisualMaterialTemplate> materialTemplates) {
+        this.materialTemplates = materialTemplates;
+    }
+
+    /**
      * Lightweight accessor method.
+     *
      * @return Full list of all available building templates.
      */
     @XmlElementWrapper(name = "building-templates")
@@ -55,23 +66,8 @@ public final class Rules {
     }
 
     /**
-     * Lightweight accessor method.
-     * @return Full list of possible tags that can be applied to an Actor.
-     */
-    @XmlElementWrapper(name = "tags")
-    @XmlElement(name = "tag")
-    public List<Tag> getActorTags() { return actorTags; }
-
-    /**
      * Lightweight mutator method.
-     * @param materialTemplates Full list of all available material templates.
-     */
-    public void setMaterialTemplates(List<VisualMaterialTemplate> materialTemplates) {
-        this.materialTemplates = materialTemplates;
-    }
-
-    /**
-     * Lightweight mutator method.
+     *
      * @param buildingTemplates Full list of all available building templates.
      */
     public void setBuildingTemplates(List<VisualBuildingTemplate> buildingTemplates) {
@@ -79,7 +75,19 @@ public final class Rules {
     }
 
     /**
+     * Lightweight accessor method.
+     *
+     * @return Full list of possible tags that can be applied to an Actor.
+     */
+    @XmlElementWrapper(name = "tags")
+    @XmlElement(name = "tag")
+    public List<Tag> getActorTags() {
+        return actorTags;
+    }
+
+    /**
      * Lightweight mutator method.
+     *
      * @param actorTags Full list of possible tags that can be applied to an Actor.
      */
     public void setActorTags(List<Tag> actorTags) {

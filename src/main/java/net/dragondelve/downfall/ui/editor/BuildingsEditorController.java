@@ -14,27 +14,30 @@
 
 package net.dragondelve.downfall.ui.editor;
 
-import net.dragondelve.mabel.button.ImageChooserButton;
-import net.dragondelve.mabel.button.LogoTableColumn;
-import net.dragondelve.mabel.button.SimpleTableEditor;
-import net.dragondelve.mabel.fetcher.ConversionFetcher;
-import net.dragondelve.mabel.fetcher.ConversionMaterialFetcher;
-import net.dragondelve.mabel.fetcher.SimpleBuildingTemplateFetcher;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
+import javafx.util.converter.NumberStringConverter;
 import net.dragondelve.downfall.realm.Material;
 import net.dragondelve.downfall.realm.template.VisualBuildingTemplate;
 import net.dragondelve.downfall.realm.template.VisualMaterialTemplate;
 import net.dragondelve.downfall.ui.StageController;
 import net.dragondelve.downfall.util.Configurator;
 import net.dragondelve.downfall.util.DownfallUtil;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
-import javafx.util.converter.NumberStringConverter;
+import net.dragondelve.mabel.button.ImageChooserButton;
+import net.dragondelve.mabel.button.LogoTableColumn;
+import net.dragondelve.mabel.button.SimpleTableEditor;
+import net.dragondelve.mabel.fetcher.ConversionFetcher;
+import net.dragondelve.mabel.fetcher.ConversionMaterialFetcher;
+import net.dragondelve.mabel.fetcher.SimpleBuildingTemplateFetcher;
 
 import java.util.Objects;
 import java.util.logging.Level;
@@ -46,51 +49,35 @@ import java.util.logging.Logger;
  */
 public final class BuildingsEditorController implements StageController {
 
+    ObservableList<VisualBuildingTemplate> buildingTemplates = FXCollections.emptyObservableList();
+    ObservableList<Material> inputMaterials = FXCollections.emptyObservableList();
+    ObservableList<Material> outputMaterials = FXCollections.emptyObservableList();
+    ObservableList<Material> constructionMaterials = FXCollections.emptyObservableList();
+    Stage stage;
     @FXML
     private SimpleTableEditor<VisualBuildingTemplate> buildingEditor;
-
     @FXML
     private TextField constructionCostField;
-
     @FXML
     private SimpleTableEditor<Material> inputMaterialEditor;
-
     @FXML
     private TextField constructionTimeField;
-
     @FXML
     private SimpleTableEditor<Material> outputMaterialEditor;
-
     @FXML
     private TextField nameTextField;
-
     @FXML
     private SimpleTableEditor<Material> constructionMaterialEditor;
-
     @FXML
     private ImageChooserButton pathToGFXButton;
-
     @FXML
     private TextField pathToGFXTextField;
-
     @FXML
     private Button okButton;
-
     @FXML
     private CheckBox operatesImmediatelyCheckBox;
-
     @FXML
     private BorderPane rootPane;
-
-    ObservableList<VisualBuildingTemplate> buildingTemplates = FXCollections.emptyObservableList();
-
-    ObservableList<Material> inputMaterials = FXCollections.emptyObservableList();
-
-    ObservableList<Material> outputMaterials = FXCollections.emptyObservableList();
-
-    ObservableList<Material> constructionMaterials = FXCollections.emptyObservableList();
-
-    Stage stage;
 
     /**
      * Initialize method that is called automatically after the FXML has finished loading. Initializes all UI elements before they are displayed
@@ -108,7 +95,7 @@ public final class BuildingsEditorController implements StageController {
         buildingEditor.setItems(buildingTemplates);
         buildingEditor.setFetcher(new SimpleBuildingTemplateFetcher());
         buildingEditor.getTableView().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if(oldValue != null)
+            if (oldValue != null)
                 unbindBuilding(oldValue);
             displayBuilding(newValue);
         });
@@ -116,7 +103,7 @@ public final class BuildingsEditorController implements StageController {
         //Configuring table columns
         LogoTableColumn<VisualBuildingTemplate> buildingLogoColumn = new LogoTableColumn<>();
         buildingLogoColumn.setDefaultSizePolicy();
-        buildingLogoColumn.setCellValueFactory(e-> e.getValue().pathToGFXProperty());
+        buildingLogoColumn.setCellValueFactory(e -> e.getValue().pathToGFXProperty());
 
         TableColumn<VisualBuildingTemplate, String> buildingNameColumn = new TableColumn<>("Building");
         buildingNameColumn.setCellValueFactory(e -> e.getValue().nameProperty());
@@ -135,6 +122,7 @@ public final class BuildingsEditorController implements StageController {
     /**
      * Lightweight mutator method.
      * Always should be called before the editor is displayed to the user.
+     *
      * @param stage the stage that is displaying the editor.
      */
     @Override
@@ -145,24 +133,25 @@ public final class BuildingsEditorController implements StageController {
     /**
      * Configures a SimpleTableEditor to have two columns. a Name column that will display the name of its template and an amount column that will display its amount.
      * It makes the amount column editable using TextFieldTableCell and sets up a ConversionFetcher that will generate a new material based on
-     * @param editor Material editor to be configured.
-     * @param nameColumnTitle title text to be used for the name column
+     *
+     * @param editor            Material editor to be configured.
+     * @param nameColumnTitle   title text to be used for the name column
      * @param amountColumnTitle title text to be used for the amount column
      */
     private void configureMaterialEditor(SimpleTableEditor<Material> editor, String nameColumnTitle, String amountColumnTitle) {
         LogoTableColumn<Material> logoColumn = new LogoTableColumn<>();
         logoColumn.setDefaultSizePolicy();
-        logoColumn.setCellValueFactory(e-> {
+        logoColumn.setCellValueFactory(e -> {
             VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
-            if(template == null)
+            if (template == null)
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
             return Objects.requireNonNull(template).pathToGFXProperty();
         });
 
         TableColumn<Material, String> nameColumn = new TableColumn<>(nameColumnTitle);
-        nameColumn.setCellValueFactory(e ->{
+        nameColumn.setCellValueFactory(e -> {
             VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
-            if(template == null)
+            if (template == null)
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
             return Objects.requireNonNull(template).nameProperty();
         });
@@ -183,6 +172,7 @@ public final class BuildingsEditorController implements StageController {
 
     /**
      * removes all bindings from a Building Template
+     *
      * @param template template to be unbound from the textFields
      */
     private void unbindBuilding(VisualBuildingTemplate template) {
@@ -195,6 +185,7 @@ public final class BuildingsEditorController implements StageController {
 
     /**
      * binds all properties of the building to GUI TextFields and sets the data of all tables to correspond with the selected template.
+     *
      * @param template template that was selected by the user to be displayed and edited.
      */
     private void displayBuilding(VisualBuildingTemplate template) {

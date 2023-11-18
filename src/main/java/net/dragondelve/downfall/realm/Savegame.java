@@ -20,7 +20,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 /**
  * a Save class that holds the information about a user's Realm and the Ruleset on which the Realm was created.
  */
-@XmlRootElement(name="downfall-save")
+@XmlRootElement(name = "downfall-save")
 public final class Savegame {
     private String pathToRules = "";
     private Realm userRealm = new Realm();
@@ -33,9 +33,8 @@ public final class Savegame {
     }
 
     /**
-     *
      * @param pathToRules pathname to the rules that were used for this Save
-     * @param userRealm user's realm data.
+     * @param userRealm   user's realm data.
      */
     public Savegame(String pathToRules, Realm userRealm) {
         this.pathToRules = pathToRules;
@@ -44,6 +43,7 @@ public final class Savegame {
 
     /**
      * Lightweight accessor method.
+     *
      * @return pathname to the rules that were used for this Realm
      */
     @XmlElement(name = "path-to-rules")
@@ -52,7 +52,17 @@ public final class Savegame {
     }
 
     /**
+     * Lightweight mutator method.
+     *
+     * @param pathToRules pathname to the rules that were used for this Save
+     */
+    public void setPathToRules(String pathToRules) {
+        this.pathToRules = pathToRules;
+    }
+
+    /**
      * Lightweight accessor method.
+     *
      * @return user's realm data.
      */
     @XmlElement(name = "user-realm")
@@ -62,14 +72,7 @@ public final class Savegame {
 
     /**
      * Lightweight mutator method.
-     * @param pathToRules pathname to the rules that were used for this Save
-     */
-    public void setPathToRules(String pathToRules) {
-        this.pathToRules = pathToRules;
-    }
-
-    /**
-     * Lightweight mutator method.
+     *
      * @param userRealm user's realm data.
      */
     public void setUserRealm(Realm userRealm) {

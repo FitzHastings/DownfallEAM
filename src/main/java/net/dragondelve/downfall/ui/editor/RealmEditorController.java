@@ -14,17 +14,6 @@
 
 package net.dragondelve.downfall.ui.editor;
 
-import net.dragondelve.mabel.button.ImageChooserButton;
-import net.dragondelve.mabel.button.LogoTableColumn;
-import net.dragondelve.mabel.button.SimpleTableEditor;
-import net.dragondelve.mabel.fetcher.*;
-import net.dragondelve.downfall.realm.Material;
-import net.dragondelve.downfall.realm.Realm;
-import net.dragondelve.downfall.realm.Tag;
-import net.dragondelve.downfall.realm.template.VisualMaterialTemplate;
-import net.dragondelve.downfall.ui.StageController;
-import net.dragondelve.downfall.util.Configurator;
-import net.dragondelve.downfall.util.DownfallUtil;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -35,6 +24,20 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
+import net.dragondelve.downfall.realm.Material;
+import net.dragondelve.downfall.realm.Realm;
+import net.dragondelve.downfall.realm.Tag;
+import net.dragondelve.downfall.realm.template.VisualMaterialTemplate;
+import net.dragondelve.downfall.ui.StageController;
+import net.dragondelve.downfall.util.Configurator;
+import net.dragondelve.downfall.util.DownfallUtil;
+import net.dragondelve.mabel.button.ImageChooserButton;
+import net.dragondelve.mabel.button.LogoTableColumn;
+import net.dragondelve.mabel.button.SimpleTableEditor;
+import net.dragondelve.mabel.fetcher.ConversionFetcher;
+import net.dragondelve.mabel.fetcher.ConversionMaterialFetcher;
+import net.dragondelve.mabel.fetcher.VisualFetcher;
+import net.dragondelve.mabel.fetcher.VisualTagFetcher;
 
 import java.util.Objects;
 import java.util.logging.Level;
@@ -45,61 +48,43 @@ import java.util.logging.Logger;
  * Controls /fxml/editors/RealmEditor.fxml and is annotated with @FXML where it references that FXML file.
  */
 public class RealmEditorController implements StageController {
-    @FXML
-    private Button cancelButton;
-
-    @FXML
-    private Button createButton;
-
-    @FXML
-    private TextField diploRepTextField;
-
-    @FXML
-    private TextField infamyTextField;
-
-    @FXML
-    private TextField legitimacyTextField;
-
-    @FXML
-    private TextField powerProjectionTextField;
-
-    @FXML
-    private TextField prestigeTextField;
-
-    @FXML
-    private ImageChooserButton realmGFXButton;
-
-    @FXML
-    private TextField realmGFXTextField;
-
-    @FXML
-    private TextField realmNameTextField;
-
-    @FXML
-    private BorderPane rootPane;
-
-    @FXML
-    private ImageChooserButton rulerGFXButton;
-
-    @FXML
-    private TextField rulerGFXTextField;
-
-    @FXML
-    private TextField treasuryTextField;
-
-    @FXML
-    private TextField stabilityTextField;
-
-    @FXML
-    private SimpleTableEditor<Tag> tagEditor;
-
-    @FXML
-    private SimpleTableEditor<Material> stockpileEditor;
-
     private static final String STOCKPILE_NAME_COLUMN_NAME = "Stockpile";
     private static final String STOCKPILE_AMOUNT_COLUMN_NAME = "Amount";
-
     Stage stage = new Stage();
+    @FXML
+    private Button cancelButton;
+    @FXML
+    private Button createButton;
+    @FXML
+    private TextField diploRepTextField;
+    @FXML
+    private TextField infamyTextField;
+    @FXML
+    private TextField legitimacyTextField;
+    @FXML
+    private TextField powerProjectionTextField;
+    @FXML
+    private TextField prestigeTextField;
+    @FXML
+    private ImageChooserButton realmGFXButton;
+    @FXML
+    private TextField realmGFXTextField;
+    @FXML
+    private TextField realmNameTextField;
+    @FXML
+    private BorderPane rootPane;
+    @FXML
+    private ImageChooserButton rulerGFXButton;
+    @FXML
+    private TextField rulerGFXTextField;
+    @FXML
+    private TextField treasuryTextField;
+    @FXML
+    private TextField stabilityTextField;
+    @FXML
+    private SimpleTableEditor<Tag> tagEditor;
+    @FXML
+    private SimpleTableEditor<Material> stockpileEditor;
 
     /**
      * Initialize method that is called automatically after the FXML has finished loading. Initializes all UI elements before they are displayed
@@ -114,20 +99,20 @@ public class RealmEditorController implements StageController {
         Realm realm = new Realm();
 
         //bind textFields
-        realmNameTextField.textProperty()       .bindBidirectional(realm.nameProperty());
-        treasuryTextField.textProperty()        .bindBidirectional(realm.treasuryProperty(),                new NumberStringConverter());
-        diploRepTextField.textProperty()        .bindBidirectional(realm.diplomaticReputationProperty(),    new NumberStringConverter());
-        powerProjectionTextField.textProperty() .bindBidirectional(realm.powerProjectionProperty(),         new NumberStringConverter());
-        legitimacyTextField.textProperty()      .bindBidirectional(realm.legitimacyProperty(),              new NumberStringConverter());
-        prestigeTextField.textProperty()        .bindBidirectional(realm.prestigeProperty(),                new NumberStringConverter());
-        infamyTextField.textProperty()          .bindBidirectional(realm.infamyProperty(),                  new NumberStringConverter());
-        stabilityTextField.textProperty()       .bindBidirectional(realm.stabilityProperty(),               new NumberStringConverter());
-        realmGFXTextField.textProperty()        .bindBidirectional(realm.realmPathToGFXProperty());
-        rulerGFXTextField.textProperty()        .bindBidirectional(realm.rulerPathToGFXProperty());
+        realmNameTextField.textProperty().bindBidirectional(realm.nameProperty());
+        treasuryTextField.textProperty().bindBidirectional(realm.treasuryProperty(), new NumberStringConverter());
+        diploRepTextField.textProperty().bindBidirectional(realm.diplomaticReputationProperty(), new NumberStringConverter());
+        powerProjectionTextField.textProperty().bindBidirectional(realm.powerProjectionProperty(), new NumberStringConverter());
+        legitimacyTextField.textProperty().bindBidirectional(realm.legitimacyProperty(), new NumberStringConverter());
+        prestigeTextField.textProperty().bindBidirectional(realm.prestigeProperty(), new NumberStringConverter());
+        infamyTextField.textProperty().bindBidirectional(realm.infamyProperty(), new NumberStringConverter());
+        stabilityTextField.textProperty().bindBidirectional(realm.stabilityProperty(), new NumberStringConverter());
+        realmGFXTextField.textProperty().bindBidirectional(realm.realmPathToGFXProperty());
+        rulerGFXTextField.textProperty().bindBidirectional(realm.rulerPathToGFXProperty());
 
         //init Tag Editor
         TableColumn<Tag, String> tagColumn = new TableColumn<>("Tag");
-        tagColumn.setCellValueFactory(e->e.getValue().tagProperty());
+        tagColumn.setCellValueFactory(e -> e.getValue().tagProperty());
 
         VisualFetcher<Tag> visualTagFetcher = new VisualTagFetcher();
         visualTagFetcher.initialize(stage, FXCollections.observableList(Configurator.getInstance().getRules().getActorTags()));
@@ -140,8 +125,8 @@ public class RealmEditorController implements StageController {
         rulerGFXButton.setOutput(rulerGFXTextField);
 
         //init other buttons.
-        cancelButton.setOnAction(e-> stage.close());
-        createButton.setOnAction(e-> {
+        cancelButton.setOnAction(e -> stage.close());
+        createButton.setOnAction(e -> {
             Configurator.getInstance().setUserRealm(realm);
             stage.close();
         });
@@ -149,24 +134,24 @@ public class RealmEditorController implements StageController {
         //init stockpile editor
         LogoTableColumn<Material> stockpileLogoColumn = new LogoTableColumn<>();
         stockpileLogoColumn.setDefaultSizePolicy();
-        stockpileLogoColumn.setCellValueFactory(e-> {
+        stockpileLogoColumn.setCellValueFactory(e -> {
             VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
-            if(template == null)
+            if (template == null)
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
             return Objects.requireNonNull(template).pathToGFXProperty();
         });
 
         TableColumn<Material, String> stockpileNameColumn = new TableColumn<>(STOCKPILE_NAME_COLUMN_NAME);
-        stockpileNameColumn.setCellValueFactory(e ->{
+        stockpileNameColumn.setCellValueFactory(e -> {
             VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
-            if(template == null)
+            if (template == null)
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
             return Objects.requireNonNull(template).nameProperty();
         });
 
         TableColumn<Material, Integer> stockpileAmountColumn = new TableColumn<>(STOCKPILE_AMOUNT_COLUMN_NAME);
         stockpileAmountColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        stockpileAmountColumn.setCellValueFactory(e-> e.getValue().amountProperty().asObject());
+        stockpileAmountColumn.setCellValueFactory(e -> e.getValue().amountProperty().asObject());
         stockpileAmountColumn.setEditable(true);
 
         ConversionFetcher<Material, VisualMaterialTemplate> visualMaterialFetcher = new ConversionMaterialFetcher();
@@ -179,6 +164,7 @@ public class RealmEditorController implements StageController {
     /**
      * Lightweight mutator method.
      * Always should be called before the editor is displayed to the user.
+     *
      * @param stage Stage on which this controller is displayed.
      */
     @Override

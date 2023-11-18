@@ -28,6 +28,7 @@ public interface SaveManager {
     /**
      * Loads and applies the savegame from a given pathname and attempts to find,
      * load and validate the rules that are referenced in the savegame.
+     *
      * @param pathname pathname to a savegame file.
      */
     void loadFrom(String pathname);
@@ -40,6 +41,7 @@ public interface SaveManager {
 
     /**
      * Formulates a new Savegame ba
+     *
      * @param pathname pathname to a file in which the savegame data will be recorded.
      */
     void saveTo(String pathname);

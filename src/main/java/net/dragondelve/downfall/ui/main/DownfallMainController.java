@@ -14,21 +14,6 @@
 
 package net.dragondelve.downfall.ui.main;
 
-import net.dragondelve.mabel.button.ExitButton;
-import net.dragondelve.mabel.button.LogoTableColumn;
-import net.dragondelve.mabel.button.MaximizeButton;
-import net.dragondelve.mabel.button.MinimizeButton;
-import net.dragondelve.downfall.realm.Material;
-import net.dragondelve.realm.*;
-import net.dragondelve.downfall.realm.template.VisualMaterialTemplate;
-import net.dragondelve.downfall.ui.StageController;
-import net.dragondelve.downfall.ui.editor.BuildingsEditorController;
-import net.dragondelve.downfall.ui.editor.MaterialsEditorController;
-import net.dragondelve.downfall.ui.editor.RealmEditorController;
-import net.dragondelve.downfall.ui.editor.TagsEditorController;
-import net.dragondelve.downfall.ui.main.tabs.RealmScreenController;
-import net.dragondelve.downfall.util.Configurator;
-import net.dragondelve.downfall.util.DownfallUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -41,6 +26,21 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
+import net.dragondelve.downfall.realm.Material;
+import net.dragondelve.downfall.realm.template.VisualMaterialTemplate;
+import net.dragondelve.downfall.ui.StageController;
+import net.dragondelve.downfall.ui.editor.BuildingsEditorController;
+import net.dragondelve.downfall.ui.editor.MaterialsEditorController;
+import net.dragondelve.downfall.ui.editor.RealmEditorController;
+import net.dragondelve.downfall.ui.editor.TagsEditorController;
+import net.dragondelve.downfall.ui.main.tabs.RealmScreenController;
+import net.dragondelve.downfall.util.Configurator;
+import net.dragondelve.downfall.util.DownfallUtil;
+import net.dragondelve.mabel.button.ExitButton;
+import net.dragondelve.mabel.button.LogoTableColumn;
+import net.dragondelve.mabel.button.MaximizeButton;
+import net.dragondelve.mabel.button.MinimizeButton;
+import net.dragondelve.realm.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -54,71 +54,49 @@ import java.util.logging.Logger;
  * Controls /fxml/main/DownfallMain.fxml and is annotated with @FXML where it references that FXML file.
  */
 public class DownfallMainController implements StageController {
-    @FXML
-    private MenuItem buildingsEditItem;
-
-    @FXML
-    private MenuItem materialsEditItem;
-
-    @FXML
-    private MenuItem tagsEditItem;
-
-    @FXML
-    private MenuItem importRulesItem;
-
-    @FXML
-    private MenuItem newRealm;
-
-    @FXML
-    private MenuItem loadRealm;
-
-    @FXML
-    private MenuItem saveRealm;
-
-    @FXML
-    private MenuItem saveRealmTo;
-
-    @FXML
-    private MenuItem configureItem;
-
-    @FXML
-    private MenuItem exportRulesItem;
-
-    @FXML
-    private AnchorPane realmAnchorPane;
-
-    @FXML
-    private BorderPane rootPane;
-
-    @FXML
-    private MinimizeButton minimizeButton;
-
-    @FXML
-    private MaximizeButton maximizeButton;
-
-    @FXML
-    private ExitButton exitButton;
-
-    @FXML
-    private MenuBar menuBar;
-
-    @FXML
-    private Label treasuryLabel;
-
-    @FXML
-    private TableView<Material> stockpileTableView;
-
-    private Stage stage;
-
-    private Double xOffset;
-
-    private Double yOffset;
-
-    final RealmScreenController realmScreenController = new RealmScreenController();
-
     private static final String STOCKPILE_NAME_COLUMN_NAME = "Stockpile";
     private static final String STOCKPILE_AMOUNT_COLUMN_NAME = "#";
     private static final Integer STOCKPILE_AMOUNT_COLUMN_WIDTH = 50;
+    final RealmScreenController realmScreenController = new RealmScreenController();
+    @FXML
+    private MenuItem buildingsEditItem;
+    @FXML
+    private MenuItem materialsEditItem;
+    @FXML
+    private MenuItem tagsEditItem;
+    @FXML
+    private MenuItem importRulesItem;
+    @FXML
+    private MenuItem newRealm;
+    @FXML
+    private MenuItem loadRealm;
+    @FXML
+    private MenuItem saveRealm;
+    @FXML
+    private MenuItem saveRealmTo;
+    @FXML
+    private MenuItem configureItem;
+    @FXML
+    private MenuItem exportRulesItem;
+    @FXML
+    private AnchorPane realmAnchorPane;
+    @FXML
+    private BorderPane rootPane;
+    @FXML
+    private MinimizeButton minimizeButton;
+    @FXML
+    private MaximizeButton maximizeButton;
+    @FXML
+    private ExitButton exitButton;
+    @FXML
+    private MenuBar menuBar;
+    @FXML
+    private Label treasuryLabel;
+    @FXML
+    private TableView<Material> stockpileTableView;
+    private Stage stage;
+    private Double xOffset;
+    private Double yOffset;
 
     /**
      * Initialize method that is called automatically after the FXML has finished loading. Initializes all UI elements before they are displayed
@@ -127,7 +105,7 @@ public class DownfallMainController implements StageController {
     public void initialize() {
         materialsEditItem.setOnAction(e -> openEditor(DownfallUtil.getInstance().getURLMaterialsEditorFXML(), new MaterialsEditorController(), "Materials Editor"));
         buildingsEditItem.setOnAction(e -> openEditor(DownfallUtil.getInstance().getURLBuildingsEditorFXML(), new BuildingsEditorController(), "Buildings Editor"));
-        tagsEditItem     .setOnAction(e -> openEditor(DownfallUtil.getInstance().getURLTagsEditorFXML(),      new TagsEditorController(),      "Tags Editor"));
+        tagsEditItem.setOnAction(e -> openEditor(DownfallUtil.getInstance().getURLTagsEditorFXML(), new TagsEditorController(), "Tags Editor"));
 
         newRealm.setOnAction(e -> {
             openEditor(DownfallUtil.getInstance().getURLRealmEditorFXML(), new RealmEditorController(), "New Realm");
@@ -147,12 +125,12 @@ public class DownfallMainController implements StageController {
         maximizeButton.setStage(stage);
         exitButton.setStage(stage);
 
-        menuBar.setOnMousePressed(e->{
+        menuBar.setOnMousePressed(e -> {
             xOffset = stage.getX() - e.getScreenX();
             yOffset = stage.getY() - e.getScreenY();
         });
 
-        menuBar.setOnMouseDragged(e-> {
+        menuBar.setOnMouseDragged(e -> {
             if (!stage.isMaximized()) {
                 stage.setX(e.getScreenX() + xOffset);
                 stage.setY(e.getScreenY() + yOffset);
@@ -162,17 +140,17 @@ public class DownfallMainController implements StageController {
         //intialize Stockpile TableView
         LogoTableColumn<Material> stockpileLogoColumn = new LogoTableColumn<>();
         stockpileLogoColumn.setDefaultSizePolicy();
-        stockpileLogoColumn.setCellValueFactory(e-> {
+        stockpileLogoColumn.setCellValueFactory(e -> {
             VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
-            if(template == null)
+            if (template == null)
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
             return Objects.requireNonNull(template).pathToGFXProperty();
         });
 
         TableColumn<Material, String> stockpileNameColumn = new TableColumn<>(STOCKPILE_NAME_COLUMN_NAME);
-        stockpileNameColumn.setCellValueFactory(e ->{
+        stockpileNameColumn.setCellValueFactory(e -> {
             VisualMaterialTemplate template = Configurator.getInstance().findMaterialTemplate(e.getValue());
-            if(template == null)
+            if (template == null)
                 Logger.getLogger(DownfallUtil.DEFAULT_LOGGER).log(Level.WARNING, "VisualMaterialTemplate expected from Configuration returned null");
             return Objects.requireNonNull(template).nameProperty();
         });
@@ -182,8 +160,8 @@ public class DownfallMainController implements StageController {
         stockpileAmountColumn.setCellValueFactory(e -> e.getValue().amountProperty().asObject());
         stockpileAmountColumn.setEditable(true);
         stockpileAmountColumn.setPrefWidth(STOCKPILE_AMOUNT_COLUMN_WIDTH);
-        stockpileAmountColumn.setMinWidth(STOCKPILE_AMOUNT_COLUMN_WIDTH*1.5);
-        stockpileAmountColumn.setMaxWidth(STOCKPILE_AMOUNT_COLUMN_WIDTH*2);
+        stockpileAmountColumn.setMinWidth(STOCKPILE_AMOUNT_COLUMN_WIDTH * 1.5);
+        stockpileAmountColumn.setMaxWidth(STOCKPILE_AMOUNT_COLUMN_WIDTH * 2);
 
         stockpileTableView.getColumns().addAll(stockpileLogoColumn, stockpileNameColumn, stockpileAmountColumn);
         stockpileTableView.setItems(Configurator.getInstance().getUserRealm().getStockpile());
@@ -196,6 +174,7 @@ public class DownfallMainController implements StageController {
     /**
      * Lightweight Mutator Method.
      * Always should be called before the stage is displayed to the user.
+     *
      * @param stage Stage on which this controller is displayed.
      */
     @Override
@@ -206,9 +185,10 @@ public class DownfallMainController implements StageController {
     /**
      * Creates a stage on which an editor controlled by a StageController can be displayed.
      * Loads an FXML File from the URL, sets the controller and finally displays the stage.
+     *
      * @param editorFXMLURL URL to a FXML file that contains the editor's gui information.
-     * @param controller controller to be used for the new Stage.
-     * @param title text title to be displayed on the new Stage.
+     * @param controller    controller to be used for the new Stage.
+     * @param title         text title to be displayed on the new Stage.
      */
     private void openEditor(URL editorFXMLURL, StageController controller, String title) {
         Stage stage = new Stage();
@@ -233,10 +213,10 @@ public class DownfallMainController implements StageController {
     private void exportRules() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Export Rules");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml rules file","*.xml"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml rules file", "*.xml"));
         fileChooser.setInitialDirectory(new File("rules"));
         File selectedFile = fileChooser.showSaveDialog(stage);
-        if(selectedFile != null)
+        if (selectedFile != null)
             Configurator.getInstance().saveRules(selectedFile.getPath());
     }
 
@@ -247,10 +227,10 @@ public class DownfallMainController implements StageController {
     private void importRules() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Import Rules");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml rules file","*.xml"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml rules file", "*.xml"));
         fileChooser.setInitialDirectory(new File("rules"));
         File selectedFile = fileChooser.showOpenDialog(stage);
-        if(selectedFile != null)
+        if (selectedFile != null)
             Configurator.getInstance().loadAndApplyRules(selectedFile.getPath());
     }
 
@@ -308,10 +288,10 @@ public class DownfallMainController implements StageController {
     private void loadRealmAction() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose Savegame");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml save file","*.xml"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml save file", "*.xml"));
         fileChooser.setInitialDirectory(new File("save"));
         File selectedFile = fileChooser.showOpenDialog(stage);
-        if(selectedFile != null) {
+        if (selectedFile != null) {
             Configurator.getInstance().getSaveManager().loadFrom(selectedFile.getPath());
             updateTabs();
         }
@@ -330,10 +310,10 @@ public class DownfallMainController implements StageController {
     private void saveRealmToAction() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose Savegame");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml save file","*.xml"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml save file", "*.xml"));
         fileChooser.setInitialDirectory(new File("save"));
         File selectedFile = fileChooser.showSaveDialog(stage);
-        if(selectedFile != null)
+        if (selectedFile != null)
             Configurator.getInstance().getSaveManager().saveTo(selectedFile.getPath());
     }
- }
+}

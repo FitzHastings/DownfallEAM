@@ -14,13 +14,13 @@
 
 package net.dragondelve.mabel.fetcher;
 
-import net.dragondelve.downfall.realm.Tag;
-import net.dragondelve.downfall.util.Configurator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
+import net.dragondelve.downfall.realm.Tag;
+import net.dragondelve.downfall.util.Configurator;
 
 import java.util.Objects;
 
@@ -35,20 +35,21 @@ public class VisualTagFetcher extends TableFetcherBase<Tag> implements VisualFet
      */
     public VisualTagFetcher() {
         TableColumn<Tag, String> tagColumn = new TableColumn<>();
-        tagColumn.setCellValueFactory(e-> e.getValue().tagProperty());
+        tagColumn.setCellValueFactory(e -> e.getValue().tagProperty());
 
         tableView.getColumns().add(tagColumn);
     }
 
     /**
      * Creates a new stage that will be owned by the parent Stage. sets the provided list of items to the Table View.  It should always be run before its retrieve method.
+     *
      * @param parent a parent stage that will be set as an owner of the stage displayed by the VisualTagFetcher
-     * @param items a list of items to be displayed by the VisualTagFetcher
+     * @param items  a list of items to be displayed by the VisualTagFetcher
      */
     @Override
     public void initialize(Stage parent, ObservableList<Tag> items) {
         stage = new Stage();
-        if(parent != null)
+        if (parent != null)
             stage.initOwner(parent);
 
         Scene scene = new Scene(this);
@@ -58,13 +59,14 @@ public class VisualTagFetcher extends TableFetcherBase<Tag> implements VisualFet
 
     /**
      * This method will show a new stage with showAndWait(). after a selection is made by the user this function will return a Tag selected.
+     *
      * @return a tag selected from a TableView if a selection is made in the table, if there is no selection made returns null instead.
      */
     @Override
     public Tag retrieve() {
         stage.showAndWait();
 
-        if(selectionIsMade)
+        if (selectionIsMade)
             return tableView.getSelectionModel().getSelectedItem();
         return null;
     }

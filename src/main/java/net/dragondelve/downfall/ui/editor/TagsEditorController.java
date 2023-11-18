@@ -14,21 +14,21 @@
 
 package net.dragondelve.downfall.ui.editor;
 
-import net.dragondelve.mabel.button.SimpleTableEditor;
-import net.dragondelve.mabel.fetcher.SimpleTagFetcher;
-import net.dragondelve.downfall.realm.Tag;
-import net.dragondelve.downfall.ui.StageController;
-import net.dragondelve.downfall.util.Configurator;
-import net.dragondelve.downfall.util.DownfallUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import net.dragondelve.downfall.realm.Tag;
+import net.dragondelve.downfall.ui.StageController;
+import net.dragondelve.downfall.util.Configurator;
+import net.dragondelve.downfall.util.DownfallUtil;
+import net.dragondelve.mabel.button.SimpleTableEditor;
+import net.dragondelve.mabel.fetcher.SimpleTagFetcher;
 
 /**
- *  Controller class for the Materials Editor. It is responsible for the creation and editing of VisualMaterialTemplates in the current ruleset.
- *  Controls /fxml/editors/MaterialsEditor.fxml and is annotated with @FXML where it references that FXML file.
+ * Controller class for the Materials Editor. It is responsible for the creation and editing of VisualMaterialTemplates in the current ruleset.
+ * Controls /fxml/editors/MaterialsEditor.fxml and is annotated with @FXML where it references that FXML file.
  */
 public final class TagsEditorController implements StageController {
     @FXML
@@ -78,17 +78,18 @@ public final class TagsEditorController implements StageController {
 
         //Listening for changes in selection made by the user in tag table view to update data displayed.
         tagTableEditor.getTableView().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if(oldValue != null)
+            if (oldValue != null)
                 unbindTag(oldValue);
             displayTag(newValue);
         });
 
         //other inits
-        okButton.setOnAction(e-> this.stage.close());
+        okButton.setOnAction(e -> this.stage.close());
     }
 
     /**
      * Lightweight mutator method.
+     *
      * @param stage Stage on which this controller is displayed.
      */
     @Override
@@ -98,19 +99,21 @@ public final class TagsEditorController implements StageController {
 
     /**
      * Binds the properties of a given tag to all TextFields and CheckBoxes.
+     *
      * @param tag Tag to be unbound.
      */
     private void unbindTag(Tag tag) {
-        tagTextField.textProperty()             .unbindBidirectional(tag.tagProperty());
-        isFactionalCheckBox.selectedProperty()  .unbindBidirectional(tag.isFactionalProperty());
+        tagTextField.textProperty().unbindBidirectional(tag.tagProperty());
+        isFactionalCheckBox.selectedProperty().unbindBidirectional(tag.isFactionalProperty());
     }
 
     /**
      * Unbinds the properties of a given tag from all TextFields and CheckBoxes.
+     *
      * @param tag Tag to be displayed.
      */
     private void displayTag(Tag tag) {
-        tagTextField.textProperty()             .bindBidirectional(tag.tagProperty());
-        isFactionalCheckBox.selectedProperty()  .bindBidirectional(tag.isFactionalProperty());
+        tagTextField.textProperty().bindBidirectional(tag.tagProperty());
+        isFactionalCheckBox.selectedProperty().bindBidirectional(tag.isFactionalProperty());
     }
 }

@@ -14,37 +14,31 @@
 
 package net.dragondelve.downfall.realm.template;
 
-import net.dragondelve.downfall.realm.Material;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementWrapper;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import net.dragondelve.downfall.realm.Material;
+
 import java.util.List;
 
 /**
  * Used to generate new buildings. This class is annotated for conversion Integero a serializable form using JAXB
  */
-@XmlRootElement(name="building-template")
+@XmlRootElement(name = "building-template")
 public abstract class BuildingTemplate {
     private final IntegerProperty idProperty = new SimpleIntegerProperty(-1);
 
     private final StringProperty nameProperty = new SimpleStringProperty();
-
-    private ObservableList<Material> inputMaterials = FXCollections.observableArrayList();
-
-    private ObservableList<Material> outputMaterials = FXCollections.observableArrayList();
-
     private final IntegerProperty defConstructionCostProperty = new SimpleIntegerProperty();
-
-    private ObservableList<Material> constructionMaterials = FXCollections.observableArrayList();
-
     private final IntegerProperty defConstructionTimeProperty = new SimpleIntegerProperty();
-
     private final BooleanProperty operatesImmediatelyProperty = new SimpleBooleanProperty();
-
     private final BooleanProperty ephemeralProperty = new SimpleBooleanProperty();
+    private ObservableList<Material> inputMaterials = FXCollections.observableArrayList();
+    private ObservableList<Material> outputMaterials = FXCollections.observableArrayList();
+    private ObservableList<Material> constructionMaterials = FXCollections.observableArrayList();
 
     /**
      * Default constructor. Does not provide any default values
@@ -54,25 +48,24 @@ public abstract class BuildingTemplate {
     }
 
     /**
-     *
-     * @param id unique identifier used to differentiate different templates
-     * @param name a human-readable name of the template.
-     * @param inputMaterials a list of input materials that are used in production in this building per turn
-     * @param outputMaterials a list of output materials that are produced in this building per turn
-     * @param defConstructionCost construction cost per turn of construction
+     * @param id                    unique identifier used to differentiate different templates
+     * @param name                  a human-readable name of the template.
+     * @param inputMaterials        a list of input materials that are used in production in this building per turn
+     * @param outputMaterials       a list of output materials that are produced in this building per turn
+     * @param defConstructionCost   construction cost per turn of construction
      * @param constructionMaterials a list of materials consumed during construction per turn of construction
-     * @param defConstructionTime number of turns it takes to construct a building
-     * @param operatesImmediately does the building operate immediately or do you need to finish its construction
+     * @param defConstructionTime   number of turns it takes to construct a building
+     * @param operatesImmediately   does the building operate immediately or do you need to finish its construction
      */
     public BuildingTemplate(Integer id, String name, List<Material> inputMaterials, List<Material> outputMaterials, Integer defConstructionCost, List<Material> constructionMaterials, Integer defConstructionTime, Boolean operatesImmediately) {
         this.idProperty.setValue(id);
 
         this.inputMaterials.clear();
-        if(inputMaterials != null)
+        if (inputMaterials != null)
             this.inputMaterials.addAll(inputMaterials);
 
         this.outputMaterials.clear();
-        if(outputMaterials != null)
+        if (outputMaterials != null)
             this.outputMaterials.addAll(outputMaterials);
 
         this.defConstructionCostProperty.setValue(defConstructionCost);
@@ -87,6 +80,7 @@ public abstract class BuildingTemplate {
 
     /**
      * Lightweight Accessor Method
+     *
      * @return unique identifier used to differentiate different templates as a property
      */
     public IntegerProperty idPropertyProperty() {
@@ -95,6 +89,7 @@ public abstract class BuildingTemplate {
 
     /**
      * Lightweight Accessor Method
+     *
      * @return a human-readable name of the template as a property
      */
     public StringProperty nameProperty() {
@@ -103,6 +98,7 @@ public abstract class BuildingTemplate {
 
     /**
      * Lightweight Accessor Method
+     *
      * @return construction cost per turn of construction as a property
      */
     public IntegerProperty defConstructionCostProperty() {
@@ -111,6 +107,7 @@ public abstract class BuildingTemplate {
 
     /**
      * Lightweight Accessor Method
+     *
      * @return number of turns it takes to construct a building as a property
      */
     public IntegerProperty defConstructionTimeProperty() {
@@ -119,6 +116,7 @@ public abstract class BuildingTemplate {
 
     /**
      * Lightweight Accessor Method
+     *
      * @return umber of turns it takes to construct a building as a property
      */
     public BooleanProperty operatesImmediatelyProperty() {
@@ -127,15 +125,26 @@ public abstract class BuildingTemplate {
 
     /**
      * Lightweight Accessor Method
+     *
      * @return unique identifier used to differentiate different templates
      */
-    @XmlElement(name="id")
+    @XmlElement(name = "id")
     public Integer getId() {
         return idProperty.get();
     }
 
     /**
+     * Lightweight Mutator Method
+     *
+     * @param id unique identifier used to differentiate different templates
+     */
+    public void setId(Integer id) {
+        this.idProperty.setValue(id);
+    }
+
+    /**
      * Lightweight Accessor Method
+     *
      * @return a human-readable name of the template
      */
     @XmlElement(name = "name")
@@ -144,72 +153,8 @@ public abstract class BuildingTemplate {
     }
 
     /**
-     * Lightweight Accessor Method
-     * @return a list of input materials that are used in production in this building per turn
-     */
-    @XmlElementWrapper(name="input-materials")
-    @XmlElement(name="material")
-    public ObservableList<Material> getInputMaterials() {
-        return inputMaterials;
-    }
-
-    /**
-     * Lightweight Accessor Method
-     * @return a list of output materials that are produced in this building per turn
-     */
-    @XmlElementWrapper(name="output-materials")
-    @XmlElement(name="material")
-    public ObservableList<Material> getOutputMaterials() {
-        return outputMaterials;
-    }
-
-    /**
-     * Lightweight Accessor Method
-     * @return construction cost per turn of construction
-     */
-    @XmlElement(name="def-construction-cost")
-    public Integer getDefConstructionCost() {
-        return defConstructionCostProperty.get();
-    }
-
-    /**
-     * Lightweight Accessor Method
-     * @return a list of materials consumed during construction per turn of construction
-     */
-    @XmlElementWrapper(name="construction-materials")
-    @XmlElement(name="material")
-    public ObservableList<Material> getConstructionMaterials() {
-        return constructionMaterials;
-    }
-
-    /**
-     * Lightweight Accessor Method
-     * @return number of turns it takes to construct a building
-     */
-    @XmlElement(name="def-construction-time")
-    public Integer getDefConstructionTime() {
-        return defConstructionTimeProperty.get();
-    }
-
-    /**
-     * Lightweight Accessor Method
-     * @return does the building operate immediately or do you need to finish its construction as a property
-     */
-    @XmlElement(name="operates-immediately")
-    public Boolean getOperatesImmediately() {
-        return operatesImmediatelyProperty.get();
-    }
-
-    /**
      * Lightweight Mutator Method
-     * @param id unique identifier used to differentiate different templates
-     */
-    public void setId(Integer id) {
-        this.idProperty.setValue(id);
-    }
-
-    /**
-     * Lightweight Mutator Method
+     *
      * @param name a human-readable name of the template
      */
     public void setName(String name) {
@@ -217,7 +162,19 @@ public abstract class BuildingTemplate {
     }
 
     /**
+     * Lightweight Accessor Method
+     *
+     * @return a list of input materials that are used in production in this building per turn
+     */
+    @XmlElementWrapper(name = "input-materials")
+    @XmlElement(name = "material")
+    public ObservableList<Material> getInputMaterials() {
+        return inputMaterials;
+    }
+
+    /**
      * Lightweight Mutator Method
+     *
      * @param inputMaterials a list of input materials that are used in production in this building per turn
      */
     public void setInputMaterials(ObservableList<Material> inputMaterials) {
@@ -225,7 +182,19 @@ public abstract class BuildingTemplate {
     }
 
     /**
+     * Lightweight Accessor Method
+     *
+     * @return a list of output materials that are produced in this building per turn
+     */
+    @XmlElementWrapper(name = "output-materials")
+    @XmlElement(name = "material")
+    public ObservableList<Material> getOutputMaterials() {
+        return outputMaterials;
+    }
+
+    /**
      * Lightweight Mutator Method
+     *
      * @param outputMaterials a list of output materials that are produced in this building per turn
      */
     public void setOutputMaterials(ObservableList<Material> outputMaterials) {
@@ -233,7 +202,18 @@ public abstract class BuildingTemplate {
     }
 
     /**
+     * Lightweight Accessor Method
+     *
+     * @return construction cost per turn of construction
+     */
+    @XmlElement(name = "def-construction-cost")
+    public Integer getDefConstructionCost() {
+        return defConstructionCostProperty.get();
+    }
+
+    /**
      * Lightweight Mutator Method
+     *
      * @param defConstructionCost construction cost per turn of construction
      */
     public void setDefConstructionCost(Integer defConstructionCost) {
@@ -241,7 +221,19 @@ public abstract class BuildingTemplate {
     }
 
     /**
+     * Lightweight Accessor Method
+     *
+     * @return a list of materials consumed during construction per turn of construction
+     */
+    @XmlElementWrapper(name = "construction-materials")
+    @XmlElement(name = "material")
+    public ObservableList<Material> getConstructionMaterials() {
+        return constructionMaterials;
+    }
+
+    /**
      * Lightweight Mutator Method
+     *
      * @param constructionMaterials a list of materials consumed during construction per turn of construction
      */
     public void setConstructionMaterials(ObservableList<Material> constructionMaterials) {
@@ -249,7 +241,18 @@ public abstract class BuildingTemplate {
     }
 
     /**
+     * Lightweight Accessor Method
+     *
+     * @return number of turns it takes to construct a building
+     */
+    @XmlElement(name = "def-construction-time")
+    public Integer getDefConstructionTime() {
+        return defConstructionTimeProperty.get();
+    }
+
+    /**
      * Lightweight Mutator Method
+     *
      * @param defConstructionTime number of turns it takes to construct a building
      */
     public void setDefConstructionTime(Integer defConstructionTime) {
@@ -257,7 +260,18 @@ public abstract class BuildingTemplate {
     }
 
     /**
+     * Lightweight Accessor Method
+     *
+     * @return does the building operate immediately or do you need to finish its construction as a property
+     */
+    @XmlElement(name = "operates-immediately")
+    public Boolean getOperatesImmediately() {
+        return operatesImmediatelyProperty.get();
+    }
+
+    /**
      * Lightweight Mutator Method
+     *
      * @param operatesImmediately does the building operate immediately or do you need to finish its construction
      */
     public void setOperatesImmediately(Boolean operatesImmediately) {

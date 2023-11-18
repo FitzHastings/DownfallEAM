@@ -44,15 +44,17 @@ public class Tag {
 
     /**
      * returns the tag value of the tag so that it can be made human-readable.
+     *
      * @return Tag name of this instance.
      */
     @Override
-    public String toString(){
+    public String toString() {
         return this.tag.get();
     }
 
     /**
      * Lightweight accessor method.
+     *
      * @return unique tag identifier as a property.
      */
     public IntegerProperty idProperty() {
@@ -61,6 +63,7 @@ public class Tag {
 
     /**
      * Lightweight accessor method
+     *
      * @return Tag title as a property
      */
     public StringProperty tagProperty() {
@@ -69,6 +72,7 @@ public class Tag {
 
     /**
      * Lightweight accessor method
+     *
      * @return Flag that determines if this tag is used to assign faction memberships to a realm, as a property.
      */
     public BooleanProperty isFactionalProperty() {
@@ -77,33 +81,17 @@ public class Tag {
 
     /**
      * Lightweight accessor method.
+     *
      * @return unique tag identifier.
      */
-    @XmlElement(name="id")
+    @XmlElement(name = "id")
     public Integer getId() {
         return id.get();
     }
 
     /**
-     * Lightweight accessor method
-     * @return Tag title as value
-     */
-    @XmlElement(name="value")
-    public String getTag() {
-        return tag.get();
-    }
-
-    /**
-     * Lightweight accessor method.
-     * @return Flag that determines if this tag is used to assign faction memberships to a realm.
-     */
-    @XmlElement(name="factional")
-    public Boolean isFactional() {
-        return isFactional.get();
-    }
-
-    /**
      * Lightweight mutator method.
+     *
      * @param id Unique tag identifier.
      */
     public void setId(Integer id) {
@@ -111,7 +99,18 @@ public class Tag {
     }
 
     /**
+     * Lightweight accessor method
+     *
+     * @return Tag title as value
+     */
+    @XmlElement(name = "value")
+    public String getTag() {
+        return tag.get();
+    }
+
+    /**
      * Lightweight mutator method
+     *
      * @param tag Tag name
      */
     public void setTag(String tag) {
@@ -119,7 +118,18 @@ public class Tag {
     }
 
     /**
+     * Lightweight accessor method.
+     *
+     * @return Flag that determines if this tag is used to assign faction memberships to a realm.
+     */
+    @XmlElement(name = "factional")
+    public Boolean isFactional() {
+        return isFactional.get();
+    }
+
+    /**
      * Lightweight mutator method.
+     *
      * @param isFactional Flag that determines if this tag is used to assign faction memberships to a realm.
      */
     public void setFactional(Boolean isFactional) {
